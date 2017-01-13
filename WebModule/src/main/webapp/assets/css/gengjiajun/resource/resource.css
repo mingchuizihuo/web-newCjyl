@@ -29,7 +29,6 @@
 .content .resource .box .resource_one .one_r{
     width:60%;
 }
-
 .layui-laypage span {
-    background: none !important;
+    background: none ;
 }
