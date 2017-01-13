@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.OlderNurseLogMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+    <result column="older_id" property="olderId" jdbcType="BIGINT" />
+    <result column="physical_condition" property="physicalCondition" jdbcType="VARCHAR" />
+    <result column="nurse_info" property="nurseInfo" jdbcType="VARCHAR" />
+    <result column="nurse_date" property="nurseDate" jdbcType="TIMESTAMP" />
+    <result column="staff_id" property="staffId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, organization_login_id, older_id, physical_condition, nurse_info, nurse_date, 
+    staff_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from older_nurse_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from older_nurse_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from older_nurse_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLogExample" >
+    delete from older_nurse_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into older_nurse_log (organization_login_id, older_id, physical_condition, 
+      nurse_info, nurse_date, staff_id
+      )
+    values (#{organizationLoginId,jdbcType=BIGINT}, #{olderId,jdbcType=BIGINT}, #{physicalCondition,jdbcType=VARCHAR}, 
+      #{nurseInfo,jdbcType=VARCHAR}, #{nurseDate,jdbcType=TIMESTAMP}, #{staffId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into older_nurse_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        organization_login_id,
+      </if>
+      <if test="olderId != null" >
+        older_id,
+      </if>
+      <if test="physicalCondition != null" >
+        physical_condition,
+      </if>
+      <if test="nurseInfo != null" >
+        nurse_info,
+      </if>
+      <if test="nurseDate != null" >
+        nurse_date,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="olderId != null" >
+        #{olderId,jdbcType=BIGINT},
+      </if>
+      <if test="physicalCondition != null" >
+        #{physicalCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseInfo != null" >
+        #{nurseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseDate != null" >
+        #{nurseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLogExample" resultType="java.lang.Integer" >
+    select count(*) from older_nurse_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update older_nurse_log
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationLoginId != null" >
+        organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="record.olderId != null" >
+        older_id = #{record.olderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.physicalCondition != null" >
+        physical_condition = #{record.physicalCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseInfo != null" >
+        nurse_info = #{record.nurseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nurseDate != null" >
+        nurse_date = #{record.nurseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.staffId != null" >
+        staff_id = #{record.staffId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update older_nurse_log
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      older_id = #{record.olderId,jdbcType=BIGINT},
+      physical_condition = #{record.physicalCondition,jdbcType=VARCHAR},
+      nurse_info = #{record.nurseInfo,jdbcType=VARCHAR},
+      nurse_date = #{record.nurseDate,jdbcType=TIMESTAMP},
+      staff_id = #{record.staffId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLog" >
+    update older_nurse_log
+    <set >
+      <if test="organizationLoginId != null" >
+        organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="olderId != null" >
+        older_id = #{olderId,jdbcType=BIGINT},
+      </if>
+      <if test="physicalCondition != null" >
+        physical_condition = #{physicalCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseInfo != null" >
+        nurse_info = #{nurseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="nurseDate != null" >
+        nurse_date = #{nurseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLog" >
+    update older_nurse_log
+    set organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      older_id = #{olderId,jdbcType=BIGINT},
+      physical_condition = #{physicalCondition,jdbcType=VARCHAR},
+      nurse_info = #{nurseInfo,jdbcType=VARCHAR},
+      nurse_date = #{nurseDate,jdbcType=TIMESTAMP},
+      staff_id = #{staffId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

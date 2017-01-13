@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.StaffLeaveLogMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+    <result column="staff_id" property="staffId" jdbcType="BIGINT" />
+    <result column="leave_date" property="leaveDate" jdbcType="TIMESTAMP" />
+    <result column="account_for" property="accountFor" jdbcType="VARCHAR" />
+    <result column="handle_staff_id" property="handleStaffId" jdbcType="BIGINT" />
+    <result column="handle_date" property="handleDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, organization_login_id, staff_id, leave_date, account_for, handle_staff_id, handle_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLogExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from staff_leave_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from staff_leave_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from staff_leave_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLogExample" >
+    delete from staff_leave_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into staff_leave_log (organization_login_id, staff_id, leave_date, 
+      account_for, handle_staff_id, handle_date
+      )
+    values (#{organizationLoginId,jdbcType=BIGINT}, #{staffId,jdbcType=BIGINT}, #{leaveDate,jdbcType=TIMESTAMP}, 
+      #{accountFor,jdbcType=VARCHAR}, #{handleStaffId,jdbcType=BIGINT}, #{handleDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLog" useGeneratedKeys="true" keyProperty="id" >
+    insert into staff_leave_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        organization_login_id,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="leaveDate != null" >
+        leave_date,
+      </if>
+      <if test="accountFor != null" >
+        account_for,
+      </if>
+      <if test="handleStaffId != null" >
+        handle_staff_id,
+      </if>
+      <if test="handleDate != null" >
+        handle_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="leaveDate != null" >
+        #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountFor != null" >
+        #{accountFor,jdbcType=VARCHAR},
+      </if>
+      <if test="handleStaffId != null" >
+        #{handleStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="handleDate != null" >
+        #{handleDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLogExample" resultType="java.lang.Integer" >
+    select count(*) from staff_leave_log
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update staff_leave_log
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationLoginId != null" >
+        organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="record.staffId != null" >
+        staff_id = #{record.staffId,jdbcType=BIGINT},
+      </if>
+      <if test="record.leaveDate != null" >
+        leave_date = #{record.leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.accountFor != null" >
+        account_for = #{record.accountFor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleStaffId != null" >
+        handle_staff_id = #{record.handleStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="record.handleDate != null" >
+        handle_date = #{record.handleDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update staff_leave_log
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      staff_id = #{record.staffId,jdbcType=BIGINT},
+      leave_date = #{record.leaveDate,jdbcType=TIMESTAMP},
+      account_for = #{record.accountFor,jdbcType=VARCHAR},
+      handle_staff_id = #{record.handleStaffId,jdbcType=BIGINT},
+      handle_date = #{record.handleDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLog" >
+    update staff_leave_log
+    <set >
+      <if test="organizationLoginId != null" >
+        organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="leaveDate != null" >
+        leave_date = #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountFor != null" >
+        account_for = #{accountFor,jdbcType=VARCHAR},
+      </if>
+      <if test="handleStaffId != null" >
+        handle_staff_id = #{handleStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="handleDate != null" >
+        handle_date = #{handleDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffLeaveLog" >
+    update staff_leave_log
+    set organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      staff_id = #{staffId,jdbcType=BIGINT},
+      leave_date = #{leaveDate,jdbcType=TIMESTAMP},
+      account_for = #{accountFor,jdbcType=VARCHAR},
+      handle_staff_id = #{handleStaffId,jdbcType=BIGINT},
+      handle_date = #{handleDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

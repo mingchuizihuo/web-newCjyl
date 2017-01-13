@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.FloorTierMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTier" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+    <result column="mansion_id" property="mansionId" jdbcType="BIGINT" />
+    <result column="floor_tier" property="floorTier" jdbcType="VARCHAR" />
+    <result column="account_for" property="accountFor" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, organization_login_id, mansion_id, floor_tier, account_for
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTierExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from floor_tier
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from floor_tier
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from floor_tier
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTierExample" >
+    delete from floor_tier
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTier" useGeneratedKeys="true" keyProperty="id" >
+    insert into floor_tier (organization_login_id, mansion_id, floor_tier, 
+      account_for)
+    values (#{organizationLoginId,jdbcType=BIGINT}, #{mansionId,jdbcType=BIGINT}, #{floorTier,jdbcType=VARCHAR}, 
+      #{accountFor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTier" useGeneratedKeys="true" keyProperty="id" >
+    insert into floor_tier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        organization_login_id,
+      </if>
+      <if test="mansionId != null" >
+        mansion_id,
+      </if>
+      <if test="floorTier != null" >
+        floor_tier,
+      </if>
+      <if test="accountFor != null" >
+        account_for,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="mansionId != null" >
+        #{mansionId,jdbcType=BIGINT},
+      </if>
+      <if test="floorTier != null" >
+        #{floorTier,jdbcType=VARCHAR},
+      </if>
+      <if test="accountFor != null" >
+        #{accountFor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTierExample" resultType="java.lang.Integer" >
+    select count(*) from floor_tier
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update floor_tier
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationLoginId != null" >
+        organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="record.mansionId != null" >
+        mansion_id = #{record.mansionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.floorTier != null" >
+        floor_tier = #{record.floorTier,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountFor != null" >
+        account_for = #{record.accountFor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update floor_tier
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      mansion_id = #{record.mansionId,jdbcType=BIGINT},
+      floor_tier = #{record.floorTier,jdbcType=VARCHAR},
+      account_for = #{record.accountFor,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTier" >
+    update floor_tier
+    <set >
+      <if test="organizationLoginId != null" >
+        organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="mansionId != null" >
+        mansion_id = #{mansionId,jdbcType=BIGINT},
+      </if>
+      <if test="floorTier != null" >
+        floor_tier = #{floorTier,jdbcType=VARCHAR},
+      </if>
+      <if test="accountFor != null" >
+        account_for = #{accountFor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.FloorTier" >
+    update floor_tier
+    set organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      mansion_id = #{mansionId,jdbcType=BIGINT},
+      floor_tier = #{floorTier,jdbcType=VARCHAR},
+      account_for = #{accountFor,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

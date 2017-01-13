@@ -1,0 +1,37 @@
+.content {
+    display: block !important;
+}
+.content .resource {
+    width: 100%;
+}
+.content .resource .box {
+    width: 100%;
+    margin-top:12px;
+}
+.content .resource .box .resource_one {
+    width:20%;
+    border-radius: 5px;
+}
+.content .resource .box .resource_one .one_l {
+    width:40%;
+}
+.content .resource .box .resource_one .one_l h4{
+    text-align: center;
+    height:150px;
+    line-height: 150px;
+}
+.content .resource .box .resource_one .one_l li{
+    text-align: center;
+    height:150px;
+    line-height: 150px;
+}
+
+
+.content .resource .box .resource_one .one_r{
+    width:60%;
+}
+
+
+.layui-laypage span {
+    background: none !important;
+}

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.RoomMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.Room" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+    <result column="floor_tier_id" property="floorTierId" jdbcType="BIGINT" />
+    <result column="room_num" property="roomNum" jdbcType="VARCHAR" />
+    <result column="room_type" property="roomType" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, organization_login_id, floor_tier_id, room_num, room_type
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.RoomExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from room
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from room
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.RoomExample" >
+    delete from room
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Room" useGeneratedKeys="true" keyProperty="id" >
+    insert into room (organization_login_id, floor_tier_id, room_num, 
+      room_type)
+    values (#{organizationLoginId,jdbcType=BIGINT}, #{floorTierId,jdbcType=BIGINT}, #{roomNum,jdbcType=VARCHAR}, 
+      #{roomType,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Room" useGeneratedKeys="true" keyProperty="id" >
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        organization_login_id,
+      </if>
+      <if test="floorTierId != null" >
+        floor_tier_id,
+      </if>
+      <if test="roomNum != null" >
+        room_num,
+      </if>
+      <if test="roomType != null" >
+        room_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="floorTierId != null" >
+        #{floorTierId,jdbcType=BIGINT},
+      </if>
+      <if test="roomNum != null" >
+        #{roomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="roomType != null" >
+        #{roomType,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.RoomExample" resultType="java.lang.Integer" >
+    select count(*) from room
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update room
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationLoginId != null" >
+        organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="record.floorTierId != null" >
+        floor_tier_id = #{record.floorTierId,jdbcType=BIGINT},
+      </if>
+      <if test="record.roomNum != null" >
+        room_num = #{record.roomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roomType != null" >
+        room_type = #{record.roomType,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update room
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      floor_tier_id = #{record.floorTierId,jdbcType=BIGINT},
+      room_num = #{record.roomNum,jdbcType=VARCHAR},
+      room_type = #{record.roomType,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Room" >
+    update room
+    <set >
+      <if test="organizationLoginId != null" >
+        organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="floorTierId != null" >
+        floor_tier_id = #{floorTierId,jdbcType=BIGINT},
+      </if>
+      <if test="roomNum != null" >
+        room_num = #{roomNum,jdbcType=VARCHAR},
+      </if>
+      <if test="roomType != null" >
+        room_type = #{roomType,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Room" >
+    update room
+    set organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      floor_tier_id = #{floorTierId,jdbcType=BIGINT},
+      room_num = #{roomNum,jdbcType=VARCHAR},
+      room_type = #{roomType,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

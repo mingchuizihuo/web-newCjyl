@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.myself.OlderKinsfolkMapperMyself">
+
+
+            <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.vo.OlderKinsfolkVO">
+                <id column="older_kinsfolk_id" property="id" jdbcType="BIGINT"/>
+                <result column="older_kinsfolk_name" property="name" jdbcType="VARCHAR"/>
+                <result column="older_kinsfolk_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+                <result column="older_kinsfolk_card_id" property="cardId" jdbcType="VARCHAR"/>
+                <result column="older_kinsfolk_account_for" property="accountFor" jdbcType="VARCHAR"/>
+                <result column="older_kinsfolk_relation_str" property="relationStr" jdbcType="VARCHAR"/>
+                <result column="older_kinsfolk_relation" property="relation" jdbcType="BIGINT"/>
+                <result column="older_kinsfolk_home_address" property="homeAddress" jdbcType="VARCHAR"/>
+                <result column="older_kinsfolk_tel" property="tel" jdbcType="VARCHAR"/>
+                <result column="older_kinsfolk_job_name" property="jobName" jdbcType="VARCHAR"/>
+             </resultMap>
+
+
+
+
+
+
+        <sql id="Base_Column_List">
+            older_kinsfolk.id older_kinsfolk_id, older_kinsfolk.name older_kinsfolk_name, older_kinsfolk.organization_login_id older_kinsfolk_organization_login_id, older_kinsfolk.card_id older_kinsfolk_card_id, older_kinsfolk.account_for older_kinsfolk_account_for, (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older_kinsfolk.relation) older_kinsfolk_relation_str, older_kinsfolk.relation older_kinsfolk_relation, older_kinsfolk.home_address older_kinsfolk_home_address, older_kinsfolk.tel older_kinsfolk_tel, older_kinsfolk.job_name older_kinsfolk_job_name
+        </sql>
+
+
+
+<sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                    #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+
+
+        <select id="findAllVO" resultMap="BaseResultMap">
+
+        SELECT
+        <include refid="Base_Column_List"></include>
+        from older_kinsfolk 
+
+
+        </select>
+
+        <select id="findVOByExapmle" resultMap="BaseResultMap"
+            parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderKinsfolkExample">
+
+
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from older_kinsfolk 
+
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+     <select id="selectVOByPrimaryKey" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from older_kinsfolk 
+        WHERE older.id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

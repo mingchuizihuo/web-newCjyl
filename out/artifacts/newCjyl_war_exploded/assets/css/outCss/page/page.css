@@ -1,0 +1,49 @@
+.tcdPageCode {
+    padding: 15px 2%;
+    text-align: right;
+    color: #fff;
+    min-width: 1250px;
+    clear: left;
+}
+
+.tcdPageCode a {
+    display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    background-color: rgba(65, 81, 97, 0.5);
+    line-height: 25px;
+    padding: 5px 15px;
+    margin: 0 2px;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.tcdPageCode a:hover {
+    text-decoration: none;
+    background-color: #3FD0A7;
+    color: #fff;
+}
+
+.tcdPageCode span.current {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 25px;
+    padding: 5px 15px;
+    margin: 0 2px;
+    color: #fff;
+    background-color: #3FD0A7;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.tcdPageCode span.disabled {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 25px;
+    padding: 5px 15px;
+    margin: 0 2px;
+    color: #fff;
+    background: rgba(65, 81, 97, 0.5);
+    border-radius: 4px;
+    vertical-align: middle;
+}

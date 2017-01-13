@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑", Microsoft YaHei,Arial ;
+    outline: none;
+}
+body {
+    font-size: 62.5%;
+}
+a img, :link img, :visited img {
+    border: 0px;
+}
+i {
+    margin: 0 5px 0 10px;
+}
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+a,a:hover{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+button{
+    border: 0;
+    box-shadow: none;
+    outline: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+h1 {
+    font-size: 2.4rem; /*1rem = 10px */
+}
+h2 {
+    font-size: 2.2rem;
+}
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    font-size: 1.8rem;
+}
+h5 {
+    font-size: 1.6rem;
+}
+h6 {
+    font-size: 1.4rem;
+}
+p{
+    font-size: 1.2rem;
+}
+.box_color{
+}
+
+/*登陆按钮*/
+.btn-sm{
+    display: inline-block;
+    padding: 6px 12px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 5px;
+    margin:10px;
+}
+.btn-sm:hover{
+}
+
+/*查询模块*/
+.inquiry{width:100%;padding:1% 0px;padding-bottom:1.5% ;}
+.inquiry span{margin-right:20px;}
+.inquiry label{padding:0 8px;font-size:12px;}
+.inquiry input{width:135px;height:22px;}
+.inquiry button{margin-left:20px;}

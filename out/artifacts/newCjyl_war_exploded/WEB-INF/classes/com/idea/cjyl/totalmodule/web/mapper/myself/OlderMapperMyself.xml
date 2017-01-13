@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.myself.OlderMapperMyself">
+    <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.vo.OlderVO">
+        <id column="older_id" property="id" jdbcType="BIGINT"/>
+        <result column="older_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+        <result column="older_name" property="name" jdbcType="VARCHAR"/>
+        <result column="older_sex" property="sex" jdbcType="BIGINT"/>
+        <result column="older_check_in_date" property="checkInDate" jdbcType="VARCHAR"/>
+        <result column="older_card_id" property="cardId" jdbcType="VARCHAR"/>
+        <result column="older_birthday" property="birthday" jdbcType="VARCHAR"/>
+        <result column="older_tel" property="tel" jdbcType="VARCHAR"/>
+        <result column="older_month_charge_id" property="monthChargeId" jdbcType="BIGINT"/>
+        <result column="older_census_register" property="censusRegister" jdbcType="VARCHAR"/>
+        <result column="older_belief" property="belief" jdbcType="BIGINT"/>
+        <result column="older_nation" property="nation" jdbcType="BIGINT"/>
+        <result column="older_politics_status" property="politicsStatus" jdbcType="BIGINT"/>
+        <result column="older_self_ingredient" property="selfIngredient" jdbcType="BIGINT"/>
+        <result column="older_take_care_of_oneself" property="takeCareOfOneself" jdbcType="BIGINT"/>
+        <result column="older_mind" property="mind" jdbcType="BIGINT"/>
+        <result column="older_pluse" property="pluse" jdbcType="VARCHAR"/>
+        <result column="older_blood_pressure" property="bloodPressure" jdbcType="VARCHAR"/>
+        <result column="older_allergic_drug" property="allergicDrug" jdbcType="VARCHAR"/>
+        <result column="older_indication_hospital" property="indicationHospital" jdbcType="VARCHAR"/>
+        <result column="older_indication_doctor" property="indicationDoctor" jdbcType="VARCHAR"/>
+        <result column="older_principal_disease" property="principalDisease" jdbcType="VARCHAR"/>
+        <result column="older_diseases_history" property="diseasesHistory" jdbcType="VARCHAR"/>
+        <result column="older_hospital_tel" property="hospitalTel" jdbcType="VARCHAR"/>
+        <result column="older_diet_characteristics" property="dietCharacteristics" jdbcType="VARCHAR"/>
+        <result column="older_disposition" property="disposition" jdbcType="VARCHAR"/>
+        <result column="older_hobby" property="hobby" jdbcType="VARCHAR"/>
+        <result column="older_special_requirements" property="specialRequirements" jdbcType="VARCHAR"/>
+        <result column="older_abnormal_patterns" property="abnormalPatterns" jdbcType="VARCHAR"/>
+
+        <result column="older_state" property="olderState" jdbcType="TINYINT"/>
+        <result column="older_leave_date" property="olderLeaveDate" jdbcType="VARCHAR"/>
+
+        <result column="older_sex_str" property="sexStr" jdbcType="VARCHAR"/>
+        <result column="older_belief_str" property="beliefStr" jdbcType="VARCHAR"/>
+        <result column="older_nation_str" property="nationStr" jdbcType="VARCHAR"/>
+        <result column="older_politics_status_str" property="politicsStatusStr" jdbcType="VARCHAR"/>
+        <result column="older_selfIngredient_str" property="selfIngredientStr" jdbcType="VARCHAR"/>
+        <result column="older_take_care_of_oneself_str" property="takeCareOfOneselfStr" jdbcType="VARCHAR"/>
+        <result column="older_mind_str" property="mindStr" jdbcType="VARCHAR"/>
+        <association property="monthCharge" resultMap="MonthChargeOlder"></association>
+
+    </resultMap>
+
+    <resultMap id="MonthChargeOlder" type="com.idea.cjyl.totalmodule.web.domain.pojo.MonthCharge">
+        <id column="monthcharge_id" property="id" jdbcType="BIGINT"/>
+        <result column="monthcharge_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+        <result column="monthcharge_nursing_grades" property="nursingGrades" jdbcType="VARCHAR"/>
+        <result column="monthcharge_administrative_fee" property="administrativeFee" jdbcType="INTEGER"/>
+        <result column="monthcharge_service_charge" property="serviceCharge" jdbcType="INTEGER"/>
+        <result column="monthcharge_bed_cost" property="bedCost" jdbcType="INTEGER"/>
+        <result column="monthcharge_food_cost" property="foodCost" jdbcType="INTEGER"/>
+        <result column="monthcharge_total" property="total" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    older.id older_id, older.organization_login_id older_organization_login_id, older.name older_name, older.sex older_sex,
+    date_format(older.check_in_date ,'%Y年%m月%d日')  older_check_in_date, older.card_id older_card_id, date_format(older.birthday,'%Y年%m月%d日') older_birthday,
+    older.tel older_tel, older.month_charge_id older_month_charge_id,
+    older.census_register older_census_register, older.belief older_belief, older.nation older_nation,
+    older.politics_status older_politics_status, older.self_ingredient older_self_ingredient,
+    older.take_care_of_oneself older_take_care_of_oneself,
+    older.mind older_mind, older.pluse older_pluse, older.blood_pressure older_blood_pressure,
+    older.allergic_drug older_allergic_drug, older.indication_hospital older_indication_hospital, older.indication_doctor older_indication_doctor,
+    older.principal_disease older_principal_disease, older.diseases_history older_diseases_history, older.hospital_tel older_hospital_tel,
+    older.diet_characteristics older_diet_characteristics, older.disposition older_disposition,
+    older.hobby older_hobby, older.special_requirements older_special_requirements, older.abnormal_patterns older_abnormal_patterns,
+    older.older_state older_older_state,  date_format(older.older_leave_date ,'%Y年%m月%d日') older_older_leave_date,
+    monthcharge.id monthcharge_id, monthcharge.organization_login_id monthcharge_organization_login_id, monthcharge.nursing_grades monthcharge_nursing_grades,
+    monthcharge.administrative_fee monthcharge_administrative_fee, monthcharge.service_charge monthcharge_service_charge, monthcharge.bed_cost monthcharge_bed_cost,
+    monthcharge.food_cost monthcharge_food_cost, monthcharge.total monthcharge_total,
+    (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older.sex) older_sex_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older.belief) older_belief_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older.nation) older_nation_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older.politics_status) older_politics_status_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older.self_ingredient) older_self_ingredient_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older.take_care_of_oneself) older_take_care_of_oneself_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older.mind) older_mind_str
+    </sql>
+
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+
+    <select id="findAllVO" resultMap="BaseResultMap" parameterType="java.lang.Long">
+
+        SELECT
+        <include refid="Base_Column_List"></include>
+        from older
+        LEFT JOIN month_charge monthcharge ON older.month_charge_id = monthcharge.id
+
+    </select>
+
+
+    <select id="findVOByExaple" resultMap="BaseResultMap"
+            parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderExample">
+
+
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from older LEFT JOIN month_charge monthcharge  ON older.month_charge_id = monthcharge.id
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectVOByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from older LEFT JOIN month_charge monthcharge ON older.month_charge_id = monthcharge.id
+        WHERE older.id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.common.web.dao.CommentRichTextMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.common.web.domain.pojo.CommentRichText" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="rich_text_title" property="richTextTitle" jdbcType="VARCHAR" />
+    <result column="rich_text_head_picture" property="richTextHeadPicture" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.idea.cjyl.common.web.domain.pojo.CommentRichText" extends="BaseResultMap" >
+    <result column="rich_text_body" property="richTextBody" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, rich_text_title, rich_text_head_picture
+  </sql>
+  <sql id="Blob_Column_List" >
+    rich_text_body
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichTextExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment_rich_text
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichTextExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from comment_rich_text
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment_rich_text
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from comment_rich_text
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichTextExample" >
+    delete from comment_rich_text
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichText" useGeneratedKeys="true" keyProperty="id" >
+    insert into comment_rich_text (rich_text_title, rich_text_head_picture, 
+      rich_text_body)
+    values (#{richTextTitle,jdbcType=VARCHAR}, #{richTextHeadPicture,jdbcType=VARCHAR}, 
+      #{richTextBody,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichText" useGeneratedKeys="true" keyProperty="id" >
+    insert into comment_rich_text
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="richTextTitle != null" >
+        rich_text_title,
+      </if>
+      <if test="richTextHeadPicture != null" >
+        rich_text_head_picture,
+      </if>
+      <if test="richTextBody != null" >
+        rich_text_body,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="richTextTitle != null" >
+        #{richTextTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="richTextHeadPicture != null" >
+        #{richTextHeadPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="richTextBody != null" >
+        #{richTextBody,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichTextExample" resultType="java.lang.Integer" >
+    select count(*) from comment_rich_text
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update comment_rich_text
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.richTextTitle != null" >
+        rich_text_title = #{record.richTextTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.richTextHeadPicture != null" >
+        rich_text_head_picture = #{record.richTextHeadPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.richTextBody != null" >
+        rich_text_body = #{record.richTextBody,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update comment_rich_text
+    set id = #{record.id,jdbcType=BIGINT},
+      rich_text_title = #{record.richTextTitle,jdbcType=VARCHAR},
+      rich_text_head_picture = #{record.richTextHeadPicture,jdbcType=VARCHAR},
+      rich_text_body = #{record.richTextBody,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update comment_rich_text
+    set id = #{record.id,jdbcType=BIGINT},
+      rich_text_title = #{record.richTextTitle,jdbcType=VARCHAR},
+      rich_text_head_picture = #{record.richTextHeadPicture,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichText" >
+    update comment_rich_text
+    <set >
+      <if test="richTextTitle != null" >
+        rich_text_title = #{richTextTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="richTextHeadPicture != null" >
+        rich_text_head_picture = #{richTextHeadPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="richTextBody != null" >
+        rich_text_body = #{richTextBody,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichText" >
+    update comment_rich_text
+    set rich_text_title = #{richTextTitle,jdbcType=VARCHAR},
+      rich_text_head_picture = #{richTextHeadPicture,jdbcType=VARCHAR},
+      rich_text_body = #{richTextBody,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.common.web.domain.pojo.CommentRichText" >
+    update comment_rich_text
+    set rich_text_title = #{richTextTitle,jdbcType=VARCHAR},
+      rich_text_head_picture = #{richTextHeadPicture,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

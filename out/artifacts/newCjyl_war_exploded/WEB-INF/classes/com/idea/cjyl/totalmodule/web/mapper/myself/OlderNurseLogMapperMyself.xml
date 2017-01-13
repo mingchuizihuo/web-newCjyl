@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.myself.OlderNurseLogMapperMyself">
+
+
+            <resultMap id="StaffOlderNurseLogVO" type="com.idea.cjyl.totalmodule.web.domain.pojo.Staff">
+                <id column="staff_id" property="id" jdbcType="BIGINT"/>
+                <result column="staff_name" property="name" jdbcType="VARCHAR"/>
+                <result column="staff_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+                <result column="staff_sex" property="sex" jdbcType="BIGINT"/>
+                <result column="staff_card_id" property="cardId" jdbcType="VARCHAR"/>
+                <result column="staff_branch" property="branch" jdbcType="BIGINT"/>
+                <result column="staff_birthday" property="birthday" jdbcType="TIMESTAMP"/>
+                <result column="staff_entry_date" property="entryDate" jdbcType="TIMESTAMP"/>
+                <result column="staff_tel" property="tel" jdbcType="VARCHAR"/>
+                <result column="staff_major" property="major" jdbcType="BIGINT"/>
+                <result column="staff_health_state" property="healthState" jdbcType="BIGINT"/>
+                <result column="staff_marriage" property="marriage" jdbcType="BIGINT"/>
+                <result column="staff_education" property="education" jdbcType="BIGINT"/>
+                <result column="staff_salary" property="salary" jdbcType="INTEGER"/>
+                <result column="staff_duty" property="duty" jdbcType="BIGINT"/>
+             </resultMap>
+
+
+            <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.vo.OlderNurseLogVO">
+                <id column="older_nurse_log_id" property="id" jdbcType="BIGINT"/>
+                <result column="older_nurse_log_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+                <result column="older_nurse_log_physical_condition" property="physicalCondition" jdbcType="VARCHAR"/>
+                <result column="older_nurse_log_older_id" property="olderId" jdbcType="BIGINT"/>
+                <result column="older_nurse_log_nurse_info" property="nurseInfo" jdbcType="VARCHAR"/>
+                <result column="older_nurse_log_nurse_date" property="nurseDate" jdbcType="TIMESTAMP"/>
+                <result column="older_nurse_log_staff_id" property="staffId" jdbcType="BIGINT"/>
+                <result column="older_nurse_log_nurse_date_str" property="nurseDateStr" jdbcType="VARCHAR"/>
+                <association property="staff" resultMap="StaffOlderNurseLogVO"></association>
+             </resultMap>
+
+
+
+
+
+
+        <sql id="Base_Column_List">
+            staff.id staff_id, staff.name staff_name, staff.organization_login_id staff_organization_login_id, staff.sex staff_sex, staff.card_id staff_card_id, staff.branch staff_branch, staff.birthday staff_birthday, staff.entry_date staff_entry_date, staff.tel staff_tel, staff.major staff_major, staff.health_state staff_health_state, staff.marriage staff_marriage, staff.education staff_education, staff.salary staff_salary, staff.duty staff_duty, older_nurse_log.id older_nurse_log_id, older_nurse_log.organization_login_id older_nurse_log_organization_login_id, older_nurse_log.physical_condition older_nurse_log_physical_condition, older_nurse_log.older_id older_nurse_log_older_id, older_nurse_log.nurse_info older_nurse_log_nurse_info, older_nurse_log.nurse_date older_nurse_log_nurse_date, older_nurse_log.staff_id older_nurse_log_staff_id, date_format(older_nurse_log.nurse_date,'%Y年%m月%d日') older_nurse_log_nurse_date_str
+        </sql>
+
+
+
+<sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                    #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+
+
+        <select id="findAllVO" resultMap="BaseResultMap">
+
+        SELECT
+        <include refid="Base_Column_List"></include>
+        from older_nurse_log  LEFT JOIN older ON older_nurse_log.older_id=older.id  LEFT JOIN staff ON older_nurse_log.staff_id=staff.id 
+
+
+        </select>
+
+        <select id="findVOByExapmle" resultMap="BaseResultMap"
+            parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderNurseLogExample">
+
+
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from older_nurse_log  LEFT JOIN older ON older_nurse_log.older_id=older.id  LEFT JOIN staff ON older_nurse_log.staff_id=staff.id 
+
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+     <select id="selectVOByPrimaryKey" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from older_nurse_log  LEFT JOIN older ON older_nurse_log.older_id=older.id  LEFT JOIN staff ON older_nurse_log.staff_id=staff.id 
+        WHERE older.id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.myself.OlderInitialFeeMapperMyself">
+
+
+            <resultMap id="OlderOlderInitialFeeVO" type="com.idea.cjyl.totalmodule.web.domain.pojo.Older">
+                <id column="older_id" property="id" jdbcType="BIGINT"/>
+                <result column="older_name" property="name" jdbcType="VARCHAR"/>
+                <result column="older_mind" property="mind" jdbcType="BIGINT"/>
+                <result column="older_blood_pressure" property="bloodPressure" jdbcType="VARCHAR"/>
+                <result column="older_birthday" property="birthday" jdbcType="TIMESTAMP"/>
+                <result column="older_nation" property="nation" jdbcType="BIGINT"/>
+                <result column="older_allergic_drug" property="allergicDrug" jdbcType="VARCHAR"/>
+                <result column="older_hospital_tel" property="hospitalTel" jdbcType="VARCHAR"/>
+                <result column="older_card_id" property="cardId" jdbcType="VARCHAR"/>
+                <result column="older_sex" property="sex" jdbcType="BIGINT"/>
+                <result column="older_tel" property="tel" jdbcType="VARCHAR"/>
+                <result column="older_month_charge_id" property="monthChargeId" jdbcType="BIGINT"/>
+                <result column="older_pluse" property="pluse" jdbcType="VARCHAR"/>
+                <result column="older_belief" property="belief" jdbcType="BIGINT"/>
+                <result column="older_check_in_date" property="checkInDate" jdbcType="TIMESTAMP"/>
+                <result column="older_staff_id" property="staffId" jdbcType="BIGINT"/>
+                <result column="older_older_state" property="olderState" jdbcType="TINYINT"/>
+                <result column="older_disposition" property="disposition" jdbcType="VARCHAR"/>
+                <result column="older_hobby" property="hobby" jdbcType="VARCHAR"/>
+                <result column="older_politics_status" property="politicsStatus" jdbcType="BIGINT"/>
+                <result column="older_self_ingredient" property="selfIngredient" jdbcType="BIGINT"/>
+                <result column="older_take_care_of_oneself" property="takeCareOfOneself" jdbcType="BIGINT"/>
+                <result column="older_indication_hospital" property="indicationHospital" jdbcType="VARCHAR"/>
+                <result column="older_indication_doctor" property="indicationDoctor" jdbcType="VARCHAR"/>
+                <result column="older_diseases_history" property="diseasesHistory" jdbcType="VARCHAR"/>
+                <result column="older_diet_characteristics" property="dietCharacteristics" jdbcType="VARCHAR"/>
+                <result column="older_special_requirements" property="specialRequirements" jdbcType="VARCHAR"/>
+                <result column="older_principal_disease" property="principalDisease" jdbcType="VARCHAR"/>
+                <result column="older_abnormal_patterns" property="abnormalPatterns" jdbcType="VARCHAR"/>
+                <result column="older_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+                <result column="older_older_leave_date" property="olderLeaveDate" jdbcType="TIMESTAMP"/>
+                <result column="older_census_register" property="censusRegister" jdbcType="VARCHAR"/>
+             </resultMap>
+
+
+            <resultMap id="CheckInInitCostListOlderInitialFeeVO" type="com.idea.cjyl.totalmodule.web.domain.pojo.CheckInInitCost">
+                <id column="check_in_init_cost_id" property="id" jdbcType="BIGINT"/>
+                <result column="check_in_init_cost_item" property="item" jdbcType="VARCHAR"/>
+                <result column="check_in_init_cost_money" property="money" jdbcType="INTEGER"/>
+                <result column="check_in_init_cost_account_for" property="accountFor" jdbcType="VARCHAR"/>
+                <result column="check_in_init_cost_is_refund" property="isRefund" jdbcType="TINYINT"/>
+                <result column="check_in_init_cost_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+             </resultMap>
+
+
+            <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.vo.OlderInitialFeeVO">
+                <id column="older_initial_fee_id" property="id" jdbcType="BIGINT"/>
+                <result column="older_initial_fee_older_id" property="olderId" jdbcType="BIGINT"/>
+                <result column="older_initial_fee_close_an_account_date_str" property="closeAnAccountDateStr" jdbcType="VARCHAR"/>
+                <result column="older_initial_fee_check_in_init_cost_state_str" property="checkInInitCostStateStr" jdbcType="VARCHAR"/>
+                <result column="older_initial_fee_initial_fee_date_str" property="initialFeeDateStr" jdbcType="VARCHAR"/>
+                <result column="older_initial_fee_initial_fee_date" property="initialFeeDate" jdbcType="TIMESTAMP"/>
+                <result column="older_initial_fee_close_an_account_date" property="closeAnAccountDate" jdbcType="TIMESTAMP"/>
+                <result column="older_initial_fee_check_in_init_cost_id" property="checkInInitCostId" jdbcType="BIGINT"/>
+                <result column="older_initial_fee_check_in_init_cost_state" property="checkInInitCostState" jdbcType="BIGINT"/>
+                <result column="older_initial_fee_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+                <association property="older" resultMap="OlderOlderInitialFeeVO"></association>
+                <collection property="checkInInitCostList" resultMap="CheckInInitCostListOlderInitialFeeVO"></collection>
+             </resultMap>
+
+
+
+
+
+
+        <sql id="Base_Column_List">
+            older.id older_id, older.name older_name, older.mind older_mind, older.blood_pressure older_blood_pressure, older.birthday older_birthday, older.nation older_nation, older.allergic_drug older_allergic_drug, older.hospital_tel older_hospital_tel, older.card_id older_card_id, older.sex older_sex, older.tel older_tel, older.month_charge_id older_month_charge_id, older.pluse older_pluse, older.belief older_belief, older.check_in_date older_check_in_date, older.staff_id older_staff_id, older.older_state older_older_state, older.disposition older_disposition, older.hobby older_hobby, older.politics_status older_politics_status, older.self_ingredient older_self_ingredient, older.take_care_of_oneself older_take_care_of_oneself, older.indication_hospital older_indication_hospital, older.indication_doctor older_indication_doctor, older.diseases_history older_diseases_history, older.diet_characteristics older_diet_characteristics, older.special_requirements older_special_requirements, older.principal_disease older_principal_disease, older.abnormal_patterns older_abnormal_patterns, older.organization_login_id older_organization_login_id, older.older_leave_date older_older_leave_date, older.census_register older_census_register, check_in_init_cost.id check_in_init_cost_id, check_in_init_cost.item check_in_init_cost_item, check_in_init_cost.money check_in_init_cost_money, check_in_init_cost.account_for check_in_init_cost_account_for, check_in_init_cost.is_refund check_in_init_cost_is_refund, check_in_init_cost.organization_login_id check_in_init_cost_organization_login_id, older_initial_fee.id older_initial_fee_id, older_initial_fee.older_id older_initial_fee_older_id, date_format(older_initial_fee.close_an_account_date,'%Y年%m月%d日') older_initial_fee_close_an_account_date_str, (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = older_initial_fee.check_in_init_cost_state) older_initial_fee_check_in_init_cost_state_str, date_format(older_initial_fee.initial_fee_date,'%Y年%m月%d日') older_initial_fee_initial_fee_date_str, older_initial_fee.initial_fee_date older_initial_fee_initial_fee_date, older_initial_fee.close_an_account_date older_initial_fee_close_an_account_date, older_initial_fee.check_in_init_cost_id older_initial_fee_check_in_init_cost_id, older_initial_fee.check_in_init_cost_state older_initial_fee_check_in_init_cost_state, older_initial_fee.organization_login_id older_initial_fee_organization_login_id
+        </sql>
+
+
+
+<sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                    #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+
+
+        <select id="findAllVO" resultMap="BaseResultMap">
+
+        SELECT
+        <include refid="Base_Column_List"></include>
+        from older_initial_fee  LEFT JOIN older ON older_initial_fee.older_id=older.id  LEFT JOIN check_in_init_cost ON older_initial_fee.check_in_init_cost_id=check_in_init_cost.id  LEFT JOIN month_charge ON older.month_charge_id=month_charge.id  LEFT JOIN staff ON older.staff_id=staff.id 
+
+
+        </select>
+
+        <select id="findVOByExapmle" resultMap="BaseResultMap"
+            parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderInitialFeeExample">
+
+
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from older_initial_fee  LEFT JOIN older ON older_initial_fee.older_id=older.id  LEFT JOIN check_in_init_cost ON older_initial_fee.check_in_init_cost_id=check_in_init_cost.id  LEFT JOIN month_charge ON older.month_charge_id=month_charge.id  LEFT JOIN staff ON older.staff_id=staff.id 
+
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+     <select id="selectVOByPrimaryKey" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from older_initial_fee  LEFT JOIN older ON older_initial_fee.older_id=older.id  LEFT JOIN check_in_init_cost ON older_initial_fee.check_in_init_cost_id=check_in_init_cost.id  LEFT JOIN month_charge ON older.month_charge_id=month_charge.id  LEFT JOIN staff ON older.staff_id=staff.id 
+        WHERE older.id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>

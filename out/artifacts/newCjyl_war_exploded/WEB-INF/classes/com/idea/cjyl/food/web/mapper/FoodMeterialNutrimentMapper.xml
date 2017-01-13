@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.food.web.dao.FoodMeterialNutrimentMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutriment" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="meterial_id" property="meterialId" jdbcType="BIGINT" />
+    <result column="nutriment_id" property="nutrimentId" jdbcType="BIGINT" />
+    <result column="nutriment_value" property="nutrimentValue" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, meterial_id, nutriment_id, nutriment_value
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutrimentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ys_food_meterial_nutriment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ys_food_meterial_nutriment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ys_food_meterial_nutriment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutrimentExample" >
+    delete from ys_food_meterial_nutriment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutriment" useGeneratedKeys="true" keyProperty="id" >
+    insert into ys_food_meterial_nutriment (meterial_id, nutriment_id, nutriment_value
+      )
+    values (#{meterialId,jdbcType=BIGINT}, #{nutrimentId,jdbcType=BIGINT}, #{nutrimentValue,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutriment" useGeneratedKeys="true" keyProperty="id" >
+    insert into ys_food_meterial_nutriment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meterialId != null" >
+        meterial_id,
+      </if>
+      <if test="nutrimentId != null" >
+        nutriment_id,
+      </if>
+      <if test="nutrimentValue != null" >
+        nutriment_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meterialId != null" >
+        #{meterialId,jdbcType=BIGINT},
+      </if>
+      <if test="nutrimentId != null" >
+        #{nutrimentId,jdbcType=BIGINT},
+      </if>
+      <if test="nutrimentValue != null" >
+        #{nutrimentValue,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutrimentExample" resultType="java.lang.Integer" >
+    select count(*) from ys_food_meterial_nutriment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ys_food_meterial_nutriment
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.meterialId != null" >
+        meterial_id = #{record.meterialId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nutrimentId != null" >
+        nutriment_id = #{record.nutrimentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nutrimentValue != null" >
+        nutriment_value = #{record.nutrimentValue,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ys_food_meterial_nutriment
+    set id = #{record.id,jdbcType=BIGINT},
+      meterial_id = #{record.meterialId,jdbcType=BIGINT},
+      nutriment_id = #{record.nutrimentId,jdbcType=BIGINT},
+      nutriment_value = #{record.nutrimentValue,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutriment" >
+    update ys_food_meterial_nutriment
+    <set >
+      <if test="meterialId != null" >
+        meterial_id = #{meterialId,jdbcType=BIGINT},
+      </if>
+      <if test="nutrimentId != null" >
+        nutriment_id = #{nutrimentId,jdbcType=BIGINT},
+      </if>
+      <if test="nutrimentValue != null" >
+        nutriment_value = #{nutrimentValue,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.food.web.domain.pojo.FoodMeterialNutriment" >
+    update ys_food_meterial_nutriment
+    set meterial_id = #{meterialId,jdbcType=BIGINT},
+      nutriment_id = #{nutrimentId,jdbcType=BIGINT},
+      nutriment_value = #{nutrimentValue,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

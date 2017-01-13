@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.OlderMonthChargeMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthCharge" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+    <result column="older_id" property="olderId" jdbcType="BIGINT" />
+    <result column="month_charge_id" property="monthChargeId" jdbcType="BIGINT" />
+    <result column="older_month_charge_date" property="olderMonthChargeDate" jdbcType="TIMESTAMP" />
+    <result column="older_month_charge_end_date" property="olderMonthChargeEndDate" jdbcType="TIMESTAMP" />
+    <result column="older_month_charge_state" property="olderMonthChargeState" jdbcType="BIGINT" />
+    <result column="older_month_charge_end_type" property="olderMonthChargeEndType" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, organization_login_id, older_id, month_charge_id, older_month_charge_date, older_month_charge_end_date, 
+    older_month_charge_state, older_month_charge_end_type
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthChargeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from older_month_charge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from older_month_charge
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from older_month_charge
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthChargeExample" >
+    delete from older_month_charge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthCharge" useGeneratedKeys="true" keyProperty="id" >
+    insert into older_month_charge (organization_login_id, older_id, month_charge_id, 
+      older_month_charge_date, older_month_charge_end_date, 
+      older_month_charge_state, older_month_charge_end_type
+      )
+    values (#{organizationLoginId,jdbcType=BIGINT}, #{olderId,jdbcType=BIGINT}, #{monthChargeId,jdbcType=BIGINT}, 
+      #{olderMonthChargeDate,jdbcType=TIMESTAMP}, #{olderMonthChargeEndDate,jdbcType=TIMESTAMP}, 
+      #{olderMonthChargeState,jdbcType=BIGINT}, #{olderMonthChargeEndType,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthCharge" useGeneratedKeys="true" keyProperty="id" >
+    insert into older_month_charge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        organization_login_id,
+      </if>
+      <if test="olderId != null" >
+        older_id,
+      </if>
+      <if test="monthChargeId != null" >
+        month_charge_id,
+      </if>
+      <if test="olderMonthChargeDate != null" >
+        older_month_charge_date,
+      </if>
+      <if test="olderMonthChargeEndDate != null" >
+        older_month_charge_end_date,
+      </if>
+      <if test="olderMonthChargeState != null" >
+        older_month_charge_state,
+      </if>
+      <if test="olderMonthChargeEndType != null" >
+        older_month_charge_end_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="olderId != null" >
+        #{olderId,jdbcType=BIGINT},
+      </if>
+      <if test="monthChargeId != null" >
+        #{monthChargeId,jdbcType=BIGINT},
+      </if>
+      <if test="olderMonthChargeDate != null" >
+        #{olderMonthChargeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="olderMonthChargeEndDate != null" >
+        #{olderMonthChargeEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="olderMonthChargeState != null" >
+        #{olderMonthChargeState,jdbcType=BIGINT},
+      </if>
+      <if test="olderMonthChargeEndType != null" >
+        #{olderMonthChargeEndType,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthChargeExample" resultType="java.lang.Integer" >
+    select count(*) from older_month_charge
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update older_month_charge
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationLoginId != null" >
+        organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="record.olderId != null" >
+        older_id = #{record.olderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.monthChargeId != null" >
+        month_charge_id = #{record.monthChargeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.olderMonthChargeDate != null" >
+        older_month_charge_date = #{record.olderMonthChargeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.olderMonthChargeEndDate != null" >
+        older_month_charge_end_date = #{record.olderMonthChargeEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.olderMonthChargeState != null" >
+        older_month_charge_state = #{record.olderMonthChargeState,jdbcType=BIGINT},
+      </if>
+      <if test="record.olderMonthChargeEndType != null" >
+        older_month_charge_end_type = #{record.olderMonthChargeEndType,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update older_month_charge
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      older_id = #{record.olderId,jdbcType=BIGINT},
+      month_charge_id = #{record.monthChargeId,jdbcType=BIGINT},
+      older_month_charge_date = #{record.olderMonthChargeDate,jdbcType=TIMESTAMP},
+      older_month_charge_end_date = #{record.olderMonthChargeEndDate,jdbcType=TIMESTAMP},
+      older_month_charge_state = #{record.olderMonthChargeState,jdbcType=BIGINT},
+      older_month_charge_end_type = #{record.olderMonthChargeEndType,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthCharge" >
+    update older_month_charge
+    <set >
+      <if test="organizationLoginId != null" >
+        organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="olderId != null" >
+        older_id = #{olderId,jdbcType=BIGINT},
+      </if>
+      <if test="monthChargeId != null" >
+        month_charge_id = #{monthChargeId,jdbcType=BIGINT},
+      </if>
+      <if test="olderMonthChargeDate != null" >
+        older_month_charge_date = #{olderMonthChargeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="olderMonthChargeEndDate != null" >
+        older_month_charge_end_date = #{olderMonthChargeEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="olderMonthChargeState != null" >
+        older_month_charge_state = #{olderMonthChargeState,jdbcType=BIGINT},
+      </if>
+      <if test="olderMonthChargeEndType != null" >
+        older_month_charge_end_type = #{olderMonthChargeEndType,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderMonthCharge" >
+    update older_month_charge
+    set organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      older_id = #{olderId,jdbcType=BIGINT},
+      month_charge_id = #{monthChargeId,jdbcType=BIGINT},
+      older_month_charge_date = #{olderMonthChargeDate,jdbcType=TIMESTAMP},
+      older_month_charge_end_date = #{olderMonthChargeEndDate,jdbcType=TIMESTAMP},
+      older_month_charge_state = #{olderMonthChargeState,jdbcType=BIGINT},
+      older_month_charge_end_type = #{olderMonthChargeEndType,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

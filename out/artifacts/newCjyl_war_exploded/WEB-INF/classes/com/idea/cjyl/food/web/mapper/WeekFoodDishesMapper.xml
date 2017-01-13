@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.food.web.dao.WeekFoodDishesMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishes" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="week_food_id" property="weekFoodId" jdbcType="BIGINT" />
+    <result column="dishes_id" property="dishesId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, week_food_id, dishes_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ys_week_food_dishes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ys_week_food_dishes
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ys_week_food_dishes
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishesExample" >
+    delete from ys_week_food_dishes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishes" useGeneratedKeys="true" keyProperty="id" >
+    insert into ys_week_food_dishes (week_food_id, dishes_id)
+    values (#{weekFoodId,jdbcType=BIGINT}, #{dishesId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishes" useGeneratedKeys="true" keyProperty="id" >
+    insert into ys_week_food_dishes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="weekFoodId != null" >
+        week_food_id,
+      </if>
+      <if test="dishesId != null" >
+        dishes_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="weekFoodId != null" >
+        #{weekFoodId,jdbcType=BIGINT},
+      </if>
+      <if test="dishesId != null" >
+        #{dishesId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishesExample" resultType="java.lang.Integer" >
+    select count(*) from ys_week_food_dishes
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ys_week_food_dishes
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.weekFoodId != null" >
+        week_food_id = #{record.weekFoodId,jdbcType=BIGINT},
+      </if>
+      <if test="record.dishesId != null" >
+        dishes_id = #{record.dishesId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ys_week_food_dishes
+    set id = #{record.id,jdbcType=BIGINT},
+      week_food_id = #{record.weekFoodId,jdbcType=BIGINT},
+      dishes_id = #{record.dishesId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishes" >
+    update ys_week_food_dishes
+    <set >
+      <if test="weekFoodId != null" >
+        week_food_id = #{weekFoodId,jdbcType=BIGINT},
+      </if>
+      <if test="dishesId != null" >
+        dishes_id = #{dishesId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.food.web.domain.pojo.WeekFoodDishes" >
+    update ys_week_food_dishes
+    set week_food_id = #{weekFoodId,jdbcType=BIGINT},
+      dishes_id = #{dishesId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

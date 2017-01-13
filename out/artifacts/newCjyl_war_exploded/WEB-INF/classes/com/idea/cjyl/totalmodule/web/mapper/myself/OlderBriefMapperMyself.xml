@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.myself.OlderBriefMapperMyself">
+
+    <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.vo.OlderBriefVO">
+
+
+        <id column="older_id" property="id" jdbcType="BIGINT"/>
+        <result column="older_name" property="name" jdbcType="VARCHAR"/>
+        <result column="older_check_in_date" property="checkInDate" jdbcType="VARCHAR"/>
+
+
+        <result column="older_nation" property="nation" jdbcType="BIGINT"/>
+
+
+        <result column="older_birthday" property="birthday" jdbcType="VARCHAR"/>
+        <result column="older_take_care_of_oneself" property="takeCareOfOneself" jdbcType="BIGINT"/>
+        <result column="older_card_id" property="cardId" jdbcType="VARCHAR"/>
+        <result column="older_older_state" property="olderState" jdbcType="TINYINT"/>
+
+        <result column="older_older_leave_date" property="olderLeaveDate" jdbcType="VARCHAR"/>
+        <association property="staff" resultMap="StaffVOOlder" />
+        <association property="mansion" resultMap="MansionOlder" />
+        <association property="room" resultMap="RoomOlder" />
+        <association property="bed" resultMap="BedOlder" />
+        <association property="monthCharge" resultMap="MonthChargeOlder"></association>
+        <collection property="checkInInitCostList" resultMap="CheckInInitCostOlder"></collection>
+    </resultMap>
+
+    <!--床位信息-->
+    <resultMap id="BedOlder" type="com.idea.cjyl.totalmodule.web.domain.pojo.Bed" >
+        <id column="bed_id" property="id" jdbcType="BIGINT" />
+        <result column="bed_organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+        <result column="bed_room_id" property="roomId" jdbcType="BIGINT" />
+        <result column="bed_bed_num" property="bedNum" jdbcType="TINYINT" />
+        <result column="bed_bed_state" property="bedState" jdbcType="TINYINT" />
+        <result column="bed_older_id" property="olderId" jdbcType="BIGINT" />
+    </resultMap>
+    <!--房间信息-->
+    <resultMap id="RoomOlder" type="com.idea.cjyl.totalmodule.web.domain.pojo.Room" >
+        <id column="room_id" property="id" jdbcType="BIGINT" />
+        <result column="room_organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+        <result column="room_floor_tier_id" property="floorTierId" jdbcType="BIGINT" />
+        <result column="room_room_num" property="roomNum" jdbcType="VARCHAR" />
+        <result column="room_room_type" property="roomType" jdbcType="TINYINT" />
+    </resultMap>
+    <!--大厦信息-->
+    <resultMap id="MansionOlder" type="com.idea.cjyl.totalmodule.web.domain.pojo.Mansion" >
+        <id column="mansion_id" property="id" jdbcType="BIGINT" />
+        <result column="mansion_organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+        <result column="mansion_name" property="name" jdbcType="VARCHAR" />
+        <result column="mansion_account_for" property="accountFor" jdbcType="VARCHAR" />
+    </resultMap>
+    <!--员工对象-->
+    <resultMap id="StaffVOOlder" type="com.idea.cjyl.totalmodule.web.domain.vo.StaffVO" >
+        <id column="staff_id" property="id" jdbcType="BIGINT" />
+        <result column="staff_organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+        <result column="staff_name" property="name" jdbcType="VARCHAR" />
+        <result column="staff_card_id" property="cardId" jdbcType="VARCHAR" />
+        <result column="staff_sex" property="sex" jdbcType="BIGINT" />
+        <result column="staff_birthday" property="birthday" jdbcType="VARCHAR" />
+        <result column="staff_entry_date" property="entryDate" jdbcType="VARCHAR" />
+        <result column="staff_branch" property="branch" jdbcType="BIGINT" />
+        <result column="staff_duty" property="duty" jdbcType="BIGINT" />
+        <result column="staff_health_state" property="healthState" jdbcType="BIGINT" />
+        <result column="staff_tel" property="tel" jdbcType="VARCHAR" />
+        <result column="staff_marriage" property="marriage" jdbcType="BIGINT" />
+        <result column="staff_education" property="education" jdbcType="BIGINT" />
+        <result column="staff_major" property="major" jdbcType="BIGINT" />
+        <result column="staff_salary" property="salary" jdbcType="INTEGER" />
+        <result column="staff_sexStr" property="sex_str" jdbcType="VARCHAR" />
+        <result column="staff_branchStr" property="branch_str" jdbcType="VARCHAR" />
+        <result column="staff_dutyStr" property="duty_str" jdbcType="VARCHAR" />
+        <result column="staff_healthStateStr" property="health_state_str" jdbcType="VARCHAR" />
+        <result column="staff_marriageStr" property="marriage_str" jdbcType="VARCHAR" />
+        <result column="staff_educationStr" property="education_str" jdbcType="VARCHAR" />
+        <result column="staff_majorStr" property="major_str" jdbcType="VARCHAR" />
+
+
+    </resultMap>
+    <!--月消费-->
+    <resultMap id="MonthChargeOlder" type="com.idea.cjyl.totalmodule.web.domain.pojo.MonthCharge">
+        <id column="month_charge_id" property="id" jdbcType="BIGINT"/>
+        <result column="month_charge_organization_login_id" property="organizationLoginId" jdbcType="BIGINT"/>
+        <result column="month_charge_nursing_grades" property="nursingGrades" jdbcType="VARCHAR"/>
+        <result column="month_charge_administrative_fee" property="administrativeFee" jdbcType="INTEGER"/>
+        <result column="month_charge_service_charge" property="serviceCharge" jdbcType="INTEGER"/>
+        <result column="month_charge_bed_cost" property="bedCost" jdbcType="INTEGER"/>
+        <result column="month_charge_food_cost" property="foodCost" jdbcType="INTEGER"/>
+        <result column="month_charge_total" property="total" jdbcType="INTEGER"/>
+    </resultMap>
+    <!--入院初始费用-->
+    <resultMap id="CheckInInitCostOlder" type="com.idea.cjyl.totalmodule.web.domain.pojo.CheckInInitCost" >
+        <id column="check_in_init_cost_id" property="id" jdbcType="BIGINT" />
+        <result column="check_in_init_cost_organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+        <result column="check_in_init_cost_item" property="item" jdbcType="VARCHAR" />
+        <result column="check_in_init_cost_is_refund" property="isRefund" jdbcType="TINYINT" />
+        <result column="check_in_init_cost_money" property="money" jdbcType="INTEGER" />
+        <result column="check_in_init_cost_account_for" property="accountFor" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        older.id older_id, older.name older_name, date_format(older.check_in_date,'%Y年%m月%d日') older_check_in_date,
+        older.nation older_nation, date_format(older.birthday,'%Y年%m月%d日') older_birthday, older.take_care_of_oneself older_take_care_of_oneself,
+        older.card_id older_card_id, older.older_state older_older_state, date_format(older.older_leave_date,'%Y年%m月%d日') older_older_leave_date,
+        bed.id bed_id, bed.organization_login_id bed_organization_login_id, bed.room_id bed_room_id, bed.bed_num bed_bed_num, bed.bed_state bed_bed_state, bed.older_id bed_older_id,
+        staff.id staff_id, staff.organization_login_id staff_organization_login_id, staff.name staff_name, staff.card_id staff_card_id,
+         staff.sex staff_sex, date_format(staff.birthday,'%Y年%m月%d日') staff_birthday,
+          date_format(staff.entry_date,'%Y年%m月%d日') staff_entry_date, staff.branch staff_branch, staff.duty staff_duty,
+        staff.health_state staff_health_state, staff.tel staff_tel, staff.marriage staff_marriage,
+         staff.education staff_education, staff.major staff_major, staff.salary staff_salary,
+        mansion.id mansion_id,  mansion.organization_login_id mansion_organization_login_id,  mansion.name mansion_name,  mansion.account_for mansion_account_for,
+        room.id room_id, room.organization_login_id room_organization_login_id, room.floor_tier_id room_floor_tier_id,
+         room.room_num room_room_num, room.room_type room_room_type,
+        month_charge.id month_charge_id, month_charge.organization_login_id month_charge_organization_login_id, month_charge.nursing_grades month_charge_nursing_grades,
+         month_charge.administrative_fee month_charge_administrative_fee,
+        month_charge.service_charge month_charge_service_charge, month_charge.bed_cost month_charge_bed_cost,
+        month_charge.food_cost  month_charge_food_cost, month_charge.total month_charge_total,
+
+        ciic.id check_in_init_cost_id, ciic.organization_login_id check_in_init_cost_organization_login_id,
+         ciic.item check_in_init_cost_item, ciic.is_refund check_in_init_cost_is_refund, ciic.money check_in_init_cost_money, ciic.account_for check_in_init_cost_account_for,
+
+    (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = staff.sex) staff_sex_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = staff.branch) staff_branch_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = staff.duty) staff_duty_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = staff.health_state) staff_healthState_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = staff.marriage) staff_marriage_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = staff.education) staff_education_str,
+     (select data_dictionary.data_name FROM data_dictionary where data_dictionary.id = staff.major) staff_major_str
+</sql>
+
+
+
+
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and older.${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and older.${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and older.${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and older.${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+
+
+    <select id="findAllVO" resultMap="BaseResultMap" parameterType="java.lang.Long">
+
+        SELECT
+        <include refid="Base_Column_List"></include>
+        from older
+
+        LEFT JOIN staff staff ON older.staff_id = staff.id
+        LEFT JOIN month_charge month_charge ON older.month_charge_id = month_charge.id
+        LEFT JOIN older_initial_fee ON older.id = older_initial_fee.older_id
+        LEFT JOIN check_in_init_cost ciic ON ciic.id = older_initial_fee.check_in_init_cost_id
+        LEFT JOIN bed bed ON bed.older_id = older.id
+        LEFT JOIN room room ON room.id = bed.room_id
+        LEFT JOIN floor_tier ON floor_tier.id = room.floor_tier_id
+        LEFT JOIN mansion mansion ON mansion.id = floor_tier.mansion_id
+
+
+    </select>
+
+    <select id="findVOByExapmle" resultMap="BaseResultMap"
+            parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.OlderExample">
+
+
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from older
+        LEFT JOIN staff staff ON older.staff_id = staff.id
+        LEFT JOIN month_charge month_charge ON older.month_charge_id = month_charge.id
+        LEFT JOIN older_initial_fee ON older.id = older_initial_fee.older_id
+        LEFT JOIN check_in_init_cost ciic ON ciic.id = older_initial_fee.check_in_init_cost_id
+        LEFT JOIN bed bed ON bed.older_id = older.id
+        LEFT JOIN room room ON room.id = bed.room_id
+        LEFT JOIN floor_tier ON floor_tier.id = room.floor_tier_id
+        LEFT JOIN mansion mansion ON mansion.id = floor_tier.mansion_id
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+</mapper>

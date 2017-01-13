@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.StaffMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.Staff" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_login_id" property="organizationLoginId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="card_id" property="cardId" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="BIGINT" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="entry_date" property="entryDate" jdbcType="TIMESTAMP" />
+    <result column="branch" property="branch" jdbcType="BIGINT" />
+    <result column="duty" property="duty" jdbcType="BIGINT" />
+    <result column="health_state" property="healthState" jdbcType="BIGINT" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="marriage" property="marriage" jdbcType="BIGINT" />
+    <result column="education" property="education" jdbcType="BIGINT" />
+    <result column="major" property="major" jdbcType="BIGINT" />
+    <result column="salary" property="salary" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, organization_login_id, name, card_id, sex, birthday, entry_date, branch, duty, 
+    health_state, tel, marriage, education, major, salary
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from staff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from staff
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from staff
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffExample" >
+    delete from staff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Staff" useGeneratedKeys="true" keyProperty="id" >
+    insert into staff (organization_login_id, name, card_id, 
+      sex, birthday, entry_date, 
+      branch, duty, health_state, 
+      tel, marriage, education, 
+      major, salary)
+    values (#{organizationLoginId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIGINT}, #{birthday,jdbcType=TIMESTAMP}, #{entryDate,jdbcType=TIMESTAMP}, 
+      #{branch,jdbcType=BIGINT}, #{duty,jdbcType=BIGINT}, #{healthState,jdbcType=BIGINT}, 
+      #{tel,jdbcType=VARCHAR}, #{marriage,jdbcType=BIGINT}, #{education,jdbcType=BIGINT}, 
+      #{major,jdbcType=BIGINT}, #{salary,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Staff" useGeneratedKeys="true" keyProperty="id" >
+    insert into staff
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        organization_login_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="cardId != null" >
+        card_id,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="entryDate != null" >
+        entry_date,
+      </if>
+      <if test="branch != null" >
+        branch,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="healthState != null" >
+        health_state,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="marriage != null" >
+        marriage,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationLoginId != null" >
+        #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=BIGINT},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entryDate != null" >
+        #{entryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="branch != null" >
+        #{branch,jdbcType=BIGINT},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=BIGINT},
+      </if>
+      <if test="healthState != null" >
+        #{healthState,jdbcType=BIGINT},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        #{marriage,jdbcType=BIGINT},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=BIGINT},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=BIGINT},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.StaffExample" resultType="java.lang.Integer" >
+    select count(*) from staff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update staff
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationLoginId != null" >
+        organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardId != null" >
+        card_id = #{record.cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=BIGINT},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.entryDate != null" >
+        entry_date = #{record.entryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.branch != null" >
+        branch = #{record.branch,jdbcType=BIGINT},
+      </if>
+      <if test="record.duty != null" >
+        duty = #{record.duty,jdbcType=BIGINT},
+      </if>
+      <if test="record.healthState != null" >
+        health_state = #{record.healthState,jdbcType=BIGINT},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marriage != null" >
+        marriage = #{record.marriage,jdbcType=BIGINT},
+      </if>
+      <if test="record.education != null" >
+        education = #{record.education,jdbcType=BIGINT},
+      </if>
+      <if test="record.major != null" >
+        major = #{record.major,jdbcType=BIGINT},
+      </if>
+      <if test="record.salary != null" >
+        salary = #{record.salary,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update staff
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_login_id = #{record.organizationLoginId,jdbcType=BIGINT},
+      name = #{record.name,jdbcType=VARCHAR},
+      card_id = #{record.cardId,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=BIGINT},
+      birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      entry_date = #{record.entryDate,jdbcType=TIMESTAMP},
+      branch = #{record.branch,jdbcType=BIGINT},
+      duty = #{record.duty,jdbcType=BIGINT},
+      health_state = #{record.healthState,jdbcType=BIGINT},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      marriage = #{record.marriage,jdbcType=BIGINT},
+      education = #{record.education,jdbcType=BIGINT},
+      major = #{record.major,jdbcType=BIGINT},
+      salary = #{record.salary,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Staff" >
+    update staff
+    <set >
+      <if test="organizationLoginId != null" >
+        organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        card_id = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=BIGINT},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entryDate != null" >
+        entry_date = #{entryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="branch != null" >
+        branch = #{branch,jdbcType=BIGINT},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=BIGINT},
+      </if>
+      <if test="healthState != null" >
+        health_state = #{healthState,jdbcType=BIGINT},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null" >
+        marriage = #{marriage,jdbcType=BIGINT},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=BIGINT},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=BIGINT},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.Staff" >
+    update staff
+    set organization_login_id = #{organizationLoginId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      card_id = #{cardId,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIGINT},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      entry_date = #{entryDate,jdbcType=TIMESTAMP},
+      branch = #{branch,jdbcType=BIGINT},
+      duty = #{duty,jdbcType=BIGINT},
+      health_state = #{healthState,jdbcType=BIGINT},
+      tel = #{tel,jdbcType=VARCHAR},
+      marriage = #{marriage,jdbcType=BIGINT},
+      education = #{education,jdbcType=BIGINT},
+      major = #{major,jdbcType=BIGINT},
+      salary = #{salary,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
