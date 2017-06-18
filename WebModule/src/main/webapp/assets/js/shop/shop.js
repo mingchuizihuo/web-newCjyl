@@ -46,7 +46,8 @@ function shop() {
                 html +='<tr>'+
                     '<td>'+index+'</td>'+
                     '<td>'+dOne.shopName+'</td>'+
-                    '<td>'+dOne.shopCode+'</td>';
+                    '<td>'+dOne.shopCode+'</td>' ;
+
                         if(dOne.shopType==1){
                             html+='<td>超市</td>';
                         }else if(dOne.shopType==2){
@@ -60,7 +61,7 @@ function shop() {
                             html+='<td>化妆品</td>'
                         }
 
-                html+=
+                html+='<td>'+dOne.shopSize+'</td>'+
                     '<td>'+
                     '<a class="btn btn-default btnEdit">编辑</a>' +
                     '<a class="btn btn-default " onclick="shop.del('+dOne.id+')">删除</a>' +

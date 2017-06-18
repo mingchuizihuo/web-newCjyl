@@ -212,20 +212,20 @@
 
     //    使用layer日期
     layui.use('laydate', function(){
-        var laydate = layui.laydate;
-        document.getElementById('birthday').onclick = function(){
-            laydate({
-                elem: this,
-                festival: true, //显示节日
-                choose: function(datas){ //选择日期完毕的回调
-                   console.log(datas)
-                }
+    var laydate = layui.laydate;
+    document.getElementById('birthday').onclick = function(){
+        laydate({
+            elem: this,
+            festival: true, //显示节日
+            choose: function(datas){ //选择日期完毕的回调
+                console.log(datas)
+            }
 
-            });
-        }
+        });
+    }
     });
 
-//    使用图片上传
+    //    使用图片上传
     layui.use('upload', function(){
         layui.upload({
             url: '' //上传接口

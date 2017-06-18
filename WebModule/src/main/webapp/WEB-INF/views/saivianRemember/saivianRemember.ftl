@@ -21,6 +21,73 @@
         <button class="btn btn-xs btn_color editOldMan">添加</button>
     </div>
 <#--老人基本信息-->
+    全选：<input type="button" id="All" value="全选"/><br/>
+    不选<input type="button" id="uncheck" value="不选"/><br/>
+    反选<input type="button" id="othercheck" value="反选"/><br/>
+    查看<input type="button" id="aaa" value="查看" />
+    <div id="div">
+        <input type="checkbox"  id="1"/><br/>
+        <input type="checkbox"  id="2"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+        <input type="checkbox"/><br/>
+    </div>
+    <script>
+
+        $(function () {
+            var CheckAll = document.getElementById('All');
+            var UnCheck = document.getElementById('uncheck');
+            var OtherCheck = document.getElementById('othercheck');
+            var div = document.getElementById('div');
+            var CheckBox = div.getElementsByTagName('input');
+            CheckAll.onclick = function () {
+                for (i = 0; i < CheckBox.length; i++) {
+                    CheckBox[i].checked = true;
+                }
+                ;
+            };
+            UnCheck.onclick = function () {
+                for (i = 0; i < CheckBox.length; i++) {
+                    CheckBox[i].checked = false;
+                }
+                ;
+            };
+            othercheck.onclick = function () {
+                for (i = 0; i < CheckBox.length; i++) {
+                    if (CheckBox[i].checked == true) {
+                        CheckBox[i].checked = false;
+                    }
+                    else {
+                        CheckBox[i].checked = true
+                    }
+
+                }
+                ;
+            };
+            $('#aaa').click(function () {
+                for (var i = 0; i < CheckBox.length; i++) {
+                    if(CheckBox[i].checked == true){
+                        alert(CheckBox[i].id)
+                    }
+                }
+            });
+        })
+    </script>
     <div class="oldMan">
         <table class="table">
             <thead>

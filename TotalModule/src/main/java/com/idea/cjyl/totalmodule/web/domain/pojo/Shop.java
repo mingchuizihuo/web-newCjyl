@@ -9,6 +9,8 @@ public class Shop {
 
     private Integer shopType;
 
+    private Integer shopSize;
+
     public Long getId() {
         return id;
     }
@@ -39,5 +41,13 @@ public class Shop {
 
     public void setShopType(Integer shopType) {
         this.shopType = shopType;
+    }
+
+    public Integer getShopSize() {
+        return shopSize;
+    }
+
+    public void setShopSize(Integer shopSize) {
+        this.shopSize = shopSize;
     }
 }

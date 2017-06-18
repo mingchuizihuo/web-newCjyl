@@ -7,6 +7,11 @@
     <result column="consume_date" property="consumeDate" jdbcType="TIMESTAMP" />
     <result column="consume_money" property="consumeMoney" jdbcType="VARCHAR" />
     <result column="shop_code" property="shopCode" jdbcType="VARCHAR" />
+    <result column="consume_month" property="consumeMonth" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_type" property="bankType" jdbcType="TINYINT" />
+    <result column="bank_card_num" property="bankCardNum" jdbcType="VARCHAR" />
+    <result column="bank_effective_date" property="bankEffectiveDate" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_saivian_id, consume_date, consume_money, shop_code
+    id, user_saivian_id, consume_date, consume_money, shop_code, consume_month, bank_name, 
+    bank_type, bank_card_num, bank_effective_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.ConsumptionRecordExample" >
     select
@@ -101,9 +107,13 @@
   </delete>
   <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.ConsumptionRecord" useGeneratedKeys="true" keyProperty="id" >
     insert into consumption_record (user_saivian_id, consume_date, consume_money, 
-      shop_code)
+      shop_code, consume_month, bank_name, 
+      bank_type, bank_card_num, bank_effective_date
+      )
     values (#{userSaivianId,jdbcType=BIGINT}, #{consumeDate,jdbcType=TIMESTAMP}, #{consumeMoney,jdbcType=VARCHAR}, 
-      #{shopCode,jdbcType=VARCHAR})
+      #{shopCode,jdbcType=VARCHAR}, #{consumeMonth,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{bankType,jdbcType=TINYINT}, #{bankCardNum,jdbcType=VARCHAR}, #{bankEffectiveDate,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.ConsumptionRecord" useGeneratedKeys="true" keyProperty="id" >
     insert into consumption_record
@@ -120,6 +130,21 @@
       <if test="shopCode != null" >
         shop_code,
       </if>
+      <if test="consumeMonth != null" >
+        consume_month,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankType != null" >
+        bank_type,
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num,
+      </if>
+      <if test="bankEffectiveDate != null" >
+        bank_effective_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userSaivianId != null" >
@@ -133,6 +158,21 @@
       </if>
       <if test="shopCode != null" >
         #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="consumeMonth != null" >
+        #{consumeMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankType != null" >
+        #{bankType,jdbcType=TINYINT},
+      </if>
+      <if test="bankCardNum != null" >
+        #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankEffectiveDate != null" >
+        #{bankEffectiveDate,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -160,6 +200,21 @@
       <if test="record.shopCode != null" >
         shop_code = #{record.shopCode,jdbcType=VARCHAR},
       </if>
+      <if test="record.consumeMonth != null" >
+        consume_month = #{record.consumeMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankName != null" >
+        bank_name = #{record.bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankType != null" >
+        bank_type = #{record.bankType,jdbcType=TINYINT},
+      </if>
+      <if test="record.bankCardNum != null" >
+        bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankEffectiveDate != null" >
+        bank_effective_date = #{record.bankEffectiveDate,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -171,7 +226,12 @@
       user_saivian_id = #{record.userSaivianId,jdbcType=BIGINT},
       consume_date = #{record.consumeDate,jdbcType=TIMESTAMP},
       consume_money = #{record.consumeMoney,jdbcType=VARCHAR},
-      shop_code = #{record.shopCode,jdbcType=VARCHAR}
+      shop_code = #{record.shopCode,jdbcType=VARCHAR},
+      consume_month = #{record.consumeMonth,jdbcType=VARCHAR},
+      bank_name = #{record.bankName,jdbcType=VARCHAR},
+      bank_type = #{record.bankType,jdbcType=TINYINT},
+      bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      bank_effective_date = #{record.bankEffectiveDate,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -191,6 +251,21 @@
       <if test="shopCode != null" >
         shop_code = #{shopCode,jdbcType=VARCHAR},
       </if>
+      <if test="consumeMonth != null" >
+        consume_month = #{consumeMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankType != null" >
+        bank_type = #{bankType,jdbcType=TINYINT},
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankEffectiveDate != null" >
+        bank_effective_date = #{bankEffectiveDate,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -199,7 +274,12 @@
     set user_saivian_id = #{userSaivianId,jdbcType=BIGINT},
       consume_date = #{consumeDate,jdbcType=TIMESTAMP},
       consume_money = #{consumeMoney,jdbcType=VARCHAR},
-      shop_code = #{shopCode,jdbcType=VARCHAR}
+      shop_code = #{shopCode,jdbcType=VARCHAR},
+      consume_month = #{consumeMonth,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_type = #{bankType,jdbcType=TINYINT},
+      bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      bank_effective_date = #{bankEffectiveDate,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

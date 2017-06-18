@@ -13,6 +13,16 @@ public class ConsumptionRecord {
 
     private String shopCode;
 
+    private String consumeMonth;
+
+    private String bankName;
+
+    private Byte bankType;
+
+    private String bankCardNum;
+
+    private String bankEffectiveDate;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +61,45 @@ public class ConsumptionRecord {
 
     public void setShopCode(String shopCode) {
         this.shopCode = shopCode == null ? null : shopCode.trim();
+    }
+
+    public String getConsumeMonth() {
+        return consumeMonth;
+    }
+
+    public void setConsumeMonth(String consumeMonth) {
+        this.consumeMonth = consumeMonth == null ? null : consumeMonth.trim();
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName == null ? null : bankName.trim();
+    }
+
+    public Byte getBankType() {
+        return bankType;
+    }
+
+    public void setBankType(Byte bankType) {
+        this.bankType = bankType;
+    }
+
+    public String getBankCardNum() {
+        return bankCardNum;
+    }
+
+    public void setBankCardNum(String bankCardNum) {
+        this.bankCardNum = bankCardNum == null ? null : bankCardNum.trim();
+    }
+
+    public String getBankEffectiveDate() {
+        return bankEffectiveDate;
+    }
+
+    public void setBankEffectiveDate(String bankEffectiveDate) {
+        this.bankEffectiveDate = bankEffectiveDate == null ? null : bankEffectiveDate.trim();
     }
 }

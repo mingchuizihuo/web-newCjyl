@@ -119,13 +119,11 @@
 -->
 
 
-        <table tableName="shop" domainObjectName="Shop">
+        <table tableName="consumption_record" domainObjectName="ConsumptionRecord">
             <generatedKey column="id" sqlStatement="JDBC" identity="true" />
         </table>
 
-        <table tableName="product" domainObjectName="Product">
-            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
-        </table>
+
 
 
 

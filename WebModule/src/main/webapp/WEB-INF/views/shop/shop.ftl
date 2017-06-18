@@ -37,6 +37,7 @@
                 <th>商铺名</th>
                 <th>商铺编码</th>
                 <th>商铺类型</th>
+                <th>商铺模版大小</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -60,8 +61,7 @@
             content: '${domainUrl}/rest/shop/addShop',
             btn: ['确认编辑', '关闭']
             , btn1: function (index, layero) {
-                var data = layer.getChildFrame("#shopName",index).val()
-                console.log(data)
+
                 postData = {
                     shopName: layer.getChildFrame("#shopName",index).val(),
                     shopCode: layer.getChildFrame("#shopCode",index).val(),

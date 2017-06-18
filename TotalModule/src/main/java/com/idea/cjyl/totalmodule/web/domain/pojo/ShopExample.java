@@ -363,6 +363,66 @@ public class ShopExample {
             addCriterion("shop_type not between", value1, value2, "shopType");
             return (Criteria) this;
         }
+
+        public Criteria andShopSizeIsNull() {
+            addCriterion("shop_size is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeIsNotNull() {
+            addCriterion("shop_size is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeEqualTo(Integer value) {
+            addCriterion("shop_size =", value, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeNotEqualTo(Integer value) {
+            addCriterion("shop_size <>", value, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeGreaterThan(Integer value) {
+            addCriterion("shop_size >", value, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shop_size >=", value, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeLessThan(Integer value) {
+            addCriterion("shop_size <", value, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeLessThanOrEqualTo(Integer value) {
+            addCriterion("shop_size <=", value, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeIn(List<Integer> values) {
+            addCriterion("shop_size in", values, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeNotIn(List<Integer> values) {
+            addCriterion("shop_size not in", values, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeBetween(Integer value1, Integer value2) {
+            addCriterion("shop_size between", value1, value2, "shopSize");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopSizeNotBetween(Integer value1, Integer value2) {
+            addCriterion("shop_size not between", value1, value2, "shopSize");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

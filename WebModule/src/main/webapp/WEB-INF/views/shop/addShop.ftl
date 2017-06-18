@@ -17,7 +17,9 @@
                 <td class=blue">商铺名称</td>
                 <td><input type="text" id="shopName"></td>
                 <td>商铺编码</td>
-                <td><input type="text" ID="shopCode"></td>
+                <td><input type="text" id="shopCode"></td>
+                <td>商铺小票大小</td>
+                <td><input type="text" id="shopSize"></td>
                 <td>商铺类型</td>
                 <td>
                     <select id="shopType">

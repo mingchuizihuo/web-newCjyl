@@ -3,6 +3,7 @@ package com.idea.cjyl.totalmodule.web.controller;
 import com.idea.cjyl.core.common.ResultData;
 import com.idea.cjyl.core.generic.GenericController;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember;
+import com.idea.cjyl.totalmodule.web.domain.pojo.Shop;
 import com.idea.cjyl.totalmodule.web.service.SaivianRememberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -120,5 +121,18 @@ public class SaivianRememberController extends GenericController {
         List<SaivianRemember> saivianRememberList = saivianrememberService.
                 findAllByUser(userId);
         return ResultData.build().parseList(saivianRememberList);
+    }
+
+
+    /**
+     * 获取商铺信息
+     *
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value="getShop",method = RequestMethod.GET)
+    public ResultData getShop(){
+        List<Shop> shops = saivianrememberService.getShop();
+        return ResultData.build().parseList(shops);
     }
 }
