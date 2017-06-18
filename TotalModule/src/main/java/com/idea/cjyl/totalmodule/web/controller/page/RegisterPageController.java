@@ -22,5 +22,10 @@ public class RegisterPageController {
         return url+"/"+url2+"/"+url3;
     }
 
+    @RequestMapping(value="/{url}/{url2}/{url3}/{url4}" ,method = RequestMethod.GET)
+    public String register(@PathVariable String url ,@PathVariable String url2,@PathVariable String url3,@PathVariable String url4){
+
+        return url+"/"+url2+"/"+url3+"/"+url4;
+    }
 
 }

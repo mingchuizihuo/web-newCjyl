@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -131,9 +132,14 @@ public class SaivianRememberController extends GenericController {
      */
     @ResponseBody
     @RequestMapping(value="getRecord",method = RequestMethod.GET)
-    public ResultData getRecord(List<Long> saivianIds){
+    public ResultData getRecord(String saivianIds){
 
-        List<Note> notes = saivianrememberService.getRecord(saivianIds);
+        String[] strings = saivianIds.split(",");
+        List<Long> longs = new ArrayList<>();
+        for (String string : strings) {
+            longs.add(Long.parseLong(string));
+        }
+        List<Note> notes = saivianrememberService.getRecord(longs);
         return ResultData.build().parseList(notes);
     }
 

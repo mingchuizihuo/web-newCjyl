@@ -13,7 +13,6 @@
         <table class="table table-bordered">
             <tbody>
             <tr>
-
                 <td class=blue">消费时间</td>
                 <td><input type="text" id="consumeDate"></td>
                 <td class=blue">消费金额</td>

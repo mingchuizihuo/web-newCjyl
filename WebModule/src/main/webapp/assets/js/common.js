@@ -21,12 +21,24 @@ function getAjax(url,getData, fun) {
         }
     });
 }
+function getPage(url) {
+    $.ajax({
+        type: "get",
+        url: url,
+        data:{},
+        // cache:isCache,
+        success: function (data) {
+
+        }
+    });
+}
 function postAjax(url, postData,fun) {
     $.ajax({
         type: "post",
         url: url,
         data: postData,
         dataType: 'json',
+        async: false,
         // cache:isCache,
         beforeSend: function () {
 

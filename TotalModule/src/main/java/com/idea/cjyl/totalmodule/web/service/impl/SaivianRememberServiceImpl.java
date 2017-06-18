@@ -71,8 +71,8 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
         List<Shop> shops = shopMapper.selectByExample(new ShopExample());
 
         List<Note> notes = new ArrayList<>();
-        for (ConsumptionRecord consumptionRecord : consumptionRecords) {
-            notes.add(consumption2Note(consumptionRecord,products,shops));
+        for (int i = 0;i<2;i++) {
+            notes.add(consumption2Note(new ConsumptionRecord(),products,shops));
         }
 
         return notes;
