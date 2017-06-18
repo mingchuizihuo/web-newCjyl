@@ -1,6 +1,7 @@
 package com.idea.cjyl.totalmodule.web.service;
 
 import com.idea.cjyl.core.generic.GenericService;
+import com.idea.cjyl.totalmodule.web.domain.Note;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRememberExample;
 import com.idea.cjyl.totalmodule.web.domain.pojo.Shop;
@@ -22,4 +23,11 @@ public interface SaivianRememberService extends GenericService<SaivianRemember,L
      * @return
      */
     List<Shop> getShop();
+
+    /**
+     * 获取小票信息
+     * @param saivianIds
+     * @return
+     */
+    List<Note> getRecord(List<Long> saivianIds);
 }

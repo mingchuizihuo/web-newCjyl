@@ -10,7 +10,7 @@ public class Note {
     private Date consumeDate;//消费时间
     private String consumeNum;//消费流水号
     private Double consumeMoney;//消费总金额
-    private List<Product> products;//产品列表
+    private List<ProductR> products;//产品列表
     private String bankName;//发卡行
     private String bankNum;//银行卡号
     private String effectDate;//有效期
@@ -57,11 +57,11 @@ public class Note {
         this.consumeMoney = consumeMoney;
     }
 
-    public List<Product> getProducts() {
+    public List<ProductR> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(List<ProductR> products) {
         this.products = products;
     }
 

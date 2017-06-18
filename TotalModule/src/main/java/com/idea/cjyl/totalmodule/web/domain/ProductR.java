@@ -1,14 +1,23 @@
 package com.idea.cjyl.totalmodule.web.domain;
 
 /**
- * Created by xiaolitong on 2017/6/15.
+ * Created by Administrator on 2017/6/18 0018.
  */
-public class Product {
+public class ProductR {
     private String productName;//产品名称
     private int productNum;//产品数量
     private double productPrice;//产品单价
     private double produtTotal;//产品总价
     private double discount;//折扣
+
+
+    public ProductR(String productName, int productNum, double productPrice, double produtTotal, double discount) {
+        this.productName = productName;
+        this.productNum = productNum;
+        this.productPrice = productPrice;
+        this.produtTotal = produtTotal;
+        this.discount = discount;
+    }
 
     @Override
     public String toString() {

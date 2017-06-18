@@ -2,6 +2,7 @@ package com.idea.cjyl.totalmodule.web.controller;
 
 import com.idea.cjyl.core.common.ResultData;
 import com.idea.cjyl.core.generic.GenericController;
+import com.idea.cjyl.totalmodule.web.domain.Note;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember;
 import com.idea.cjyl.totalmodule.web.domain.pojo.Shop;
 import com.idea.cjyl.totalmodule.web.service.SaivianRememberService;
@@ -123,6 +124,21 @@ public class SaivianRememberController extends GenericController {
         return ResultData.build().parseList(saivianRememberList);
     }
 
+    /**
+     * 获取消费记录
+     * @param saivianIds
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value="getRecord",method = RequestMethod.GET)
+    public ResultData getRecord(List<Long> saivianIds){
+
+        List<Note> notes = saivianrememberService.getRecord(saivianIds);
+        return ResultData.build().parseList(notes);
+    }
+
+
+
 
     /**
      * 获取商铺信息
@@ -133,6 +149,7 @@ public class SaivianRememberController extends GenericController {
     @RequestMapping(value="getShop",method = RequestMethod.GET)
     public ResultData getShop(){
         List<Shop> shops = saivianrememberService.getShop();
+
         return ResultData.build().parseList(shops);
     }
 }
