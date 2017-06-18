@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idea.cjyl.totalmodule.web.dao.SaivianRememberMapper" >
+  <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="saivian_id" property="saivianId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="email_pwd" property="emailPwd" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_type" property="bankType" jdbcType="TINYINT" />
+    <result column="bank_card_num" property="bankCardNum" jdbcType="VARCHAR" />
+    <result column="bank_effective_date" property="bankEffectiveDate" jdbcType="VARCHAR" />
+    <result column="renewal_date" property="renewalDate" jdbcType="TIMESTAMP" />
+    <result column="redemption_date" property="redemptionDate" jdbcType="TIMESTAMP" />
+    <result column="click_date" property="clickDate" jdbcType="TIMESTAMP" />
+    <result column="parent" property="parent" jdbcType="BIGINT" />
+    <result column="wage" property="wage" jdbcType="TINYINT" />
+    <result column="total_money" property="totalMoney" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, saivian_id, user_name, login_name, login_password, tel, email, email_pwd, bank_name, 
+    bank_type, bank_card_num, bank_effective_date, renewal_date, redemption_date, click_date, 
+    parent, wage, total_money, user_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRememberExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from saivian_remember
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from saivian_remember
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from saivian_remember
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRememberExample" >
+    delete from saivian_remember
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" useGeneratedKeys="true" keyProperty="id" >
+    insert into saivian_remember (saivian_id, user_name, login_name, 
+      login_password, tel, email, 
+      email_pwd, bank_name, bank_type, 
+      bank_card_num, bank_effective_date, renewal_date, 
+      redemption_date, click_date, parent, 
+      wage, total_money, user_id
+      )
+    values (#{saivianId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{loginPassword,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{emailPwd,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankType,jdbcType=TINYINT}, 
+      #{bankCardNum,jdbcType=VARCHAR}, #{bankEffectiveDate,jdbcType=VARCHAR}, #{renewalDate,jdbcType=TIMESTAMP}, 
+      #{redemptionDate,jdbcType=TIMESTAMP}, #{clickDate,jdbcType=TIMESTAMP}, #{parent,jdbcType=BIGINT}, 
+      #{wage,jdbcType=TINYINT}, #{totalMoney,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" useGeneratedKeys="true" keyProperty="id" >
+    insert into saivian_remember
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="saivianId != null" >
+        saivian_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="loginPassword != null" >
+        login_password,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="emailPwd != null" >
+        email_pwd,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankType != null" >
+        bank_type,
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num,
+      </if>
+      <if test="bankEffectiveDate != null" >
+        bank_effective_date,
+      </if>
+      <if test="renewalDate != null" >
+        renewal_date,
+      </if>
+      <if test="redemptionDate != null" >
+        redemption_date,
+      </if>
+      <if test="clickDate != null" >
+        click_date,
+      </if>
+      <if test="parent != null" >
+        parent,
+      </if>
+      <if test="wage != null" >
+        wage,
+      </if>
+      <if test="totalMoney != null" >
+        total_money,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="saivianId != null" >
+        #{saivianId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null" >
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailPwd != null" >
+        #{emailPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankType != null" >
+        #{bankType,jdbcType=TINYINT},
+      </if>
+      <if test="bankCardNum != null" >
+        #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankEffectiveDate != null" >
+        #{bankEffectiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalDate != null" >
+        #{renewalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="redemptionDate != null" >
+        #{redemptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clickDate != null" >
+        #{clickDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parent != null" >
+        #{parent,jdbcType=BIGINT},
+      </if>
+      <if test="wage != null" >
+        #{wage,jdbcType=TINYINT},
+      </if>
+      <if test="totalMoney != null" >
+        #{totalMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRememberExample" resultType="java.lang.Integer" >
+    select count(*) from saivian_remember
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update saivian_remember
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.saivianId != null" >
+        saivian_id = #{record.saivianId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginName != null" >
+        login_name = #{record.loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginPassword != null" >
+        login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailPwd != null" >
+        email_pwd = #{record.emailPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankName != null" >
+        bank_name = #{record.bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankType != null" >
+        bank_type = #{record.bankType,jdbcType=TINYINT},
+      </if>
+      <if test="record.bankCardNum != null" >
+        bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankEffectiveDate != null" >
+        bank_effective_date = #{record.bankEffectiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.renewalDate != null" >
+        renewal_date = #{record.renewalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.redemptionDate != null" >
+        redemption_date = #{record.redemptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.clickDate != null" >
+        click_date = #{record.clickDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.parent != null" >
+        parent = #{record.parent,jdbcType=BIGINT},
+      </if>
+      <if test="record.wage != null" >
+        wage = #{record.wage,jdbcType=TINYINT},
+      </if>
+      <if test="record.totalMoney != null" >
+        total_money = #{record.totalMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update saivian_remember
+    set id = #{record.id,jdbcType=BIGINT},
+      saivian_id = #{record.saivianId,jdbcType=BIGINT},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      login_name = #{record.loginName,jdbcType=VARCHAR},
+      login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      email_pwd = #{record.emailPwd,jdbcType=VARCHAR},
+      bank_name = #{record.bankName,jdbcType=VARCHAR},
+      bank_type = #{record.bankType,jdbcType=TINYINT},
+      bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
+      bank_effective_date = #{record.bankEffectiveDate,jdbcType=VARCHAR},
+      renewal_date = #{record.renewalDate,jdbcType=TIMESTAMP},
+      redemption_date = #{record.redemptionDate,jdbcType=TIMESTAMP},
+      click_date = #{record.clickDate,jdbcType=TIMESTAMP},
+      parent = #{record.parent,jdbcType=BIGINT},
+      wage = #{record.wage,jdbcType=TINYINT},
+      total_money = #{record.totalMoney,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" >
+    update saivian_remember
+    <set >
+      <if test="saivianId != null" >
+        saivian_id = #{saivianId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null" >
+        login_password = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailPwd != null" >
+        email_pwd = #{emailPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankType != null" >
+        bank_type = #{bankType,jdbcType=TINYINT},
+      </if>
+      <if test="bankCardNum != null" >
+        bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bankEffectiveDate != null" >
+        bank_effective_date = #{bankEffectiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalDate != null" >
+        renewal_date = #{renewalDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="redemptionDate != null" >
+        redemption_date = #{redemptionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clickDate != null" >
+        click_date = #{clickDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parent != null" >
+        parent = #{parent,jdbcType=BIGINT},
+      </if>
+      <if test="wage != null" >
+        wage = #{wage,jdbcType=TINYINT},
+      </if>
+      <if test="totalMoney != null" >
+        total_money = #{totalMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" >
+    update saivian_remember
+    set saivian_id = #{saivianId,jdbcType=BIGINT},
+      user_name = #{userName,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      login_password = #{loginPassword,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      email_pwd = #{emailPwd,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_type = #{bankType,jdbcType=TINYINT},
+      bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
+      bank_effective_date = #{bankEffectiveDate,jdbcType=VARCHAR},
+      renewal_date = #{renewalDate,jdbcType=TIMESTAMP},
+      redemption_date = #{redemptionDate,jdbcType=TIMESTAMP},
+      click_date = #{clickDate,jdbcType=TIMESTAMP},
+      parent = #{parent,jdbcType=BIGINT},
+      wage = #{wage,jdbcType=TINYINT},
+      total_money = #{totalMoney,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

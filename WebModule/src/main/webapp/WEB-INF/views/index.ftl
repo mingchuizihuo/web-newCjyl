@@ -19,7 +19,7 @@
     <title></title>
 </head>
 <script>
-    var domainUrl = '${domainUrl}/rest', domainFile = '${domainUrl}',  organizationLoginId = '${(loginInfo.organizationLoginId)}';
+    var domainUrl = '${domainUrl}/rest', domainFile = '${domainUrl}',  organizationLoginId = '${(loginInfo.organizationLoginId)!}';
 </script>
 <body>
 <!--整体布局-->
@@ -80,38 +80,25 @@
         <#--侧边栏-->
         <div id="side">
             <ul id="sideList" class="accordion">
-                <#--<li>-->
-                    <#--<div class="link"><i class="icon-cog"></i>资料管理<i class="icon-circle-blank"></i></div>-->
-                    <#--<ul class="submenu">-->
-                        <#--<li onclick="common.locationUrl('/dataManage/dataDictionary')"><i class="icon-lock" ></i>数据字典</li>-->
-                    <#--</ul>-->
-                <#--</li>-->
-                <#--<li>-->
-                    <#--<div class="link"><i class="icon-comments-alt"></i>部门管理<i class="icon-circle-blank"></i></div>-->
-                    <#--<ul class="submenu">-->
-                        <#--<li><i class="icon-user"></i>员工列表</li>-->
-                        <#--<li><i class="icon-comment-alt"></i>部门群组</li>-->
-                    <#--</ul>-->
-                <#--</li>-->
-                <#--<li>-->
-                    <#--<div class="link"><i class="icon-cog"></i>系统管理<i class="icon-circle-blank"></i></div>-->
-                    <#--<ul class="submenu">-->
-                        <#--<li><i class="icon-lock"></i>修改密码</li>-->
-                    <#--</ul>-->
-                <#--</li>-->
+               
                 <li>
-                    <div class="link"><i class="icon-group"></i>老人管理<i class="icon-circle-blank"></i></div>
+                    <div class="link"><i class="icon-group"></i>会员管理<i class="icon-circle-blank"></i></div>
                     <ul class="submenu">
-                        <li onclick="common.locationUrl('/oldMan/oldMan')"><i class="icon-bar-chart" ></i>基本信息</li>
+                        <li onclick="common.locationUrl('/saivianRemember/saivianRemember')"><i class="icon-bar-chart" ></i>基本信息</li>
                     </ul>
                 </li>
                  <li>
-                     <div class="link"><i class="icon-folder-close"></i>订单管理<i class="icon-circle-blank"></i></div>
+                     <div class="link"><i class="icon-folder-close"></i>商铺管理<i class="icon-circle-blank"></i></div>
                      <ul class="submenu">
-                         <li onclick="common.locationUrl('/resource/resource')"><i class="icon-tag"></i>资源信息</li>
-                         <li><i class="icon-calendar"></i>下单管理</li>
+                         <li onclick="common.locationUrl('/shop/shop')"><i class="icon-tag"></i>商铺信息</li>
                       </ul>
                   </li>
+                <li>
+                    <div class="link"><i class="icon-folder-close"></i>商品管理<i class="icon-circle-blank"></i></div>
+                    <ul class="submenu">
+                        <li onclick="common.locationUrl('/product/product')"><i class="icon-tag"></i>商品信息</li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <#--右边内容-->
@@ -120,7 +107,7 @@
             <div id="main-show">
             </div>
             <div id="foot">
-                承嘉智能养老平台2017@湃迅科技
+                塞比安
             </div>
         </div>
     </div>

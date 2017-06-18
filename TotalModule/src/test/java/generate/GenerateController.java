@@ -1,14 +1,13 @@
 package generate;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GenerateController {
 
@@ -87,25 +86,8 @@ public class GenerateController {
     }
     public static void main(String[] args) {
         String[] fileNames = new String[]{
-//                "OrganizationLogin,登录",
-//                "DataDictionary,数据字典,1",
-//                "MonthCharge,月收费",
-//                "CheckInInitCost,入住初始费用",
-//                "ServiceCharge,服务费用",
-//                "Mansion,大厦",
-//                "FloorTier,楼层",
-//                "Room,房间",
-//                "Bed,床",
-//                "Staff,员工",
-//                "StaffLeaveLog,员工请假",
-//                "Older,老人",
-//                "OlderKinsfolk,老人亲属信息",
-//                "OlderInitialFee,老人入住初始费用关系",
-//                "OlderNurseLog,老人护理记录",
-//                "OlderCost,老人特殊费用",
-//                "OlderAdmissionAndDischargeLog,老人出入院日志表",
 
-                "OlderMonthCharge,老人月收费"
+                "Product,商品"
 
 
         };
@@ -114,10 +96,9 @@ public class GenerateController {
 
             try {
                 GenerateController.Generate(
-                        "\\TotalModule\\src\\test\\java\\ftl",
+                        "/TotalModule/src/test/java/ftl",
                         "controller.ftl",
-                        fileName,
-                        "\\TotalModule\\src\\main\\java\\com\\idea\\cjyl\\totalmodule\\web\\controller",
+                        fileName, "/TotalModule/src/main/java/com/idea/cjyl/totalmodule/web/controller",
 
                         "com.idea.cjyl.totalmodule.web.controller",
                         "com.idea.cjyl.totalmodule.web.domain.pojo",

@@ -12,41 +12,12 @@
         <module>Commom</module>
         <module>WebModule</module>
         <module>TotalModule</module>
-        <module>FoodModule</module>
+
     </modules>
     <!-- 下面三个是配置 Maven 从私服上下载构件 -->
-    <repositories>
-        <repository>
-            <id>nexus</id>
-            <name>Nexus</name>
-            <url>http://192.168.1.200:8081/nexus/content/groups/idea/</url>
-            <snapshots>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+
     <!-- 下载mvn插件的路径 -->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <name>Nexus</name>
-            <url>http://192.168.1.200:8081/nexus/content/repositories/central/</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <!-- 配置上传 -->
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Nexus</name>
-            <url>http://192.168.1.200:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <!-- 配置快照上传地址 -->
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Nexus</name>
-            <url>http://192.168.1.200:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+
     <!--结束 下面三个是配置 Maven 从私服上下载构件 -->
     <build>
 
@@ -459,6 +430,26 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.16</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.16</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.xmlbeans/xmlbeans -->
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
 
         <!--<dependency>-->
         <!--<groupId>com.idea.nursing</groupId>-->

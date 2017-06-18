@@ -33,14 +33,7 @@
             <type>jar</type>
 
         </dependency>
-        <dependency>
-            <groupId>com.idea</groupId>
-            <artifactId>food_module</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-            <type>jar</type>
 
-        </dependency>
     </dependencies>
     <build>
 

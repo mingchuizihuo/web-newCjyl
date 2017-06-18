@@ -13,7 +13,7 @@
     <!--颜色样式文件-->
     <link rel="stylesheet" href="${domainUrl}/assets/css/color/color.css">
 
-    <title>承嘉智能养老管理系统</title>
+    <title>赛比安会员管理系统</title>
 </head>
 <script>
     var domainUrl = '${domainUrl}' + "/rest", domainFile = '${domainUrl}';
@@ -23,14 +23,11 @@
 <div id="main-body">
     <div id="main-login" class="animated fadeIn">
         <div id="login-title">
-            承嘉智能养老平台 <span>V1.0</span>
+            赛比安会员管理系统 <span>V1.0</span>
         </div>
         <form id="login-form">
             <div id="login-input">
-                <ul>
-                    <li><span>机构</span></li>
-                    <li><input id="institution" type="text" name="institution" /></li>
-                </ul>
+
                 <ul>
                     <li><span>用户名</span></li>
                     <li><input type="text" name="name" id="loginName"></li>
@@ -67,12 +64,10 @@
     layui.use('layer', function(){ });
 
     $(function () {
-        //查询机构
-        loginBase.findAllOrganizationName();
+
         //回车登录事件
         loginBase.loginKey();
-        //鼠标焦点事件
-        loginBase.focus();
+
     });
 </script>
 </body>

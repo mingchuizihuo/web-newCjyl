@@ -1,13 +1,13 @@
 package generate;
 
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 
 
 
@@ -17,7 +17,7 @@ public class GenerateService {
                                 String fileName, String filePath, String packageName,
                                 String daopackageName, String modelpackageName) throws IOException, TemplateException {
 
-        String ImplFilePath = filePath + "\\impl";
+        String ImplFilePath = filePath + "/impl";
         PathUtil.Path_Judge_Exist(ftlPath);
         PathUtil.Path_Judge_Exist(filePath);
         PathUtil.Path_Judge_Exist(ImplFilePath);
@@ -60,35 +60,18 @@ public class GenerateService {
 
 
         String[] fileNames = new String[]{
-                /*"OrganizationLogin",
-                "DataDictionary,DataLevel,Tid",
-                "MonthCharge",
-                "CheckInInitCost",
-                "ServiceCharge",
-                "Mansion",
-                "FloorTier",
-                "Room",
-                "Bed",
-                "Staff",
-                "StaffLeaveLog",
-                "Older",
-                "OlderKinsfolk",
-                "OlderInitialFee",
-                "OlderNurseLog",
-                "OlderCost",
-*/
-                "OrganizationLogin",
-                "Login"
+
+                "Product"
 
 
         };
         for (String fileName : fileNames
                 ) {
             GenerateService.Generate(
-                    "\\TotalModule\\src\\test\\java\\ftl",
+                    "/TotalModule/src/test/java/ftl",
                     "service.ftl",
                     fileName,
-                    "\\TotalModule\\src\\main\\java\\com\\idea\\cjyl\\totalmodule\\web\\service",
+                    "/TotalModule/src/main/java/com/idea/cjyl/totalmodule/web/service",
 
 						"com.idea.cjyl.totalmodule.web.service",
 						"com.idea.cjyl.totalmodule.web.dao",

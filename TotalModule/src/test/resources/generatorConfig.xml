@@ -107,12 +107,26 @@
         <table tableName="older_cost" domainObjectName="OlderCost">
             <generatedKey column="id" sqlStatement="JDBC" identity="true" />
         </table>
+         <table tableName="saivian_remember" domainObjectName="SaivianRemember">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="shop" domainObjectName="Shop">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+        <table tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
 -->
 
 
-        <table tableName="older_cost" domainObjectName="OlderCost">
+        <table tableName="shop" domainObjectName="Shop">
             <generatedKey column="id" sqlStatement="JDBC" identity="true" />
         </table>
+
+        <table tableName="product" domainObjectName="Product">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" />
+        </table>
+
 
 
     </context>
