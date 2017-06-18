@@ -16,6 +16,7 @@ public class Note {
     private String effectDate;//有效期
     private Date swipeDate;//刷卡时间
     private String swipeNum;//刷卡流水号
+    private String shopCode;//商铺code
 
 
     @Override
@@ -30,7 +31,16 @@ public class Note {
                 ", effectDate='" + effectDate + '\'' +
                 ", swipeDate=" + swipeDate +
                 ", swipeNum='" + swipeNum + '\'' +
+                ", shopCode='" + shopCode + '\'' +
                 '}';
+    }
+
+    public String getShopCode() {
+        return shopCode;
+    }
+
+    public void setShopCode(String shopCode) {
+        this.shopCode = shopCode;
     }
 
     public Date getConsumeDate() {

@@ -95,6 +95,7 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
         note.setBankNum("6666666666666666666");
         note.setEffectDate("00/00");
         note.setSwipeDate(new Date());
+        note.setShopCode("jinyuanbao");
         List<ProductR> products1 = new ArrayList<>();
 
 
