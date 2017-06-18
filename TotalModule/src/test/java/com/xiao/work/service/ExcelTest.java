@@ -3,6 +3,7 @@ package com.xiao.work.service;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,7 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by xiaolitong on 2017/6/17.
@@ -177,5 +179,7 @@ public class ExcelTest {
             e.printStackTrace();
         }
     }
+
+
 
 }

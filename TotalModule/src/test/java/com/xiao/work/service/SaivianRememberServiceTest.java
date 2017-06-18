@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by xiaolitong on 2017/6/17.
@@ -110,6 +111,14 @@ public class SaivianRememberServiceTest extends SupportTest {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void random(){
+        Random random = new Random();
+        for (int i = 0; i < 20; i++) {
+            System.out.println( random.nextInt(2));
         }
     }
 }
