@@ -24,7 +24,7 @@
     function printUserPage(e) {
         return '${domainUrl}/rest/mb/' + e + '/index';
     }
-    var product = ''
+    var product = ''；
 
     function printData() {
         this.url = domainUrl + '/serve/saivian_remember/getRecord/';

@@ -125,14 +125,14 @@
             <li>————————————————————————</li>
             <li>卡       号/CARD NO:</li>
             <li style="text-align: center">622575******7167</li>
-            <li>发卡银行/ISSU.  NO:招商银行</li>
+            <li>发卡银行/ISSU.  NO:${note.bankName} </li>
             <li>交易类型/TXN.TYPE:消费/SALE</li>
             <li>批  次  号/BATCH .NO:003138</li>
             <li>凭  证  号/VOUCH.NO:027643</li>
             <li>授  权  码/AUTH.   NO:</li>
             <li>日期时间/DATETIME:</li>
             <li style="text-align: center">${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
-            <li>交易参考号/REF.NO: 125159435036</li>
+            <li>交易参考号/REF.NO: ${note.swipeNum}</li>
             <li>金额/AMOUNT  (RMB):${note.consumeMoney}</li>
             <li>————————————————————————</li>
             <li>备注/REFERENCE:</li>

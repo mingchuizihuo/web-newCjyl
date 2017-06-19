@@ -119,10 +119,10 @@
             <li>交易卡号：${bankNun}</li>
             <li>有效期：${note.effectDate}</li>
             <li>交易金额：￥${note.consumeMoney}</li>
-            <li>卡类型：S中国邮政储蓄银行</li>
+            <li>卡类型：${note.bankName} </li>
             <li>交易类型：消费</li>
             <li>交易日期：${note.swipeDate?string("yyyyMMdd HH:mm:ss")}</li>
-            <li>系统检索号：70241046</li>
+            <li>系统检索号：${note.swipeNum}</li>
             <li>备注:总计(TOTAL):RMB ${note.consumeMoney}</li>
             <li>交易证书(TC):8EBA0FCDCE359B3F</li>
             <br>
