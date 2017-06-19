@@ -104,7 +104,7 @@
             <li><nobr>服务员：刘子晴 打印：${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</nobr></li>
             <li style="text-align: center;margin: 10px 0px;"><img src="../img/yinlian.png" style="width: 70%"></li>
             <li>商户名称:北塘周记餐饮</li>
-            <li>商户编号:${note.shopCode}</li>
+            <li>商户编号:8981120058123440</li>
             <li>终端编号:01232723</li>
             <li>班次号：2017040500001  操作员号:01</li>
             <li>发卡行:${note.bankName}     收单行:银联商务</li>

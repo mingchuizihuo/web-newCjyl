@@ -143,7 +143,7 @@
             <li>持卡人存根：<span style="margin-left: 10px;">HOROROOOADOSAD</span></li>
             <hr style="border: 1px dashed #000000;margin: 5px 0px;">
             <li>商户名：川府老妈（外滩店）</li>
-            <li>商户号：${note.shopCode}</li>
+            <li>商户号：309120058120017</li>
             <li>终端号：03170001 <span style="margin-left: 30px">操作员：01</span></li>
             <hr style="border: 1px dashed #000000;margin: 5px 0px;">
             <li>发卡行：${note.bankName} <span style="margin-left: 30px">收单行：兴业银行</span></li>

@@ -1,7 +1,10 @@
 <input type="button" value="打印八厘米小票" id="printEight">
 <input type="button" value="打印五厘米小票" id="printFive">
 <div id="printEightModule">
-    <div id="printModule"></div>
+
+</div>
+<div id="printFiveModule">
+
 </div>
 <!--jquery文件-->
 <script src="${domainUrl}/assets/js/jquery/jquery-3.1.1.min.js"></script>
@@ -12,6 +15,9 @@
         printData.findAll();
         $("#printEight").click(function () {
             printdiv("printEightModule")
+        });
+        $("#printFive").click(function () {
+            printdiv("printFiveModule")
         })
     });
     var domainUrl = '${domainUrl}/rest';
@@ -68,7 +74,12 @@
                         data: getData2,//将对象序列化成JSON字符串
                         async: false,
                         success: function (dataa) {
-                            $("#printEightModule").append(dataa);
+                            if(data.aaData[i].shopCode == "shangyuwei" && data.aaData[i].shopCode == "shangyuwei" == "xinghai"){
+                                $("#printFiveModule").append(dataa);
+                            }else{
+                                $("#printEightModule").append(dataa);
+
+                            }
                         }
                     })
 

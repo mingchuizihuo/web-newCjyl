@@ -110,7 +110,7 @@
             <li>欢迎再次光临</li>
             <li style="margin-top: 20px;">天津银联银行卡签购单/存根</li>
             <li style="margin-top: 10px;">商户名称：奥特莱斯</li>
-            <li>商户编号：${note.shopCode}</li>
+            <li>商户编号：898120053112721</li>
             <li>交易类型：消费（SALE）</li>
             <li>卡 号： ${note.bankNum} CUP</li>
             <li>收单行：银联商务天津分公司</li>

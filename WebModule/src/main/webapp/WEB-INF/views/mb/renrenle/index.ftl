@@ -118,7 +118,7 @@
             <li>————————————————————————</li>
             <li>商户名称/MERCHANT NAME:</li>
             <li style="text-align: center;font-size: 9px;">人人乐塘沽店</li>
-            <li>商户号/MER. NO: ${note.shopCode}</li>
+            <li>商户号/MER. NO: 898120054117082</li>
             <li>终端号/TERM.ID: 01062542</li>
             <li>收银机/POS.NO:  KF15</li>
             <li>操作机/OPER.NO:0551 </li>
