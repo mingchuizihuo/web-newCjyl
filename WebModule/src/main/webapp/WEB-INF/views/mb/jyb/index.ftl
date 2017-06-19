@@ -1,8 +1,10 @@
+<#assign randomLength="com.idea.cjyl.core.util.FreemarkMethod"?new()>
+<#assign result= randomLength("aaa")/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>金元宝</title>
 </head>
 <body>
 <style>
@@ -42,13 +44,24 @@
         border: 0.5px solid #000000;
     }
 </style>
+
+<#--private Date consumeDate;//消费时间-->
+<#--private String consumeNum;//消费流水号-->
+<#--private Double consumeMoney;//消费总金额-->
+<#--private List<ProductR> products;//产品列表-->
+    <#--private String bankName;//发卡行-->
+    <#--private String bankNum;//银行卡号-->
+    <#--private String effectDate;//有效期-->
+    <#--private Date swipeDate;//刷卡时间-->
+    <#--private String swipeNum;//刷卡流水号-->
+    <#--private String shopCode;//商铺code-->
     <div id="print-main-body">
         <ul>
-            <li class="title">欢迎光临金元宝商厦</li>
+            <li class="title">欢迎光临金元宝商厦${result}</li>
             <br>
             <li style="margin: 5px 0px;margin-left: 5%">交易号：211828 <span style="margin-left: 20px;">小票号：1</span></li>
             <li style="margin: 5px 0px;margin-left: 5%">收款台：162 <span style="margin-left: 20px;">收银员：00082</span></li>
-            <li style="margin: 5px 0px;margin-left: 5%">日期：<span id="consumeDate"></span></li>
+            <li style="margin: 5px 0px;margin-left: 5%">日期：${note.consumeDate?string("yyyy.MM.dd HH:mm:ss")}</li>
             <hr style="margin: 5px 0px;margin-left: 5%">
             <li class="left-ground" style="margin: 5px 0px;margin-left: 5%"><u>营业员：10104 &nbsp;&nbsp;&nbsp;部门：0102300206 </u></li>
             <table style="width: 100%;margin-left: 5%" class="shop-table">

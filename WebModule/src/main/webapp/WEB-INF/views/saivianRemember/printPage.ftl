@@ -16,37 +16,63 @@
     });
     var domainUrl = '${domainUrl}/rest';
     function printUserPage(e) {
-        return '${domainUrl}/rest/mb/'+e+'/index';
+        return '${domainUrl}/rest/mb/' + e + '/index';
     }
     var product = ''
 
     function printData() {
         this.url = domainUrl + '/serve/saivian_remember/getRecord/';
         this.findAll = function () {
-            var getData = {
-                saivianIds:63
-            };
-            getAjax(printData.url ,getData,function (data) {
-                var html='';
-                for(var i = 0 ; i < data.aaData.length ; i++){
-                    $.ajax({
-                        type: "get",
-                        url: printUserPage(data.aaData[0].shopCode),
-                        data:{},
-                        async:false,
-                        // cache:isCache,
-                        success: function (dataa) {
-                            html+= '<div id="printM'+i+'">'+dataa+'</div>';
-                            for(var j = 0 ; j < data.aaData[i].products.length;j++){
-                                product +=' <tr> <td colspan="4">'+data.aaData[i].products[j].productName+'</td> </tr> <tr> ' +
-                                        '<td>'+data.aaData[i].products[j].productPrice+'</td> <td>'+data.aaData[i].products[j].productNum+'</td> ' +
-                                        '<td>0.00</td> <td>'+data.aaData[i].products[j].produtTotal+'</td> </tr>'
-                            }
-                            $("#printEightModule").append(html);
-                            $("#printM"+i+" #product").html(product);
 
+            var getData = {
+                saivianIds: 62,
+            };
+            console.log(getData);
+            getAjax(printData.url, getData, function (data) {
+                console.log(JSON.stringify(data.aaData))
+                var html = '';
+                for (var i = 0; i < data.aaData.length; i++) {
+//                    $.ajax({
+//                        type: "get",
+//                        url: printUserPage(data.aaData[0].shopCode),
+//                        data:{},
+//                        async:false,
+//                        // cache:isCache,
+//                        success: function (dataa) {
+//                            product = '';
+//                            html= '<div id="printM'+i+'">'+dataa+'</div>';
+//                            for(var j = 0 ; j < data.aaData[i].products.length;j++){
+//                                product +=' <tr> <td colspan="4">'+data.aaData[i].products[j].productName+'</td> </tr> <tr> ' +
+//                                        '<td>'+data.aaData[i].products[j].productPrice+'</td> <td>'+data.aaData[i].products[j].productNum+'</td> ' +
+//                                        '<td>0.00</td> <td>'+data.aaData[i].products[j].produtTotal+'</td> </tr>'
+//                            }
+//                            $("#printEightModule").append(html);
+//                            $("#printM"+i+"").find("#product").html(product);
+//                            $("#printM"+i+"").find("#consumeDate").html(data.aaData[i].consumeDate.replace(/年/,".").replace(/月/,".").replace(/日/,"."));
+//                            $("#printM"+i+"").find("#bankName").html(data.aaData[i].bankName);
+//                            $("#printM"+i+"").find(".consumeMoney").html(data.aaData[i].consumeMoney);
+//                            $("#printM"+i+"").find("#bankNum").html(data.aaData[i].bankNum.substring(0,5)+"******"+data.aaData[i].bankNum.substring(11));
+//                            $("#printM"+i+"").find("#effectDate").html(data.aaData[i].effectDate);
+//                            $("#printM"+i+"").find("#swipeDate").html(data.aaData[i].swipeDate.replace(/年/,"-").replace(/月/,"-").replace(/日/,""));
+//                            $("#printM"+i+"").find("#swipeNum").html(data.aaData[i].swipeNum);
+//
+//                        }
+//                    });
+                    var getData2 = data.aaData[i];
+                    var productList = getData2.products;
+                    console.log(JSON.stringify(productList))
+                    delete getData2.products;
+                    getData2["productList"] = JSON.stringify(productList);
+                    $.ajax({
+                        type: "POST",
+                        url: printUserPage(data.aaData[i].shopCode),
+                        data: getData2,//将对象序列化成JSON字符串
+                        async: false,
+                        success: function (dataa) {
+                            $("#printEightModule").append(dataa);
                         }
-                    });
+                    })
+
                 }
 
             })

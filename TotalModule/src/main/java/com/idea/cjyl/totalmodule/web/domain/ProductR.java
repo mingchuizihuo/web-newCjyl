@@ -5,40 +5,20 @@ package com.idea.cjyl.totalmodule.web.domain;
  */
 public class ProductR {
     private String productName;//产品名称
-    private double productNum;//产品数量
-    private double productPrice;//产品单价
-    private double produtTotal;//产品总价
-    private double discount = 0.0;//折扣
+    private Double productNum;//产品数量
+    private Double productPrice;//产品单价
+    private Double produtTotal;//产品总价
+    private Double discount;//
 
-
-    public ProductR() {
-    }
-
-    public ProductR(String productName, double productNum, double productPrice, double produtTotal) {
+    public ProductR(String productName, Double productNum, Double productPrice, Double produtTotal, Double discount) {
         this.productName = productName;
         this.productNum = productNum;
         this.productPrice = productPrice;
         this.produtTotal = produtTotal;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productName='" + productName + '\'' +
-                ", productNum=" + productNum +
-                ", productPrice=" + productPrice +
-                ", produtTotal=" + produtTotal +
-                ", discount=" + discount +
-                '}';
-    }
-
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
         this.discount = discount;
+    }
+
+    public ProductR() {
     }
 
     public String getProductName() {
@@ -49,27 +29,35 @@ public class ProductR {
         this.productName = productName;
     }
 
-    public double getProductNum() {
+    public Double getProductNum() {
         return productNum;
     }
 
-    public void setProductNum(double productNum) {
+    public void setProductNum(Double productNum) {
         this.productNum = productNum;
     }
 
-    public double getProductPrice() {
+    public Double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
 
-    public double getProdutTotal() {
+    public Double getProdutTotal() {
         return produtTotal;
     }
 
-    public void setProdutTotal() {
-        this.produtTotal = this.productPrice*this.productNum;
+    public void setProdutTotal(Double produtTotal) {
+        this.produtTotal = produtTotal;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 }

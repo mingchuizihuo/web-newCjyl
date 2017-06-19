@@ -35,14 +35,6 @@ public class Note {
                 '}';
     }
 
-    public String getShopCode() {
-        return shopCode;
-    }
-
-    public void setShopCode(String shopCode) {
-        this.shopCode = shopCode;
-    }
-
     public Date getConsumeDate() {
         return consumeDate;
     }
@@ -113,5 +105,13 @@ public class Note {
 
     public void setSwipeNum(String swipeNum) {
         this.swipeNum = swipeNum;
+    }
+
+    public String getShopCode() {
+        return shopCode;
+    }
+
+    public void setShopCode(String shopCode) {
+        this.shopCode = shopCode;
     }
 }

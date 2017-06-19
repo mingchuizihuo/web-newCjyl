@@ -71,17 +71,18 @@ function saivianRemember() {
                     '<td>' + dOne.saivianId + '</td>' +
                     '<td>' + dOne.userName + '</td>' +
                     '<td>' + dOne.loginName + '</td>' +
-                      '<td>' + dOne.emailPwd + '</td>' +
                     '<td>' + dOne.loginPassword + '</td>' +
                     '<td>' + dOne.tel + '</td>' +
                     '<td>' + dOne.email + '</td>' +
+                    '<td>' + dOne.emailPwd + '</td>' +
                     '<td>' + dOne.bankName + '</td>';
                 if (dOne.bankType == 0) {
                     html += '<td>储蓄卡</td>';
                 } else if (dOne.bankType == 1) {
                     html += '<td>信用卡</td>';
+                }else{
+                    html += '<td>无</td>';
                 }
-
 
                 html += '<td>' + dOne.bankCardNum + '</td>' +
                     '<td>' + dOne.bankEffectiveDate + '</td>' +
@@ -90,6 +91,9 @@ function saivianRemember() {
                     '<td>' + dOne.clickDate + '</td>' +
                     '<td>' + dOne.wage + '</td>' +
                     '<td>' + dOne.totalMoney + '</td>' +
+                    '<td>' +
+                    '<a class="btn btn-default" onclick="saivianRemember.showRecord('+dOne.id+')">查看消费记录</a>' +
+                    '</td>' +
                     '<td>' +
                     '<a class="btn btn-default" onclick="saivianRemember.edit(' + dOne.id + ')">编辑</a>' +
                     '<a class="btn btn-default" onclick="saivianRemember.addMoney(' + dOne.id + ')">添加消费明细</a></td></tr>';
@@ -100,6 +104,18 @@ function saivianRemember() {
         })
     };
 
+    this.showRecord = function (id) {
+
+
+        layer.open({
+            type: 2,
+            title: '打印小票记录查看',
+            area: ['50%', '80%'],
+            shadeClose: true, //点击遮罩关闭
+            content: domainUrl + '/serve/saivian_remember/showRecord?saivianTableId='+id,
+        });
+
+    }
 
     this.edit = function (id) {
         layer.open({
@@ -119,7 +135,7 @@ function saivianRemember() {
                 }
                 postAjax(domainUrl + '/serve/saivian_remember/update', postData, function (data) {
                         layer.close(index);
-                        saivianRemember.findAll(1);
+                        saivianRemember.findAll(2);
                     }
                 )
 

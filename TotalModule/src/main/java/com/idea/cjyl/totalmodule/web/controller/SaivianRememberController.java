@@ -3,14 +3,17 @@ package com.idea.cjyl.totalmodule.web.controller;
 import com.idea.cjyl.core.common.ResultData;
 import com.idea.cjyl.core.generic.GenericController;
 import com.idea.cjyl.totalmodule.web.domain.Note;
+import com.idea.cjyl.totalmodule.web.domain.pojo.ConsumptionRecord;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember;
 import com.idea.cjyl.totalmodule.web.domain.pojo.Shop;
 import com.idea.cjyl.totalmodule.web.service.SaivianRememberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -140,6 +143,8 @@ public class SaivianRememberController extends GenericController {
             longs.add(Long.parseLong(string));
         }
         List<Note> notes = saivianrememberService.getRecord(longs);
+
+
         return ResultData.build().parseList(notes);
     }
 
@@ -158,4 +163,15 @@ public class SaivianRememberController extends GenericController {
 
         return ResultData.build().parseList(shops);
     }
+
+    @RequestMapping(value="showRecord",method = RequestMethod.GET)
+    public ModelAndView showRecord(Long saivianTableId, Model model){
+        List<ConsumptionRecord> consumptionRecords = saivianrememberService.showRecord(saivianTableId);
+        ModelAndView modelAndView = new ModelAndView("/saivianRemember/showRecord","recordList",consumptionRecords);
+
+
+
+        return modelAndView;
+    }
+
 }

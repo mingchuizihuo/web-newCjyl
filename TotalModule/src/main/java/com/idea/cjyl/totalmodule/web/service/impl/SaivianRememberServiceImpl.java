@@ -71,18 +71,23 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
         List<Shop> shops = shopMapper.selectByExample(new ShopExample());
 
         List<Note> notes = new ArrayList<>();
-        for (int i = 0;i<2;i++) {
-            notes.add(consumption2Note(new ConsumptionRecord(),products,shops));
+        for (ConsumptionRecord consumptionRecord:consumptionRecords) {
+            notes.add(consumption2Note(consumptionRecord,products,shops));
         }
 
         return notes;
     }
 
+    //查看消费记录
+    @Override
+    public List<ConsumptionRecord> showRecord(Long saivianTableId) {
+        ConsumptionRecordExample example = new ConsumptionRecordExample();
+        example.createCriteria().andUserSaivianIdEqualTo(saivianTableId);
+        List<ConsumptionRecord> consumptionRecords = consumptionRecordMapper.selectByExample(example);
 
 
-
-
-
+        return consumptionRecords;
+    }
 
 
     public Note consumption2Note(ConsumptionRecord consumptionRecord,List<Product> products,List<Shop> shops){
@@ -100,7 +105,7 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
 
 
         //获取本商铺的产品
-        List<Product> product = getProduct(products, getShopCode(shops, consumptionRecord));
+        List<Product> product = getProduct(products, getShopCode(shops, consumptionRecord.getShopCode()));
         List<ProductR> products1 =getProducts(consumptionRecord,product);
 
         note.setProducts(products1);
@@ -152,7 +157,8 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
                         double floor = Math.ceil(money / Double.parseDouble(product.getProductPrice()));
                         balance =balance+ money - Double.parseDouble(product.getProductPrice())*floor;
 
-                        ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor);
+                        ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor,0.0);
+
                         productRS.add(productR);
                         resultTotal+= Double.parseDouble(product.getProductPrice())*floor;
 
@@ -170,7 +176,7 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
                     double floor = Math.floor(money / Double.parseDouble(product.getProductPrice()));
                     balance =balance+ money - Double.parseDouble(product.getProductPrice())*floor;
 
-                    ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor);
+                    ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor,0.0);
                     productRS.add(productR);
                     resultTotal+= Double.parseDouble(product.getProductPrice())*floor;
                     break;
@@ -205,9 +211,9 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
         return  products1;
     }
     //获取商店编码
-    public int getShopCode(List<Shop> shops,ConsumptionRecord consumptionRecord){
+    public int getShopCode(List<Shop> shops,String shopCode){
         for (Shop shop : shops) {
-         if(shop.getShopCode().equals(consumptionRecord.getShopCode())){
+         if(shop.getShopCode().equals(shopCode)){
              return shop.getShopType();
          }
         }

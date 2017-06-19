@@ -28,6 +28,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th>选择框</th>
                 <th>序号</th>
                 <th>saivian会员ID号</th>
                 <th>用户真实姓名</th>
@@ -45,6 +46,7 @@
                 <th>点击申请赎回日期</th>
                 <th>每日工资</th>
                 <th>总金额</th>
+                <th>消费记录查看</th>
                 <th>操作</th>
             </tr>
             </thead>

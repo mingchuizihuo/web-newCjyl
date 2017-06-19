@@ -22,7 +22,7 @@
                     <button class="btn btn-xs btn_color productsc">商场</button>
                     <button class="btn btn-xs btn_color productfz">服装</button>
 
-                    <button class="btn btn-xs btn_color productzp">化妆品</button>
+                    <button class="btn btn-xs btn_color producthzp">化妆品</button>
 
                     <button class="btn btn-xs btn_color productsy">所有</button>
 

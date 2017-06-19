@@ -2,6 +2,7 @@ package com.idea.cjyl.totalmodule.web.service;
 
 import com.idea.cjyl.core.generic.GenericService;
 import com.idea.cjyl.totalmodule.web.domain.Note;
+import com.idea.cjyl.totalmodule.web.domain.pojo.ConsumptionRecord;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRememberExample;
 import com.idea.cjyl.totalmodule.web.domain.pojo.Shop;
@@ -30,4 +31,7 @@ public interface SaivianRememberService extends GenericService<SaivianRemember,L
      * @return
      */
     List<Note> getRecord(List<Long> saivianIds);
+
+    //查看消费记录
+    List<ConsumptionRecord> showRecord(Long saivianTableId);
 }

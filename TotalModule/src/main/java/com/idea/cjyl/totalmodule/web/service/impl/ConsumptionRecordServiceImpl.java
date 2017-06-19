@@ -36,9 +36,8 @@ public class ConsumptionRecordServiceImpl extends GenericServiceImpl<Consumption
         consumptionRecord.setBankName(saivianRemember.getBankName());
         consumptionRecord.setBankType(saivianRemember.getBankType());
         consumptionRecord.setBankEffectiveDate(saivianRemember.getBankEffectiveDate());
-
         String consumMoney = consumptionRecord.getConsumeMoney();
-        Double d = Double.parseDouble(consumMoney)*6.8097;
+        Double d =Math.ceil(Double.parseDouble(consumMoney)*6.8097);
         consumptionRecord.setConsumeMoney(d+"");
 
         consumptionRecord.setConsumeMonth(5+"");

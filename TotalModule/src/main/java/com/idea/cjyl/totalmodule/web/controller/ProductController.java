@@ -31,6 +31,7 @@ public class ProductController extends GenericController {
     public ResultData add(Product product){
 
         try {
+
                     productService.insert(product);
 
 
