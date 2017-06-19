@@ -30,7 +30,6 @@
             console.log(getData);
             getAjax(printData.url, getData, function (data) {
                 console.log(JSON.stringify(data.aaData))
-                var html = '';
                 for (var i = 0; i < data.aaData.length; i++) {
 //                    $.ajax({
 //                        type: "get",
@@ -60,7 +59,7 @@
 //                    });
                     var getData2 = data.aaData[i];
                     var productList = getData2.products;
-                    console.log(JSON.stringify(productList))
+                    console.log(JSON.stringify(productList));
                     delete getData2.products;
                     getData2["productList"] = JSON.stringify(productList);
                     $.ajax({

@@ -38,8 +38,6 @@ public class SaivianRememberController extends GenericController {
 
         try {
                     saivianrememberService.insert(saivianremember);
-
-
             }catch (Exception e){
                 return ResultData.build().addErroe();
             }
@@ -160,7 +158,6 @@ public class SaivianRememberController extends GenericController {
     @RequestMapping(value="getShop",method = RequestMethod.GET)
     public ResultData getShop(){
         List<Shop> shops = saivianrememberService.getShop();
-
         return ResultData.build().parseList(shops);
     }
 

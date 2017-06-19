@@ -65,6 +65,8 @@ function saivianRemember() {
             var d = data.aaData;
             var html = "";
             $.each(d, function (index, dOne) {
+
+
                 html += '<tr>' +
                     '<td><input type="checkbox" id="'+dOne.id+'"/></td>'+
                     '<td>' + index + '</td>' +
@@ -176,7 +178,7 @@ function saivianRemember() {
                 //按钮【关闭】的回调
                 layer.close(index);
             }
-        });
+        }); 
     }
 }
 

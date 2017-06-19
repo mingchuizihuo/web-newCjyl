@@ -1,5 +1,11 @@
+
 <#assign randomLength="com.idea.cjyl.core.util.FreemarkMethod"?new()>
-<#assign result= randomLength(${note.consumeNum},8)/>
+<#assign bankNumLength="com.idea.cjyl.core.util.FreemarkMethodBankCard"?new()>
+<#--银行卡号，头部位数，星星个数，尾部位数-->
+<#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
+<#--流水号，流水号位数-->
+<#assign result= randomLength("${note.consumeNum}",8)>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,18 +89,18 @@ private Double discount;//折扣-->
                 </thead>
                 <tbody id="product">
                 <#list products as productOne>
-
-                <tr>
-                    <td colspan="4">${productOne.productName}</td>
-                </tr>
+                    <tr>
+                        <td colspan="4">${productOne.productName}</td>
+                    </tr>
+                    <tr>
+                        <td>${productOne.productPrice}</td>
+                        <td>${productOne.productNum}</td>
+                        <td>${productOne.discount}</td>
+                        <td>${productOne.produtTotal}</td>
+                    </tr>
                 </#list>
 
-                <tr>
-                    <td>1680.00</td>
-                    <td>1</td>
-                    <td>0.00</td>
-                    <td>1680.00</td>
-                </tr>
+
                 <tr>
                     <td colspan="4">李维斯牛仔裤</td>
                 </tr>
@@ -113,13 +119,13 @@ private Double discount;//折扣-->
                     <td style="width: 20%;">小计：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%"><span class="consumeMoney"></span></td>
+                    <td style="width: 20%">${note.consumeMoney}</td>
                 </tr>
                 <tr>
                     <td style="width: 30%">合计金额：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%"><span class="consumeMoney"></span></td>
+                    <td style="width: 20%">${note.consumeMoney}</td>
                 </tr>
                 <tr>
                     <td style="width: 30%">折扣金额：</td>
@@ -131,7 +137,7 @@ private Double discount;//折扣-->
                     <td style="width: 30%">应付金额：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%"><span class="consumeMoney"></span></td>
+                    <td style="width: 20%">${note.consumeMoney}</td>
                 </tr>
                 </tbody>
             </table>
@@ -142,7 +148,7 @@ private Double discount;//折扣-->
                     <td style="width: 30%">收款金额：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%"><span class="consumeMoney"></span></td>
+                    <td style="width: 20%">${note.consumeMoney}</td>
                 </tr>
                 <tr>
                     <td style="width: 30%">找零金额：</td>
@@ -154,27 +160,27 @@ private Double discount;//折扣-->
                     <td style="width: 30%">外部卡：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%"><span class="consumeMoney"></span></td>
+                    <td style="width: 20%">${note.consumeMoney}</td>
                 </tr>
                 </tbody>
             </table>
             <li style="margin-left: 5%">退换货规定详见总服务台或楼层明示</li>
             <li style="margin-top: 20px;">天津银联银行卡签购单/存根</li>
             <li style="margin-top: 10px;">商户名称：金元宝商厦</li>
-            <li>商户编号：898120053112721</li>
+            <li>商户编号：${note.shopCode}</li>
             <li>终端编号：01083364</li>
             <li>交易类型：消费（SALE）</li>
-            <li>卡 号：<span id="bankNum"></span> CUP</li>
+            <li>卡 号：${bankNun} CUP</li>
             <li>收单行：银联商务天津分公司</li>
             <li>发卡行：${note.bankName}</li>
-            <li>有效期：<span id="effectDate"></span></li>
+            <li>有效期：${note.effectDate}</li>
             <li>清算日期：</li>
             <li>批次号：000356 凭证号：034776</li>
             <li>授权号：</li>
-            <li>日期时间：<span id="swipeDate"></span></li>
-            <li>交易参考： <span id="swipeNum"></span></li>
+            <li>日期时间：${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
+            <li>交易参考： ${note.swipeNum}</li>
             <li>交易金额：</li>
-            <li style="font-size: 14px; text-align: center">RMB:<span class="consumeMoney"></span>元</li>
+            <li style="font-size: 14px; text-align: center">RMB:${note.consumeMoney}元</li>
             <li>操作号：00000 收款机：162</li>
             <li>备   注：</li>
             <li style="margin-top: 20px;">持卡人签名</li>
