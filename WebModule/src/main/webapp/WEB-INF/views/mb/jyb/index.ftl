@@ -1,5 +1,5 @@
 <#assign randomLength="com.idea.cjyl.core.util.FreemarkMethod"?new()>
-<#assign result= randomLength("aaa")/>
+<#assign result= randomLength(${note.consumeNum},8)/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,11 +55,19 @@
     <#--private Date swipeDate;//刷卡时间-->
     <#--private String swipeNum;//刷卡流水号-->
     <#--private String shopCode;//商铺code-->
+
+
+<#--
+private String productName;//产品名称
+private Double productNum;//产品数量
+private Double productPrice;//产品单价
+private Double produtTotal;//产品总价
+private Double discount;//折扣-->
     <div id="print-main-body">
         <ul>
             <li class="title">欢迎光临金元宝商厦${result}</li>
             <br>
-            <li style="margin: 5px 0px;margin-left: 5%">交易号：211828 <span style="margin-left: 20px;">小票号：1</span></li>
+            <li style="margin: 5px 0px;margin-left: 5%">交易号：${result} <span style="margin-left: 20px;">小票号：1</span></li>
             <li style="margin: 5px 0px;margin-left: 5%">收款台：162 <span style="margin-left: 20px;">收银员：00082</span></li>
             <li style="margin: 5px 0px;margin-left: 5%">日期：${note.consumeDate?string("yyyy.MM.dd HH:mm:ss")}</li>
             <hr style="margin: 5px 0px;margin-left: 5%">
@@ -74,9 +82,13 @@
                     </tr>
                 </thead>
                 <tbody id="product">
+                <#list products as productOne>
+
                 <tr>
-                    <td colspan="4">李维斯牛仔裤</td>
+                    <td colspan="4">${productOne.productName}</td>
                 </tr>
+                </#list>
+
                 <tr>
                     <td>1680.00</td>
                     <td>1</td>
@@ -154,7 +166,7 @@
             <li>交易类型：消费（SALE）</li>
             <li>卡 号：<span id="bankNum"></span> CUP</li>
             <li>收单行：银联商务天津分公司</li>
-            <li>发卡行：<span id="bankName"></span></li>
+            <li>发卡行：${note.bankName}</li>
             <li>有效期：<span id="effectDate"></span></li>
             <li>清算日期：</li>
             <li>批次号：000356 凭证号：034776</li>
