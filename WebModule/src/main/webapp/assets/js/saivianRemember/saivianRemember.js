@@ -31,29 +31,6 @@
  */
 var printId = "";
 
-$(function () {
-    $(function () {
-        var div = document.getElementById('saivianList');
-        var CheckBox = div.getElementsByTagName('input');
-        $('#printer').click(function () {
-            for (var i = 0; i < CheckBox.length; i++) {
-                if(CheckBox[i].checked == true){
-                    printId += CheckBox[i].id +','
-                }
-            }
-            //页面层
-            layer.open({
-                type: 2,
-                skin: 'layui-layer-rim', //加上边框
-                area: ['1280px', '500px '], //宽高
-                content: printPage
-            });
-        });
-
-    })
-})
-
-
 
 
 function saivianRemember() {

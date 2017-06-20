@@ -17,6 +17,9 @@
     <div class="inquiry">
         <button class="btn btn-xs btn_color userjj">焦健</button>
         <button class="btn btn-xs btn_color userpy">庞姨</button>
+        <button class="btn btn-xs btn_color " id="All">全选</button>
+        <button class="btn btn-xs btn_color "id="uncheck">不选</button>
+        <button class="btn btn-xs btn_color "id="othercheck">反选</button>
         <button class="btn btn-xs btn_color editOldMan">添加</button>
         <button class="btn btn-xs btn_color" id="printer">打印</button>
     </div>
@@ -83,8 +86,59 @@
             }
         });
     });
+    $(function () {
+        var CheckAll = document.getElementById('All');
+        var UnCheck = document.getElementById('uncheck');
+        var OtherCheck = document.getElementById('othercheck');
+        var div = document.getElementById('saivianList');
+        var CheckBox = div.getElementsByTagName('input');
+        $('#printer').click(function () {
+            for (var i = 0; i < CheckBox.length; i++) {
+                if(CheckBox[i].checked == true){
+                    printId += CheckBox[i].id +','
+                }
+            }
 
+            //页面层
+            layer.open({
+                type: 2,
+                skin: 'layui-layer-rim', //加上边框
+                area: ['1280px', '500px '], //宽高
+                content: printPage
+            });
+        });
+        CheckAll.onclick = function () {
+            for (var i = 0; i < CheckBox.length; i++) {
+                CheckBox[i].checked = true;
+                printId += CheckBox[i].id +','
+            };
+            console.log(printId)
+            localStorage.printIddd = printId;
+        };
+        UnCheck.onclick = function () {
+            for (var i = 0; i < CheckBox.length; i++) {
+                CheckBox[i].checked = false;
+            };
+            printId ='';
+            console.log(printId)
+            localStorage.printIddd = printId;
+        };
+        othercheck.onclick = function () {
+            printId ='';
+            for (var i = 0; i < CheckBox.length; i++) {
+                if (CheckBox[i].checked == true) {
+                    CheckBox[i].checked = false;
+                }
+                else {
+                    printId += CheckBox[i].id +','
+                    CheckBox[i].checked = true
+                }
 
+            };
+            console.log(printId)
+            localStorage.printIddd = printId;
+        };
+    })
 </script>
 
 

@@ -11,9 +11,11 @@
 <!--封装工具-->
 <script src="${domainUrl}/assets/js/common.js"></script>
 <script>
+    var value = sessionStorage.getItem("aaa");
     $(function () {
         printData.findAll();
         $("#printEight").click(function () {
+            alert(1)
             printdiv("printEightModule")
         });
         $("#printFive").click(function () {
@@ -24,14 +26,14 @@
     function printUserPage(e) {
         return '${domainUrl}/rest/mb/' + e + '/index';
     }
-    var product = ''；
+    var product = '';
 
     function printData() {
         this.url = domainUrl + '/serve/saivian_remember/getRecord/';
         this.findAll = function () {
 
             var getData = {
-                saivianIds: 62,
+                saivianIds: localStorage.printIddd,
             };
             console.log(getData);
             getAjax(printData.url, getData, function (data) {
