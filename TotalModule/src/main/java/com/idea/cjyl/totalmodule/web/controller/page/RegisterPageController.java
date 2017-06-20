@@ -63,8 +63,11 @@ public class RegisterPageController {
         }
         //Note note = new Note();
         note.setProducts(productRList);
-        ModelAndView modelAndView = new ModelAndView("/mb/" + url + "/index", "note",
-                note);
+
+            ModelAndView modelAndView = new ModelAndView("/mb/" + url + "/index", "note",
+                    note);
+
+
         return modelAndView;
     }
 }
