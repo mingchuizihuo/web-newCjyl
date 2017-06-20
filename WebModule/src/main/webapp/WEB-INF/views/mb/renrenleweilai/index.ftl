@@ -48,8 +48,8 @@
     <div id="main-body">
         <ul>
             <li style="text-align: center">人人乐塘沽店(RenRenLe)</li>
-            <li>店号：S408 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;机号:KF15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流水号: 143 </li>
-            <li>收银员：0551 <span style="margin-left: 40px;">日期：${note.consumeDate?string("yyyy.MM.dd")}</span></li>
+            <li>店号：S419 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;机号:LH09&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流水号: 323 </li>
+            <li>收银员：0007 <span style="margin-left: 40px;">日期：${note.consumeDate?string("yyyy.MM.dd")}</span></li>
             <li>========================================</li>
             <table style="width: 100%" class="shop-table">
                 <thead>
@@ -108,7 +108,7 @@
                 </tbody>
             </table>
             <li><nobr>===============${note.swipeDate?string("HH:mm:ss")}===============</nobr></li>
-            <li><nobr  style="margin-left: 5%">团购电话：60691508，服务电话：60691518 </nobr></li>
+            <li><nobr  style="margin-left: 5%">团购电话：60691566，服务电话：60691568 </nobr></li>
             <li><nobr>此为7日内退还凭证，以现金，支票，银行卡消 </nobr></li>
             <li><nobr style="margin-left: 10%"> 费的如需发票请于30内道服务中心开具</nobr></li>
             <br>
@@ -118,17 +118,17 @@
             <li>————————————————————————</li>
             <li>商户名称/MERCHANT NAME:</li>
             <li style="text-align: center;font-size: 9px;">人人乐塘沽店</li>
-            <li>商户号/MER. NO: 898120054117082</li>
-            <li>终端号/TERM.ID: 01062542</li>
-            <li>收银机/POS.NO:  KF15</li>
-            <li>操作机/OPER.NO:0551 </li>
+            <li>商户号/MER. NO: 898120054114206</li>
+            <li>终端号/TERM.ID: 01197864</li>
+            <li>收银机/POS.NO:  LH09</li>
+            <li>操作机/OPER.NO:0007 </li>
             <li>————————————————————————</li>
             <li>卡       号/CARD NO:</li>
             <li style="text-align: center">622575******7167</li>
             <li>发卡银行/ISSU.  NO:${note.bankName} </li>
             <li>交易类型/TXN.TYPE:消费/SALE</li>
-            <li>批  次  号/BATCH .NO:003138</li>
-            <li>凭  证  号/VOUCH.NO:027643</li>
+            <li>批  次  号/BATCH .NO:000249</li>
+            <li>凭  证  号/VOUCH.NO:004160</li>
             <li>授  权  码/AUTH.   NO:204446</li>
             <li>日期时间/DATETIME:</li>
             <li style="text-align: center">${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
