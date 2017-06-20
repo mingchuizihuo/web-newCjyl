@@ -34,4 +34,6 @@ public interface SaivianRememberService extends GenericService<SaivianRemember,L
 
     //查看消费记录
     List<ConsumptionRecord> showRecord(Long saivianTableId);
+
+    List<SaivianRemember> findByName(String saivianName);
 }

@@ -16,8 +16,11 @@ public class FreemarkMethodBankCard implements TemplateMethodModel {
         int startNum = (int) list.get(1);//开始位数；
         int sparkNum = (int) list.get(2);//星星个数；
         int endNum = (int) list.get(3);//尾部个数；
+        String sparkStr = "";
+        for (int i = 0; i <sparkNum ; i++) {
+            sparkStr+="*";
+        }
 
-
-        return bankNum.substring(0,sparkNum);
+        return bankNum.substring(0,sparkNum)+sparkStr+bankNum.substring(bankNum.length()-endNum,bankNum.length());
     }
 }

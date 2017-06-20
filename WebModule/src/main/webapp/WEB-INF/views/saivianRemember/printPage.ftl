@@ -76,7 +76,7 @@
                         data: getData2,//将对象序列化成JSON字符串
                         async: false,
                         success: function (dataa) {
-                            if(data.aaData[i].shopCode == "shangyuwei" && data.aaData[i].shopCode == "shangyuwei" == "xinghai"){
+                            if(data.aaData[i].shopCode == "syw" || data.aaData[i].shopCode == "shangyuwei" == "xinghai"){
                                 $("#printFiveModule").append(dataa);
                             }else{
                                 $("#printEightModule").append(dataa);

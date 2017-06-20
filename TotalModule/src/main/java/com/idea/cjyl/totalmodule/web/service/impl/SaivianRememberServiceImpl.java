@@ -89,6 +89,14 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
         return consumptionRecords;
     }
 
+    @Override
+    public List<SaivianRemember> findByName(String saivianName) {
+        SaivianRememberExample example = new SaivianRememberExample();
+        example.createCriteria().andUserNameLike(saivianName);
+        List<SaivianRemember> saivianRemembers = saivianrememberDao.selectByExample(example);
+        return saivianRemembers;
+    }
+
 
     public Note consumption2Note(ConsumptionRecord consumptionRecord,List<Product> products,List<Shop> shops){
 

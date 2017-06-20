@@ -22,6 +22,12 @@
         <button class="btn btn-xs btn_color "id="othercheck">反选</button>
         <button class="btn btn-xs btn_color editOldMan">添加</button>
         <button class="btn btn-xs btn_color" id="printer">打印</button>
+        <button class="btn btn-xs btn_color" id ="qx">全选</button>
+        <script>
+            $("#qx").on("click",function () {
+                $(".table ")
+            })
+        </script>
     </div>
 <#--老人基本信息-->
     <script>

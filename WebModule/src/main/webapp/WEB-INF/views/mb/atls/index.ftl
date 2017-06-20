@@ -103,7 +103,7 @@
                 </tr>
                 </tbody>
             </table>
-            <li>BankCard NO： 622700*********1963</li>
+            <li>BankCard NO：${bankNun}</li>
             <li>欢迎惠顾</li>
             <li>请妥善保存此票据，以作为退换凭证</li>
             <li>请到广场客服中心快飘 </li>

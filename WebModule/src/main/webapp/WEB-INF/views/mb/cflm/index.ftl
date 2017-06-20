@@ -53,7 +53,6 @@
             <br>
             <li class="title">结账单</li>
             <li>NO：${result}-${note.consumeDate?string("yyyyMMdd-HHmm")}</li>
-            <li> 结算 NO:  JS00011704190076 </li>
             <li>厅：C区 <span style="margin-left: 70px;">客位：C20</span></li>
             <li>开始时间：${note.consumeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
             <li>结束时间：${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
