@@ -3,7 +3,8 @@
 <#--银行卡号，头部位数，星星个数，尾部位数-->
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
-<#assign result= randomLength("${note.consumeNum}",8)>
+<#assign result= randomLength("${note.consumeNum}",9)>
+<#assign swipeNum=randomLength("${note.swipeNum}",12)>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +57,7 @@
             <li class="title">天津塘沽未来汇店</li>
             <br>
             <li>收银员：500042 <span style="margin-left: 10px;">营业员：500042</span></li>
-            <li>单号：17042202097101006</li>
+            <li>单号：${note.consumeDate?string("yyyyMMdd HH:mm:ss")}${result}</li>
             <li>${note.consumeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
             <li>收银机：01 <span style="margin-left: 10px;">收银员：后台交易</span></li>
             <li>——————————————————</li>
@@ -69,15 +70,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                <#list products as productOne>
+                <#list note.products as productOne>
                 <tr>
                     <td colspan="4">${productOne.productName}</td>
                 </tr>
                 <tr>
-                    <td>${productOne.productPrice}</td>
+                    <td>${productOne.productPrice}.00</td>
                     <td>${productOne.productNum}</td>
                     <td>${productOne.discount}</td>
-                    <td>${productOne.produtTotal}</td>
+                    <td>${productOne.produtTotal}.00</td>
                 </tr>
                 </#list>
                 </tbody>
@@ -87,13 +88,13 @@
                 <tbody>
                 <tr>
                     <td style="width: 20%">应收：</td>
-                    <td style="width: 25%">${note.consumeMoney}</td>
+                    <td style="width: 25%">${note.consumeMoney}.00</td>
                     <td style="width: 35%">抹零：</td>
                     <td style="width: 20%">0.00</td>
                 </tr>
                 <tr>
                     <td style="width: 20%">实收：</td>
-                    <td style="width: 25%">${note.consumeMoney}</td>
+                    <td style="width: 25%">${note.consumeMoney}.00</td>
                     <td style="width: 35%">优惠：</td>
                     <td style="width: 20%">0.00</td>
                 </tr>
@@ -102,7 +103,7 @@
             <li>——————————————————</li>
             <li>电话：</li>
             <li>地址：天津市天津市滨海新区和羽道</li>
-            <li style="text-align: center;margin: 10px 0px;"><img src="../img/yinlian.png" style="width: 70%"></li>
+            <li style="text-align: center;margin: 10px 0px;"><img src="${domainUrl}/assets/images/img/yinlian.png" style="width: 70%"></li>
             <li>商户名称（MERCHANT NAME）</li>
             <li>天津市和平区膜界百货店</li>
             <li>分店名称(SHOP NAME): 天津市和平区</li>
@@ -120,11 +121,11 @@
             <li>批次号(BATCH NO.）:000079</li>
             <li>凭证号(VOUCHER NO.):002174</li>
             <li>授权码（AUTH NO.）:</li>
-            <li>参考号(REFER NO.):000161894901</li>
+            <li>参考号(REFER NO.):${swipeNum}</li>
             <li>日期时间（DATE/TIME）</li>
             <li> ${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
             <li>金额（AMOUNT）</li>
-            <li><nobr  style="font-size: 22px; font-weight: 600">RMB：${note.consumeMoney}</nobr></li>
+            <li><nobr  style="font-size: 22px; font-weight: 600">RMB：${note.consumeMoney}.00</nobr></li>
             <li><nobr class="small">TC:9317908F4D896B3E TVR:0000000000 CSM:01</nobr></li>
             <li><nobr class="small">APP LABEL:PBOC CREDIT AID:A000000333010102</nobr></li>
             <li><nobr class="small">TSI:0000 ATC:0057 ONPR NUM:D2246327</nobr></li>

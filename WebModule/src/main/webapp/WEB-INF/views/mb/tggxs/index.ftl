@@ -4,6 +4,7 @@
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
 <#assign result= randomLength("${note.consumeNum}",8)>
+<#assign swipeNum = randomLength("${note.swipeNum}",12)>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,15 +70,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <#list products as productOne>
+                <#list note.products as productOne>
                 <tr>
                     <td colspan="4">${productOne.productName}</td>
                 </tr>
                 <tr>
-                    <td style="opacity: 0">${productOne.productPrice}</td>
+                    <td style="opacity: 0">${productOne.productPrice}.00</td>
                     <td>${productOne.productNum}</td>
                     <td>${productOne.discount}</td>
-                    <td>${productOne.produtTotal}</td>
+                    <td>${productOne.produtTotal}.00</td>
                 </tr>
                 </#list>
                 </tbody>
@@ -87,15 +88,15 @@
                 <tbody>
                 <tr>
                     <td style="width: 20%">数量：</td>
-                    <td style="width: 25%">${note.productNum}</td>
-                    <td style="width: 35%">件数：</td>
-                    <td style="width: 20%">${note.productNum}</td>
+                    <td style="width: 25%">${products?size}</td>
+                    <td style="width: 35%"></td>
+                    <td style="width: 20%"></td>
                 </tr>
                 <tr>
                     <td style="width: 20%">合计：</td>
-                    <td style="width: 25%">${note.consumeMoney}</td>
-                    <td style="width: 35%;opacity: 0">人民币：</td>
-                    <td style="width: 20%;opacity: 0">${note.consumeMoney}</td>
+                    <td style="width: 25%">${note.consumeMoney}.00</td>
+                    <td style="width: 35%">人民币：</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 </tbody>
             </table>
@@ -104,7 +105,7 @@
             <li style="text-align: center">谢谢惠顾！</li>
             <li style="text-align: center">欢迎下次光临</li>
             <br>
-            <li style="text-align: center;margin: 10px 0px;"><img src="../img/yinlian.png" style="width: 70%"></li>
+            <li style="text-align: center;margin: 10px 0px;"><img src="${domainUrl}/assets/images/img/yinlian.png" style="width: 70%"></li>
             <li>商户名称（MERCHANT NAME）</li>
             <li>津滨海塘沽供销社批发站（供销社烟酒</li>
             <li>专卖）</li>
@@ -121,11 +122,11 @@
             <li>批次号(BATCH NO.）:00012</li>
             <li>凭证号(VOUCHER NO.):002285</li>
             <li>授权码（AUTH NO.）:</li>
-            <li>参考号(REFER NO.)${note.swipeNum}</li>
+            <li>参考号(REFER NO.)${swipeNum}</li>
             <li>日期时间（DATE/TIME）</li>
             <li style="text-align: center">${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
             <li>金额（AMOUNT）</li>
-            <li style="font-size: 16px;text-align: center ">RMB：${note.consumeMoney}</li>
+            <li style="font-size: 16px;text-align: center ">RMB：${note.consumeMoney}.00</li>
             <li>备注（REFERENCE）:</li>
             <li><nobr>CSN:001ARQC:972C4FD924CFE8C3</nobr></li>
             <li><nobr>UnprNo:599e8646 ATC:001F ATC:004F</nobr></li>

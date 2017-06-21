@@ -3,7 +3,9 @@
 <#--银行卡号，头部位数，星星个数，尾部位数-->
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
-<#assign result= randomLength("${note.consumeNum}",8)>
+<#assign result= randomLength("${note.consumeNum}",6)>
+<#assign swipeNum = randomLength("${note.swipeNum}",12)>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +54,7 @@
         <ul>
             <li class="title">欢迎光临永旺商厦</li>
             <br>
-            <li style="margin: 5px 0px;margin-left: 5%">交易号：211828 <span style="margin-left: 20px;">小票号：1</span></li>
+            <li style="margin: 5px 0px;margin-left: 5%">交易号：${result} <span style="margin-left: 20px;">小票号：1</span></li>
             <li style="margin: 5px 0px;margin-left: 5%">收款台：133 <span style="margin-left: 20px;">收银员：00099</span></li>
             <li style="margin: 5px 0px;margin-left: 5%">日期：${note.consumeDate?string("yyyy.MM.dd HH:mm:ss")}</li>
             <hr style="margin: 5px 0px;margin-left: 5%">
@@ -67,15 +69,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                <#list products as productOne>
+                <#list note.products as productOne>
                 <tr>
                     <td colspan="4">${productOne.productName}</td>
                 </tr>
                 <tr>
-                    <td>${productOne.productPrice}</td>
+                    <td>${productOne.productPrice}.00</td>
                     <td>${productOne.productNum}</td>
                     <td>${productOne.discount}</td>
-                    <td>${productOne.produtTotal}</td>
+                    <td>${productOne.produtTotal}.00</td>
                 </tr>
                 </#list>
 
@@ -88,25 +90,25 @@
                     <td style="width: 20%;">小计：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td style="width: 30%">合计金额：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td style="width: 30%">折扣金额：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td style="width: 30%">应付金额：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 </tbody>
             </table>
@@ -117,7 +119,7 @@
                     <td style="width: 30%">收款金额：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td style="width: 30%">找零金额：</td>
@@ -129,7 +131,7 @@
                     <td style="width: 30%">外部卡：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 </tbody>
             </table>
@@ -141,11 +143,10 @@
             <li><nobr>卡类型：${note.bankName} <span style="margin-left: 10px;">收单行号：03010000</span></nobr></li>
             <li style="font-size: 14px;">交易卡号：</li>
             <li><b>${bankNun} （C)</b></li>
-            <li>卡序列号：00</li>
             <li>消费(SALE)</li>
             <li><nobr>有效期：${note.effectDate}		<span style="margin-left: 10px;">票据号：015731</span></nobr></li>
-            <li><nobr>流水号：022071		<span style="margin-left: 10px;">日    期：${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</span></nobr></li>
-            <li><nobr>金额： <span style="margin-left: 10px;">RMB</span><span style="margin-left: 10px;">${note.consumeMoney}</span></nobr></li>
+            <li><nobr>流水号：${swipeNum}		<span style="margin-left: 10px;">日    期：${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</span></nobr></li>
+            <li><nobr>金额： <span style="margin-left: 10px;">RMB</span><span style="margin-left: 10px;">${note.consumeMoney}.00</span></nobr></li>
             <li>备注：</li>
             <li>TC: F688FB75E4604E5E	AID:A000000333010101</li>
             <li>TUR：000004E000	ATC：0041</li>

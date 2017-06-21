@@ -4,7 +4,11 @@
 <#--银行卡号，头部位数，星星个数，尾部位数-->
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
-<#assign result= randomLength("${note.consumeNum}",8)>
+<#assign result= randomLength("${note.consumeNum}",5)>
+<#assign six= randomLength("${note.consumeNum}",6)>
+
+<#assign swipeNum = randomLength("${note.swipeNum}",8)>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +57,7 @@
         <ul>
             <li style="font-size: 12px;"><u><b>欢迎光临</b> <span style="font-size: 10px;">天津韩元素服装店</span></u></li>
             <br>
-            <li><b>交易号：84228<span style="margin-left: 20px;">小票：1</span></b></li>
+            <li><b>交易号：${result}<span style="margin-left: 20px;">小票：1</span></b></li>
             <br>
             <li><b>收银台：032 <span style="margin-left: 20px;">收银员：60522</span></b></li>
             <br>
@@ -68,15 +72,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                <#list products as productOne>
+                <#list note.products as productOne>
                 <tr>
                     <td colspan="4">${productOne.productName}</td>
                 </tr>
                 <tr>
-                    <td>${productOne.productPrice}</td>
+                    <td>${productOne.productPrice}.00</td>
                     <td>${productOne.productNum}</td>
                     <td>${productOne.discount}</td>
-                    <td>${productOne.produtTotal}</td>
+                    <td>${productOne.produtTotal}.00</td>
                 </tr>
                 </#list>
                 </tbody>
@@ -84,23 +88,23 @@
             <table style="width: 100%">
                 <tr>
                     <td>小计:</td>
-                    <td style="text-align: center">${note.consumeMoney}</td>
+                    <td style="text-align: center">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>合计金额:</td>
-                    <td style="text-align: center">${note.consumeMoney}</td>
+                    <td style="text-align: center">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>折扣金额:</td>
-                    <td style="text-align: center">${note.discount}</td>
+                    <td style="text-align: center">0.00</td>
                 </tr>
                 <tr>
                     <td>应付金额:</td>
-                    <td style="text-align: center">${note.consumeMoney}</td>
+                    <td style="text-align: center">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>收款金额:</td>
-                    <td style="text-align: center">${note.consumeMoney}</td>
+                    <td style="text-align: center">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>找零金额:</td>
@@ -108,7 +112,7 @@
                 </tr>
                 <tr>
                     <td>国内卡:</td>
-                    <td style="text-align: center">${note.consumeMoney}</td>
+                    <td style="text-align: center">${note.consumeMoney}.00</td>
                 </tr>
             </table>
             <br>
@@ -116,7 +120,7 @@
             <br>
             <li>交易流水号：000135</li>
             <br>
-            <li>消费金额：${note.consumeMoney}</li>
+            <li>消费金额：${note.consumeMoney}.00</li>
             <br>
             <li><b>商户名称：天津韩元素服装店</b></li>
             <br>
@@ -132,7 +136,7 @@
             <br>
             <li>有效期：0000</li>
             <br>
-            <li>金额：${note.consumeMoney}</li>
+            <li>金额：${note.consumeMoney}.00</li>
             <br>
             <li>交易日期：${note.swipeDate?string("MM-dd-yyyy")}</li>
             <br>
@@ -142,11 +146,11 @@
             <br>
             <li>终端批次号：000001</li>
             <br>
-            <li>终端流水号：000128</li>
+            <li>终端流水号：${six}</li>
             <br>
-            <li>检索参考号：93753211</li>
+            <li>检索参考号：${swipeNum}</li>
             <br>
-            <li>总计：  RMB：${note.consumeMoney}</li>
+            <li>总计：  RMB：${note.consumeMoney}.00</li>
             <br>
             <li>为防止银行卡卡号泄露，保障持卡安全，</li>
             <br>

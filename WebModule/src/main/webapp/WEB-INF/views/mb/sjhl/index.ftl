@@ -3,7 +3,8 @@
 <#--银行卡号，头部位数，星星个数，尾部位数-->
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
-<#assign result= randomLength("${note.consumeNum}",8)>
+<#assign result= randomLength("${note.consumeNum}",11)>
+<#assign swipeNum = randomLength("${note.swipeNum}",12)>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,11 +68,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <#list products as productOne>
+                <#list note.products as productOne>
                 <tr>
                     <td>${productOne.productName}</td>
                     <td>${productOne.productNum}</td>
-                    <td>${productOne.produtTotal}</td>
+                    <td>${productOne.produtTotal}.00</td>
                 </tr>
                 </#list>
 
@@ -82,25 +83,25 @@
                 <tbody>
                 <tr>
                     <td style="width: 20%">件数：</td>
-                    <td style="width: 25%">${note.productNum}</td>
+                    <td style="width: 25%">${products?size}</td>
                     <td style="width: 35%">应付：</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td style="width: 20%">实收：</td>
                     <td style="width: 25%">银行卡</td>
                     <td style="width: 35%">人民币：</td>
-                    <td style="width: 20%">${note.consumeMoney}</td>
+                    <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>
                 </tbody>
             </table>
-            <li>小票号：NO.2017040600030027901</li>
+            <li>小票号：NO.${note.consumeDate?string("yyyyMMdd")}${result}</li>
             <br>
             <br>
             <li style="text-align: center">谢谢惠顾！</li>
             <li style="text-align: center">欢迎下次光临</li>
             <br>
-            <li style="text-align: center;margin: 10px 0px;"><img src="../img/yinlian.png" style="width: 70%"></li>
+            <li style="text-align: center;margin: 10px 0px;"><img src="${domainUrl}/assets/images/img/yinlian.png" style="width: 70%"></li>
             <li>商户名称:世纪华联超市远洋城旗舰</li>
             <li>店</li>
             <li>商铺编号:898120053311581</li>
@@ -113,10 +114,10 @@
             <li>批次号:000001</li>
             <li style="font-size: 16px;">凭证号:000286</li>
             <li style="font-size: 16px;">授权码:</li>
-            <li>参考号:${note.swipeNum}</li>
+            <li>参考号:${swipeNum}</li>
             <li>交易日期:${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
             <li>金额（AMOUNT）</li>
-            <li style="font-size: 16px;text-align: center ">RMB：${note.consumeMoney}</li>
+            <li style="font-size: 16px;text-align: center ">RMB：${note.consumeMoney}.00</li>
             <li><nobr>备注:</nobr></li>
             <li><nobr>CSN:ARQC:3BE0/B26B1/AAF22</nobr></li>
             <li><nobr>UnprNo:73EE82F4 ATC:004F</nobr></li>

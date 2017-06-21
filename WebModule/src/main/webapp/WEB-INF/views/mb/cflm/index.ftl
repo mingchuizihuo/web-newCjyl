@@ -55,7 +55,6 @@
             <li>NO：${result}-${note.consumeDate?string("yyyyMMdd-HHmm")}</li>
             <li>厅：C区 <span style="margin-left: 70px;">客位：C20</span></li>
             <li>开始时间：${note.consumeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
-            <li>结束时间：${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
             <br>
             <table style="width: 100%" class="shop-table">
                 <thead>
@@ -70,12 +69,12 @@
             <hr style="margin: 5px 0px;">
             <table style="width: 100%" class="shop-table">
                 <tbody>
-                    <#list products as productOne>
+                    <#list note.products as productOne>
                     <tr>
                         <td>${productOne.productName}</td>
                         <td>${productOne.productNum}</td>
-                        <td>${productOne.productPrice}</td>
-                        <td>${productOne.produtTotal}</td>
+                        <td>${productOne.productPrice}.00</td>
+                        <td>${productOne.produtTotal}.00</td>
                     </tr>
                     </#list>
 
@@ -96,7 +95,7 @@
                     <td>合计：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>总优惠：</td>
@@ -108,13 +107,13 @@
                     <td>应收：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>实收：</td>
                     <td style="opacity: 0">1</td>
                     <td style="opacity: 0">1</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>抹零：</td>
@@ -155,7 +154,7 @@
             <li>授权号：566461 <span style="margin-left: 30px">有效期：${note.effectDate}</span></li>
             <li>参考号：${note.swipeNum}</li>
             <li>日期/时间：${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
-            <li>金额(AMOUNT):RMB ${note.consumeMoney}</li>
+            <li>金额(AMOUNT):RMB ${note.consumeMoney}.00</li>
             <hr style="border: 1px dashed #000000;margin: 5px 0px;">
             <li>备注/REFERENCE</li>
             <hr style="border: 1px dashed #000000;margin: 5px 0px;">

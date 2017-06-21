@@ -4,6 +4,9 @@
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
 <#assign result= randomLength("${note.consumeNum}",8)>
+<#assign swipeNum= randomLength("${note.swipeNum}",12)>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,18 +66,18 @@
             </tr>
             </thead>
             <tbody>
-            <#list products as productOne>
+            <#list note.products as productOne>
             <tr>
                 <td>${productOne.productName}</td>
                 <td>${productOne.productNum}</td>
-                <td>${productOne.produtTotal}</td>
+                <td>${productOne.produtTotal}.00</td>
             </tr>
             </#list>
 
             <tr>
                 <td>消费合计:</td>
                 <td style="opacity: 0">1</td>
-                <td>${note.consumeMoney}</td>
+                <td>${note.consumeMoney}.00</td>
             </tr>
             </tbody>
         </table>
@@ -96,16 +99,16 @@
         <li>收单行 ACQ 52800001</li>
         <li>卡号 CARD NO.</li>
         <li style="font-size: 12px;">${bankNun}</li>
-        <li>有效期 EXP DATE 0000</li>
+        <li>有效期 EXP DATE ${note.effectDate}</li>
         <li>交易类型 TRANS TYPE</li>
         <li style="font-size: 12px;">消费（SALE）</li>
         <li>批次号 BAICH NO.000005</li>
         <li>凭证号 VOUCHER NO.525161</li>
-        <li>参考号 REFER NO.${note.swipeNum}</li>
+        <li>参考号 REFER NO.${swipeNum}</li>
         <li>日期／时间 DATE／TIME</li>
         <li>${note.swipeDate?string("yyyy-mm-dd HH:mm:ss")}</li>
         <li>交易金额 AMOUNT</li>
-        <li style="font-size: 12px;">RMB: ${note.consumeMoney}元</li>
+        <li style="font-size: 12px;">RMB: ${note.consumeMoney}.00元</li>
         <li>—————————————————</li>
         <li>备注 REFERENCE</li>
         <li>CVM:420300   Unpr Num:2427E318</li>

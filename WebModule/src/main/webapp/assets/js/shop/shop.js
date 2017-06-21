@@ -65,12 +65,22 @@ function shop() {
                     '<td>'+
                     '<a class="btn btn-default btnEdit">编辑</a>' +
                     '<a class="btn btn-default " onclick="shop.del('+dOne.id+')">删除</a>' +
+                    '<a class="btn btn-default" onclick="shop.showMb(\''+dOne.shopCode+'\')">显示模版</显示模版></a>' +
                     '</td></tr>';
 
             });
 
             $("#shopList").html(html);
         })
+    };
+    this.showMb = function (code) {
+        layer.open({
+            type: 2,
+            title: '打印小票记录查看',
+            area: ['50%', '80%'],
+            shadeClose: true, //点击遮罩关闭
+            content: domainUrl + '/mb/'+code+'/index',
+        });
     };
     this.del = function (id) {
         console.log(123)

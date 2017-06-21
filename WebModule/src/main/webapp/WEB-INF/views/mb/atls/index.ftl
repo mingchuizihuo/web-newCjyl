@@ -63,11 +63,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <#list products as productOne>
+                    <#list note.products as productOne>
                     <tr>
                         <td>${productOne.productName}</td>
                         <td>${productOne.productNum}</td>
-                        <td>${productOne.productPrice}</td>
+                        <td>${productOne.productPrice}.00</td>
                     </tr>
                     </#list>
                 </tbody>
@@ -83,13 +83,13 @@
                 <tbody>
                 <tr>
                     <td>应付金额：</td>
-                    <td style="opacity: 0">1</td>
-                    <td>${note.consumeMoney}</td>
+                    <td style="opacity: 0"></td>
+                    <td>${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>已付金额：</td>
                     <td style="opacity: 0">1</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td>找零金额：</td>
@@ -99,7 +99,7 @@
                 <tr>
                     <td>银行卡(内卡)：</td>
                     <td style="opacity: 0">1</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                 </tr>
                 </tbody>
             </table>
@@ -112,7 +112,7 @@
             <li style="margin-top: 10px;">商户名称：奥特莱斯</li>
             <li>商户编号：898120053112721</li>
             <li>交易类型：消费（SALE）</li>
-            <li>卡 号： ${note.bankNum} CUP</li>
+            <li>卡 号： ${bankNun} CUP</li>
             <li>收单行：银联商务天津分公司</li>
             <li>发卡行：${note.bankName}</li>
             <li>有效期：${note.effectDate}</li>
@@ -122,7 +122,7 @@
             <li>日期时间：${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
             <li>交易参考：${note.swipeNum}</li>
             <li>交易金额：</li>
-            <li style="font-size: 14px; text-align: center">RMB:${note.consumeMoney}元</li>
+            <li style="font-size: 14px; text-align: center">RMB:${note.consumeMoney}.00元</li>
             <li>操作号：00000 收款机：162</li>
             <li>备   注：</li>
             <li style="margin-top: 20px;">持卡人签名</li>

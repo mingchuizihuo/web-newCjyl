@@ -10,8 +10,8 @@ import java.util.Date;
 public class DateConverter implements Converter<String, Date> {
     @Override
     public Date convert(String source) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat dataFormat2 = new SimpleDateFormat("yyyy年MM月dd日");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:dd");
+        SimpleDateFormat dataFormat2 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:dd");
         dateFormat.setLenient(false);
         try {
 

@@ -24,7 +24,7 @@
     });
     var domainUrl = '${domainUrl}/rest';
     function printUserPage(e) {
-        return '${domainUrl}/rest/mb/' + e + '/index';
+        return '${domainUrl}/rest/mbs/' + e + '/index';
     }
     var product = '';
 
@@ -78,8 +78,11 @@
                         success: function (dataa) {
                             if(data.aaData[i].shopCode == "syw" || data.aaData[i].shopCode == "shangyuwei" == "xinghai"){
                                 $("#printFiveModule").append(dataa);
+                                $("#printFiveModule").append('<div style="page-break-after: always;"></div>');
                             }else{
                                 $("#printEightModule").append(dataa);
+                                $("#printEightModule").append('<div style="page-break-after: always;"></div>');
+
 
                             }
                         }

@@ -14,7 +14,7 @@ public class FreemarkMethod implements TemplateMethodModel {
     @Override
     public Object exec(List list) throws TemplateModelException {
         String random= (String) list.get(0);
-        int num = (int) list.get(1);//获取位数
+        int num = Integer.parseInt(list.get(1).toString());//获取位数
         return random.substring(0,num);
     }
 }

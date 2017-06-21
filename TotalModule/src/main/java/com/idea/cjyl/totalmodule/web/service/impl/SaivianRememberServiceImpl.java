@@ -99,29 +99,29 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
 
 
     public Note consumption2Note(ConsumptionRecord consumptionRecord,List<Product> products,List<Shop> shops){
-
+        Random random = new Random();
+        Date consumeDate = new Date(consumptionRecord.getConsumeDate().getTime()+(1000*60*60*(random.nextInt(20)+1))+1000*60*random.nextInt(59));
         Note note = new Note();
-        note.setConsumeNum(consumeNum(18));
-        note.setSwipeNum(consumeNum(18));
-        note.setConsumeDate(consumptionRecord.getConsumeDate());
+        note.setConsumeNum(consumeNum(20));
+        note.setSwipeNum(consumeNum(20));
+        note.setConsumeDate(consumeDate);
 
         note.setBankName(consumptionRecord.getBankName());
         note.setBankNum(consumptionRecord.getBankCardNum());
         note.setEffectDate(consumptionRecord.getBankEffectiveDate());
-        note.setSwipeDate(new Date(consumptionRecord.getConsumeDate().getTime()+1000*60));
+        note.setSwipeDate(new Date(consumeDate.getTime()+1000*60));
         note.setShopCode(consumptionRecord.getShopCode());
 
 
         //获取本商铺的产品
         List<Product> product = getProduct(products, getShopCode(shops, consumptionRecord.getShopCode()));
-        List<ProductR> products1 =getProducts(consumptionRecord,product);
+        if(product.size()!=0){
+            List<ProductR> products1 =getProducts(consumptionRecord,product);
+            note.setProducts(products1);
 
-        note.setProducts(products1);
-//        ProductR product = new ProductR("测试商品1",(double)2.0,(double)123.5,(double)123.5*2);
-//        ProductR product2 = new ProductR("测试商品2",(double)3.0,(double)115.5,(double)115.5*3);
-//        products1.add(product);
-//        products1.add(product2);
-//        note.setProducts(products1);
+        }
+
+
 
 
 
@@ -175,21 +175,27 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
                 }
 
 
-            }
-            while(true){
-                int i1 = random.nextInt(products.size());
-                Product product = products.get(i1);
-                if(Double.parseDouble(product.getProductPrice())<money){
+            }else{
 
-                    double floor = Math.floor(money / Double.parseDouble(product.getProductPrice()));
-                    balance =balance+ money - Double.parseDouble(product.getProductPrice())*floor;
+                while(true){
+                    if(products.size()==0){
+                        System.out.println(products.size());
+                    }
+                    int i1 = random.nextInt(products.size());
+                    Product product = products.get(i1);
+                    if(Double.parseDouble(product.getProductPrice())<money){
 
-                    ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor,0.0);
-                    productRS.add(productR);
-                    resultTotal+= Double.parseDouble(product.getProductPrice())*floor;
-                    break;
+                        double floor = Math.floor(money / Double.parseDouble(product.getProductPrice()));
+                        balance =balance+ money - Double.parseDouble(product.getProductPrice())*floor;
+
+                        ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor,0.0);
+                        productRS.add(productR);
+                        resultTotal+= Double.parseDouble(product.getProductPrice())*floor;
+                        break;
+                    }
                 }
             }
+
         }
 
 

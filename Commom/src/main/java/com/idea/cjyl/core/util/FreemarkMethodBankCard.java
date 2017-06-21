@@ -13,14 +13,14 @@ public class FreemarkMethodBankCard implements TemplateMethodModel {
     @Override
     public Object exec(List list) throws TemplateModelException {
         String bankNum = (String) list.get(0);//银行卡
-        int startNum = (int) list.get(1);//开始位数；
-        int sparkNum = (int) list.get(2);//星星个数；
-        int endNum = (int) list.get(3);//尾部个数；
+        int startNum = Integer.parseInt(list.get(1).toString());//开始位数；
+        int sparkNum = Integer.parseInt(list.get(2).toString());//星星个数；
+        int endNum = Integer.parseInt(list.get(3).toString());//尾部个数；
         String sparkStr = "";
         for (int i = 0; i <sparkNum ; i++) {
             sparkStr+="*";
         }
 
-        return bankNum.substring(0,sparkNum)+sparkStr+bankNum.substring(bankNum.length()-endNum,bankNum.length());
+        return bankNum.substring(0,startNum)+sparkStr+bankNum.substring(bankNum.length()-endNum,bankNum.length());
     }
 }

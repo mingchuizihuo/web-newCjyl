@@ -4,6 +4,8 @@
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
 <#assign result= randomLength("${note.consumeNum}",8)>
+<#assign swipeNum= randomLength("${note.swipeNum}",12)>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,9 +66,9 @@
             <li>交易类型：消费（s）</li>
             <li>批次号：000005</li>
             <li>凭证号：000083</li>
-            <li>参考号：${note.swipeNum}</li>
+            <li>参考号：${swipeNum}</li>
             <li>日期：${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
-            <li style="font-size: 12px;">交易金额：<b>${note.consumeMoney}</b></li>
+            <li style="font-size: 12px;">交易金额：<b>${note.consumeMoney}.00</b></li>
             <br>
             <hr style="margin: 5px 0px; border: 0.5px solid #000000;">
             <li>备注：</li>

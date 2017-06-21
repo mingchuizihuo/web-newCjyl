@@ -4,6 +4,7 @@
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
 <#assign result= randomLength("${note.consumeNum}",8)>
+<#assign swipeNum= randomLength("${note.swipeNum}",12)>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +51,7 @@
             <li style="text-align: center">人人乐塘沽店(RenRenLe)</li>
             <li>店号：S408 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;机号:KF15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流水号: 143 </li>
             <li>收银员：0551 <span style="margin-left: 40px;">日期：${note.consumeDate?string("yyyy.MM.dd")}</span></li>
-            <li>========================================</li>
+            <li>=====================================</li>
             <table style="width: 100%" class="shop-table">
                 <thead>
                     <tr>
@@ -60,11 +61,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <#list products as productOne>
+                    <#list note.products as productOne>
                     <tr>
                         <td>${productOne.productName}</td>
                         <td>${productOne.productNum}</td>
-                        <td>${productOne.produtTotal}</td>
+                        <td>${productOne.produtTotal}.00</td>
                     </tr>
                     </#list>
                 </tbody>
@@ -74,24 +75,24 @@
                 <tr>
                     <td>合计：</td>
                     <td style="opacity: 0">0.00</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                     <td style="opacity: 0">0.00</td>
                 </tr>
                 </tbody>
             </table>
-            <li>收： <span style="margin-left: 10px;">银联软银行:S40625*</span> <span style="margin-left: 20px;">${note.consumeMoney}</span></li>
+            <li>收： <span style="margin-left: 10px;">银联软银行:S40625*</span> <span style="margin-left: 20px;">${note.consumeMoney}.00</span></li>
             <li>售价商品数：1</li>
             <table style="width: 100%" class="shop-table">
                 <tbody>
                 <tr>
                     <td>收款总额：</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                     <td>找回</td>
                     <td>0.00</td>
                 </tr>
                 <tr>
                     <td>实收：</td>
-                    <td>${note.consumeMoney}</td>
+                    <td>${note.consumeMoney}.00</td>
                 </tr>
                 <tr>
                     <td style="text-align: center">本次积分：</td>
@@ -132,8 +133,8 @@
             <li>授  权  码/AUTH.   NO:204446</li>
             <li>日期时间/DATETIME:</li>
             <li style="text-align: center">${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>
-            <li>交易参考号/REF.NO: ${note.swipeNum}</li>
-            <li>金额/AMOUNT  (RMB):${note.consumeMoney}</li>
+            <li>交易参考号/REF.NO: ${swipeNum}</li>
+            <li>金额/AMOUNT  (RMB):${note.consumeMoney}.00</li>
             <li>————————————————————————</li>
             <li>备注/REFERENCE:</li>
             <br>
