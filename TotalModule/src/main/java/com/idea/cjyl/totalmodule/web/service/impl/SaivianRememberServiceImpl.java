@@ -138,13 +138,23 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
 
         String consumeMoney = consumptionRecord.getConsumeMoney();
         Double resultTotal = 0.0;
-        Double d = Double.parseDouble(consumeMoney);
         List<ProductR> productRS = new ArrayList<>();
+
+        //总金额
+        Double d = Double.parseDouble(consumeMoney);
+        if(d>1900 && products.size()!=0){
+            ProductR productMax = getProductMax(products);
+            resultTotal = resultTotal+productMax.getProdutTotal();
+            d = d-productMax.getProdutTotal();
+            productRS.add(productMax);
+        }
+
 
         //随机数准备
         Map<Integer,Double[]> map1 = new HashMap<>();
         Double[] d1 = {3.0/5,1.0/5,3.0/10};
         Double[] d2 ={2.0/5,1.0/5,3.0/10,5.7/10};
+
         map1.put(1,d1);
         map1.put(2,d2);
 
@@ -154,20 +164,35 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
 
         for(int i = 0; i<map1.get(randomNum).length;i++){
 
-            Double money = map1.get(randomNum)[i]*d;
-            if(i==map1.get(randomNum).length-1){
+            //拆分后的金额
+            Double money = map1.get(randomNum)[i]* d;
+            if(i==map1.get(randomNum).length-1){//最后一次循环
                 money = money+balance;
+                int count = 0;
                 while(true){
-                    int i1 = random.nextInt(products.size());
+                    if(count==30){
+                        ProductR productMax = getProductMax(products);
+                        resultTotal = resultTotal+productMax.getProdutTotal();
+                        d = d-productMax.getProdutTotal();
+                        productRS.add(productMax);
+                    }
+                    int i1 = random.nextInt(products.size());//从商品列表中获取随机一个商品
                     Product product = products.get(i1);
                     if(Double.parseDouble(product.getProductPrice())<money){
 
+                        System.out.println(1);
                         double floor = Math.ceil(money / Double.parseDouble(product.getProductPrice()));
+                        if(floor>10){
+                            count++;
+                            continue;
+                        }
+
                         balance =balance+ money - Double.parseDouble(product.getProductPrice())*floor;
 
                         ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor,0.0);
 
                         productRS.add(productR);
+                        products.remove(product);
                         resultTotal+= Double.parseDouble(product.getProductPrice())*floor;
 
                         break;
@@ -178,6 +203,7 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
             }else{
 
                 while(true){
+                    System.out.println(2);
                     if(products.size()==0){
                         System.out.println(products.size());
                     }
@@ -185,11 +211,16 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
                     Product product = products.get(i1);
                     if(Double.parseDouble(product.getProductPrice())<money){
 
+                        //获取商品个数
                         double floor = Math.floor(money / Double.parseDouble(product.getProductPrice()));
+                        if(floor>10){
+                            continue;
+                        }
                         balance =balance+ money - Double.parseDouble(product.getProductPrice())*floor;
 
                         ProductR productR = new ProductR(product.getProductName(),floor,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice())*floor,0.0);
                         productRS.add(productR);
+                        products.remove(product);
                         resultTotal+= Double.parseDouble(product.getProductPrice())*floor;
                         break;
                     }
@@ -207,6 +238,34 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
 
     }
 
+    /**
+     * 获取最大
+     * @param products 本商铺的产品表
+     * @return
+     */
+    public ProductR getProductMax(List<Product> products){
+        Double maxMoney = 0.0;
+        ProductR maxProduct = new ProductR();
+        for (Product product : products) {
+            if(Double.parseDouble(product.getProductPrice())>maxMoney){
+                maxMoney = Double.parseDouble(product.getProductPrice());
+                ProductR productn = new ProductR(product.getProductName(),1.0,Double.parseDouble(product.getProductPrice()), Double.parseDouble(product.getProductPrice()),0.0);
+                maxProduct = productn;
+            }
+        }
+
+        return maxProduct;
+
+    }
+    //判断商品是否重复
+    public boolean isExist(List<ProductR> products,String productName){
+        for (ProductR product : products) {
+            if(product.getProductName().equals(productName)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     //获取本商店应有产品

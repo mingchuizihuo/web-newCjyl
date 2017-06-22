@@ -88,7 +88,7 @@
                 <tbody>
                 <tr>
                     <td style="width: 20%">数量：</td>
-                    <td style="width: 25%">${products?size}</td>
+                    <td style="width: 25%">${note.products?size}</td>
                     <td style="width: 35%"></td>
                     <td style="width: 20%"></td>
                 </tr>

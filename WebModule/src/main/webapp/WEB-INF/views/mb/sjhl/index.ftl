@@ -83,7 +83,7 @@
                 <tbody>
                 <tr>
                     <td style="width: 20%">件数：</td>
-                    <td style="width: 25%">${products?size}</td>
+                    <td style="width: 25%">${note.products?size}</td>
                     <td style="width: 35%">应付：</td>
                     <td style="width: 20%">${note.consumeMoney}.00</td>
                 </tr>

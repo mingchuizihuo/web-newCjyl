@@ -109,7 +109,7 @@
             </tr>
             <tr>
                 <td>已买商品总数:</td>
-                <td>${products?size}</td>
+                <td>${note.products?size}</td>
                 <td> C.ID:</td>
                 <td> 2009</td>
             </tr>

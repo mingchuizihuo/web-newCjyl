@@ -39,32 +39,6 @@
             getAjax(printData.url, getData, function (data) {
                 console.log(JSON.stringify(data.aaData))
                 for (var i = 0; i < data.aaData.length; i++) {
-//                    $.ajax({
-//                        type: "get",
-//                        url: printUserPage(data.aaData[0].shopCode),
-//                        data:{},
-//                        async:false,
-//                        // cache:isCache,
-//                        success: function (dataa) {
-//                            product = '';
-//                            html= '<div id="printM'+i+'">'+dataa+'</div>';
-//                            for(var j = 0 ; j < data.aaData[i].products.length;j++){
-//                                product +=' <tr> <td colspan="4">'+data.aaData[i].products[j].productName+'</td> </tr> <tr> ' +
-//                                        '<td>'+data.aaData[i].products[j].productPrice+'</td> <td>'+data.aaData[i].products[j].productNum+'</td> ' +
-//                                        '<td>0.00</td> <td>'+data.aaData[i].products[j].produtTotal+'</td> </tr>'
-//                            }
-//                            $("#printEightModule").append(html);
-//                            $("#printM"+i+"").find("#product").html(product);
-//                            $("#printM"+i+"").find("#consumeDate").html(data.aaData[i].consumeDate.replace(/年/,".").replace(/月/,".").replace(/日/,"."));
-//                            $("#printM"+i+"").find("#bankName").html(data.aaData[i].bankName);
-//                            $("#printM"+i+"").find(".consumeMoney").html(data.aaData[i].consumeMoney);
-//                            $("#printM"+i+"").find("#bankNum").html(data.aaData[i].bankNum.substring(0,5)+"******"+data.aaData[i].bankNum.substring(11));
-//                            $("#printM"+i+"").find("#effectDate").html(data.aaData[i].effectDate);
-//                            $("#printM"+i+"").find("#swipeDate").html(data.aaData[i].swipeDate.replace(/年/,"-").replace(/月/,"-").replace(/日/,""));
-//                            $("#printM"+i+"").find("#swipeNum").html(data.aaData[i].swipeNum);
-//
-//                        }
-//                    });
                     var getData2 = data.aaData[i];
                     var productList = getData2.products;
                     console.log(JSON.stringify(productList));
@@ -76,7 +50,11 @@
                         data: getData2,//将对象序列化成JSON字符串
                         async: false,
                         success: function (dataa) {
-                            if(data.aaData[i].shopCode == "syw" || data.aaData[i].shopCode == "shangyuwei" == "xinghai"){
+                            if(data.aaData[i].shopCode == "syw" ||
+                                    data.aaData[i].shopCode == "tggxs" ||
+                                data.aaData[i].shopCode== "sjhl" ||
+                                    data.aaData[i].shopCode=="mj" ||
+                                    data.aaData[i].shopCode=="xhsc"){
                                 $("#printFiveModule").append(dataa);
                                 $("#printFiveModule").append('<div style="page-break-after: always;"></div>');
                             }else{
