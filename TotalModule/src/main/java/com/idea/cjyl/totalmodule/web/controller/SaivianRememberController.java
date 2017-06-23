@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-* Created by 10238 on 2016/10/12.
-*/
+ * Created by 10238 on 2016/10/12.
+ */
 @Controller
 @RequestMapping("serve/saivian_remember")
 public class SaivianRememberController extends GenericController {
@@ -28,45 +28,48 @@ public class SaivianRememberController extends GenericController {
     private SaivianRememberService saivianrememberService;
 
     /**
-        * 添加赛比安人员
-        * @param saivianremember
-        * @return
-    */
+     * 添加赛比安人员
+     *
+     * @param saivianremember
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value="add" ,method = RequestMethod.POST)
-    public ResultData add(SaivianRemember saivianremember){
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public ResultData add(SaivianRemember saivianremember) {
 
         try {
-                    saivianrememberService.insert(saivianremember);
-            }catch (Exception e){
-                return ResultData.build().addErroe();
-            }
+            saivianrememberService.insert(saivianremember);
+        } catch (Exception e) {
+            return ResultData.build().addErroe();
+        }
         return ResultData.build();
 
     }
 
     /**
-    * 删除赛比安人员
-    * @param id
-    * @return
-    */
+     * 删除赛比安人员
+     *
+     * @param id
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value="del" ,method = RequestMethod.POST)
+    @RequestMapping(value = "del", method = RequestMethod.POST)
     public ResultData del(Long id) {
         try {
-                    saivianrememberService.delete(id);
-            } catch (Exception e) {
-                return ResultData.build().delError();
-            }
+            saivianrememberService.delete(id);
+        } catch (Exception e) {
+            return ResultData.build().delError();
+        }
         return ResultData.build();
 
     }
+
     /**
-    * 批量删除赛比安人员
-    *
-    * @param ids
-    * @return
-    */
+     * 批量删除赛比安人员
+     *
+     * @param ids
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "dels", method = RequestMethod.POST)
     public ResultData del(String ids) {
@@ -76,51 +79,55 @@ public class SaivianRememberController extends GenericController {
                 saivianrememberService.delete(Long.parseLong(id));
             }
 
-            } catch (Exception e) {
-                return ResultData.build().delError();
-            }
-            return ResultData.build();
+        } catch (Exception e) {
+            return ResultData.build().delError();
+        }
+        return ResultData.build();
 
     }
+
     /**
-    * 修改赛比安人员
-    * @param saivianremember
-    * @return
-    */
+     * 修改赛比安人员
+     *
+     * @param saivianremember
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value="update",method = RequestMethod.POST)
-    public ResultData update(SaivianRemember saivianremember){
+    @RequestMapping(value = "update", method = RequestMethod.POST)
+    public ResultData update(SaivianRemember saivianremember) {
         try {
             saivianrememberService.update(saivianremember);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResultData.build().upDateError();
         }
         return ResultData.build();
     }
 
     /**
-    * 分页查询所有赛比安人员
-    * @param currentPage
-    * @param limit
-    * @return
-    */
+     * 分页查询所有赛比安人员
+     *
+     * @param currentPage
+     * @param limit
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value="findAll",method = RequestMethod.GET)
-    public ResultData findAll(Integer currentPage,Integer limit){
+    @RequestMapping(value = "findAll", method = RequestMethod.GET)
+    public ResultData findAll(Integer currentPage, Integer limit) {
         return ResultData.build().
-        parsePageBean(saivianrememberService.findAll(currentPage,limit));
+                parsePageBean(saivianrememberService.findAll(currentPage, limit));
     }
 
 
     /**
      * 根据用户id 获取旗下会员
+     *
      * @param userId
      * @return
      */
     @ResponseBody
-    @RequestMapping(value="findAllByUser",method = RequestMethod.GET)
-    public ResultData findAllByUser(Long userId){
+    @RequestMapping(value = "findAllByUser", method = RequestMethod.GET)
+    public ResultData findAllByUser(Long userId) {
         List<SaivianRemember> saivianRememberList = saivianrememberService.
                 findAllByUser(userId);
         return ResultData.build().parseList(saivianRememberList);
@@ -128,12 +135,13 @@ public class SaivianRememberController extends GenericController {
 
     /**
      * 获取消费记录
+     *
      * @param saivianIds
      * @return
      */
     @ResponseBody
-    @RequestMapping(value="getRecord",method = RequestMethod.GET)
-    public ResultData getRecord(String saivianIds){
+    @RequestMapping(value = "getRecord", method = RequestMethod.GET)
+    public ResultData getRecord(String saivianIds) {
 
         String[] strings = saivianIds.split(",");
         List<Long> longs = new ArrayList<>();
@@ -147,26 +155,49 @@ public class SaivianRememberController extends GenericController {
     }
 
 
-
-
     /**
      * 获取商铺信息
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value="getShop",method = RequestMethod.GET)
-    public ResultData getShop(){
+    @RequestMapping(value = "getShop", method = RequestMethod.GET)
+    public ResultData getShop() {
         List<Shop> shops = saivianrememberService.getShop();
         return ResultData.build().parseList(shops);
     }
 
-    @RequestMapping(value="showRecord",method = RequestMethod.GET)
-    public ModelAndView showRecord(Long saivianTableId, Model model){
+    @RequestMapping(value = "showRecord", method = RequestMethod.GET)
+    public ModelAndView showRecord(Long saivianTableId, Model model) {
         List<ConsumptionRecord> consumptionRecords = saivianrememberService.showRecord(saivianTableId);
-        ModelAndView modelAndView = new ModelAndView("/saivianRemember/showRecord","recordList",consumptionRecords);
+        ModelAndView modelAndView = new ModelAndView("/saivianRemember/showRecord", "recordList", consumptionRecords);
 
 
+        return modelAndView;
+    }
+
+    /**
+     * 更新赛比安时间
+     * @param saivianRemember
+     * @return
+     */
+    @RequestMapping(value = "updateSaivianDate",method = RequestMethod.POST)
+    @ResponseBody
+    public ResultData updateSaivianDate(SaivianRemember saivianRemember){
+        saivianrememberService.updateSaivianDate(saivianRemember);
+        return ResultData.build();
+    }
+
+    /**
+     * 获取赛比安会员信息
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "showRememberInfo",method = RequestMethod.POST)
+    public ModelAndView showRememberInfo(Long id){
+        SaivianRemember saivianRemember = saivianrememberService.selectById(id);
+        ModelAndView modelAndView = new ModelAndView("/saivianRemember/addSaivianRemember","saivianRemember",saivianRemember);
 
         return modelAndView;
     }

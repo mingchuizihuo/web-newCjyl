@@ -15,54 +15,54 @@
         private Long id;
         <tr>
             <td class="blue">赛比安会员Id</td>
-            <td><input type="text" id = "saivianId"></td>
+            <td><input type="text" id = "saivianId" value="${saivianRemember.saivianId}"></td>
         </tr>
 
         <tr>
             <td class="blue">用户真实姓名</td>
-            <td><input type="text" id = "userName"></td>
+            <td><input type="text" id = "userName" value="${saivianRemember.userName}"></td>
         </tr>
 
         <tr>
             <td class="blue">登录名</td>
-            <td><input type="text" id = "loginName"></td>
+            <td><input type="text" id = "loginName" value="${saivianRemember.loginName}"></td>
         </tr>
 
 
         <tr>
             <td class="blue">登录密码</td>
-            <td><input type="text" id = "loginPassword"></td>
+            <td><input type="text" id = "loginPassword" value="${saivianRemember.loginPassword}"></td>
         </tr>
 
         <tr>
             <td class="blue">会员电话</td>
-            <td><input type="text" id = "tel"></td>
+            <td><input type="text" id = "tel" value="${saivianRemember.tel}"></td>
         </tr>
         <tr>
             <td class="blue">会员邮箱</td>
-            <td><input type="text" id = "email"></td>
+            <td><input type="text" id = "email" value="${saivianRemember.email}"></td>
         </tr>
 
 
         <tr>
             <td class="blue">邮箱密码</td>
-            <td><input type="text" id = "emailPwd"></td>
+            <td><input type="text" id = "emailPwd" value="${saivianRemember.emailPwd}"></td>
         </tr>
 
 
         <tr>
             <td class="blue">每日工资</td>
-            <td><input type="text" id = "wage"></td>
+            <td><input type="text" id = "wage" value="${saivianRemember.wage}"></td>
         </tr>
 
         <tr>
             <td class="blue">总金额</td>
-            <td><input type="text" id = "totalMoney"></td>
+            <td><input type="text" id = "totalMoney" value="${saivianRemember.totalMoney}"></td>
         </tr>
 
         <tr>
             <td class=blue">银行名称</td>
-            <td><input type="text" id="bankName"></td>
+            <td><input type="text" id="bankName" value="${saivianRemember.bankName}"> </td>
         </tr>
         <tr>
             <td class=blue">银行类型</td>
@@ -75,39 +75,17 @@
         </tr>
         <tr>
             <td class=blue">银行卡号</td>
-            <td><input type="text" id="bankCardNum"></td>
+            <td><input type="text" id="bankCardNum" value="${saivianRemember.bankCardNum}"></td>
         </tr>
         <tr>
             <td class=blue">银行有效期</td>
-            <td><input type="text" id="bankEffectiveDate"></td>
+            <td><input type="text" id="bankEffectiveDate"
+                       value="${saivianRemember.bankEffectiveDate}"></td>
         </tr>
-
-
 
         </tbody>
     </table>
+
 </div>
-
-<#--alydate日期插件-->
-<script src="${domainUrl}/assets/js/outJs/layui/layui.js"></script>
-<script>
-
-    /*//    使用layer日期
-    layui.use('laydate', function () {
-        var laydate = layui.laydate;
-        document.getElementById('birthday').onclick = function () {
-            laydate({
-                elem: this,
-                festival: true, //显示节日
-                choose: function (datas) { //选择日期完毕的回调
-                    console.log(datas)
-                }
-
-            });
-        }
-    });*/
-
-
-</script>
 
 

@@ -97,6 +97,15 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
         return saivianRemembers;
     }
 
+    /**
+     * 修改赛比安时间数据
+     * @param saivianRemember
+     */
+    @Override
+    public void updateSaivianDate(SaivianRemember saivianRemember) {
+        saivianrememberDao.updateByPrimaryKey(saivianRemember);
+    }
+
 
     public Note consumption2Note(ConsumptionRecord consumptionRecord,List<Product> products,List<Shop> shops){
         Random random = new Random();

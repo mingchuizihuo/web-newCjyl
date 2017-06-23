@@ -30,7 +30,7 @@
  </#list>
  */
 var printId = "";
-
+var saivianUserId = 1;
 
 
 function saivianRemember() {
@@ -44,24 +44,26 @@ function saivianRemember() {
             $.each(d, function (index, dOne) {
 
                 html += '<tr>' +
-                    '<td><input type="checkbox" id="'+dOne.id+'"/></td>'+
+                    '<td><input type="checkbox" id="' + dOne.id + '"/></td>' +
                     '<td>' + index + '</td>' +
                     '<td>' + dOne.saivianId + '</td>' +
                     '<td>' + dOne.userName + '</td>' +
+                    '<td>' + dOne.loginName+'</td>'+
                     '<td>' + dOne.loginPassword + '</td>' +
                     '<td>' + dOne.email + '</td>' +
                     '<td>' + dOne.emailPwd + '</td>' +
-                    '<td onclick="saivianRemember.updateRenewalDate('+dOne.id+')"' +
-                    ' id="renewalDate'+dOne.id+'">' + dOne.renewalDate + '</td>' +
-                    '<td onclick="saivianRemember.updateRedemptionDate('+dOne.id+')"' +
-                    ' id="redemptionDate'+dOne.id+'">' + dOne.redemptionDate + '</td>' +
-                    '<td onclick="saivianRemember.updateClickDate('+dOne.id+')"' +
-                    ' id="clickDate'+dOne.id+'">' + dOne.clickDate + '</td>' +
+                    '<td>' + dOne.bankCardNum + '</td>' +
+                    '<td onclick="saivianRemember.updateRenewalDate(' + dOne.id + ')"' +
+                    ' id="renewalDate' + dOne.id + '">' + dOne.renewalDate + '</td>' +
+                    '<td onclick="saivianRemember.updateRedemptionDate(' + dOne.id + ')"' +
+                    ' id="redemptionDate' + dOne.id + '">' + dOne.redemptionDate + '</td>' +
+                    '<td onclick="saivianRemember.updateClickDate(' + dOne.id + ')"' +
+                    ' id="clickDate' + dOne.id + '">' + dOne.clickDate + '</td>' +
                     '<td>' +
-                    '<a class="btn btn-default" onclick="saivianRemember.showRecord('+dOne.id+')">查看详情</a>' +
+                    '<a class="btn btn-default" onclick="saivianRemember.showRecord(' + dOne.id + ')">查看详情</a>' +
                     '</td>' +
                     '<td>' +
-                    '<a class="btn btn-default" onclick="saivianRemember.showRecord('+dOne.id+')">查看消费记录</a>' +
+                    '<a class="btn btn-default" onclick="saivianRemember.showRecord(' + dOne.id + ')">查看消费记录</a>' +
                     '</td>' +
                     '<td>' +
                     '<a class="btn btn-default" onclick="saivianRemember.edit(' + dOne.id + ')">编辑</a>' +
@@ -72,14 +74,103 @@ function saivianRemember() {
             $("#saivianList").html(html);
         })
     };
+    //修改续费时间
+    this.updateRenewalDate = function (id) {
+        //    使用layer日期
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            document.getElementById('renewalDate' + id).onclick = function () {
+                laydate({
+                    elem: this,
+                    festival: true, //显示节日
+                    choose: function (datas) { //选择日期完毕的回调
+                        var postData = {
+                            id: id,
+                            renewalDate: datas
+                        }
+                        postAjax(domainUrl + '/serve/saivian_remember/updateSaivianDate',
+                            postData, function (data) {
+                                layer.close(index);
+                                saivianRemember.findAll(saivianUserId);
+                            }
+                        )
+                    }
+
+                });
+            }
+        });
+    }
+    //修改赎回时间
+    this.updateRedemptionDate = function (id) {
+        //    使用layer日期
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            document.getElementById('redemptionDate' + id).onclick = function () {
+                laydate({
+                    elem: this,
+                    festival: true, //显示节日
+                    choose: function (datas) { //选择日期完毕的回调
+                        var postData = {
+                            id: id,
+                            renewalDate: datas
+                        }
+                        postAjax(domainUrl + '/serve/saivian_remember/updateSaivianDate',
+                            postData, function (data) {
+                                layer.close(index);
+                                saivianRemember.findAll(saivianUserId);
+                            }
+                        )
+                    }
+
+                });
+            }
+        });
+    }
+    //修改点击赎回时间
+    this.updateClickDate = function (id) {
+        //    使用layer日期
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            document.getElementById('clickDate' + id).onclick = function () {
+                laydate({
+                    elem: this,
+                    festival: true, //显示节日
+                    choose: function (datas) { //选择日期完毕的回调
+                        var postData = {
+                            id: id,
+                            renewalDate: datas
+                        }
+                        postAjax(domainUrl + '/serve/saivian_remember/updateSaivianDate',
+                            postData, function (data) {
+                                layer.close(index);
+                                saivianRemember.findAll(saivianUserId);
+                            }
+                        )
+                    }
+
+                });
+            }
+        });
+    }
     //查看会员详情
-    this.showRememberInfo =  function (id) {
+    this.showRememberInfo = function (id) {
         layer.open({
             type: 2,
             title: '打印小票记录查看',
             area: ['50%', '80%'],
             shadeClose: true, //点击遮罩关闭
-            content: domainUrl + '/serve/saivian_remember/showRecord?saivianTableId='+id,
+            content: domainUrl + '/serve/saivian_remember/showRememberInfo?id=' + id,
+            btn: ['确认编辑', '关闭']
+            , btn1: function (index, layero) {
+
+
+            }, btn2: function (index, layero) {
+                layer.close(index);
+            },
+            cancel: function (index) {
+                //按钮【关闭】的回调
+                layer.close(index);
+            }
         });
     }
 
@@ -92,11 +183,30 @@ function saivianRemember() {
             title: '打印小票记录查看',
             area: ['50%', '80%'],
             shadeClose: true, //点击遮罩关闭
-            content: domainUrl + '/serve/saivian_remember/showRecord?saivianTableId='+id,
+            content: domainUrl + '/serve/saivian_remember/showRecord?saivianTableId=' + id,
             btn: ['确认编辑', '关闭']
             , btn1: function (index, layero) {
+                postData = {
+                    id: id,
+                    bankName: layer.getChildFrame("#bankName", index).val(),
+                    bankType: layer.getChildFrame("#bankType", index).val(),
+                    bankCardNum: layer.getChildFrame("#bankCardNum", index).val(),
+                    saivianId: layer.getChildFrame("#saivianId", index).val(),
+                    userName: layer.getChildFrame("#userName", index).val(),
+                    loginName: layer.getChildFrame("#loginName", index).val(),
+                    loginPassword: layer.getChildFrame("#loginPassword", index).val(),
+                    tel: layer.getChildFrame("#tel", index).val(),
+                    email: layer.getChildFrame("#email", index).val(),
+                    emailPwd: layer.getChildFrame("#emailPwd", index).val(),
+                    wage: layer.getChildFrame("#wage", index).val(),
+                    totalMoney: layer.getChildFrame("#totalMoney", index).val(),
 
-
+                }
+                postAjax(domainUrl + '/serve/saivian_remember/update', postData, function (data) {
+                        layer.close(index);
+                        saivianRemember.findAll(saivianUserId);
+                    }
+                )
             }, btn2: function (index, layero) {
                 layer.close(index);
             },
@@ -126,7 +236,7 @@ function saivianRemember() {
                 }
                 postAjax(domainUrl + '/serve/saivian_remember/update', postData, function (data) {
                         layer.close(index);
-                        saivianRemember.findAll(2);
+                        saivianRemember.findAll(saivianUserId);
                     }
                 )
 
@@ -172,12 +282,14 @@ function saivianRemember() {
 }
 
 var saivianRemember = new saivianRemember();
-saivianRemember.findAll(1);
+saivianRemember.findAll(saivianUserId);
 //点击焦健
 $(".userjj").on("click", function () {
-    saivianRemember.findAll(1);
+    saivianUserId = 1;
+    saivianRemember.findAll(saivianUserId);
 })
 //点击庞姨
 $(".userpy").on("click", function () {
-    saivianRemember.findAll(2);
+    saivianUserId = 2;
+    saivianRemember.findAll(saivianUserId);
 })

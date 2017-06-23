@@ -45,6 +45,7 @@
                 <th>登录密码</th>
                 <th>邮箱</th>
                 <th>邮箱密码</th>
+                <th>银行卡号</th>
                 <th>续费日期</th>
                 <th>赎回日期</th>
                 <th>点击申请赎回日期</th>
@@ -62,30 +63,12 @@
         <div id="demo1"></div>
     </div>
 </div>
+<script src="${domainUrl}/assets/js/outJs/layui/layui.js"></script>
 <script src="${domainUrl}/assets/js/saivianRemember/saivianRemember.js"></script>
 <script>
     var printPage = '${domainUrl}/rest/saivianRemember/printPage';
 
-    //弹出一个修改层(老人用户信息)
-    $('.editOldMan').on('click', function () {
-        layer.open({
-            type: 2,
-            title: '用户信息详情',
-            area: ['50%', '80%'],
-            shadeClose: true, //点击遮罩关闭
-            content: '${domainUrl}/rest/oldMan/editOldMan',
-            btn: ['确认编辑', '关闭']
-            , btn1: function (index, layero) {
 
-                //按钮【关闭】的回调
-                layer.close(index);
-            }, btn2: function (index, layero) {
-            },
-            cancel: function () {
-                //右上角关闭回调
-            }
-        });
-    });
     $(function () {
         var CheckAll = document.getElementById('All');
         var UnCheck = document.getElementById('uncheck');
