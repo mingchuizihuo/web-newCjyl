@@ -43,33 +43,23 @@ function saivianRemember() {
             var html = "";
             $.each(d, function (index, dOne) {
 
-
                 html += '<tr>' +
                     '<td><input type="checkbox" id="'+dOne.id+'"/></td>'+
                     '<td>' + index + '</td>' +
                     '<td>' + dOne.saivianId + '</td>' +
                     '<td>' + dOne.userName + '</td>' +
-                    '<td>' + dOne.loginName + '</td>' +
                     '<td>' + dOne.loginPassword + '</td>' +
-                    '<td>' + dOne.tel + '</td>' +
                     '<td>' + dOne.email + '</td>' +
                     '<td>' + dOne.emailPwd + '</td>' +
-                    '<td>' + dOne.bankName + '</td>';
-                if (dOne.bankType == 0) {
-                    html += '<td>储蓄卡</td>';
-                } else if (dOne.bankType == 1) {
-                    html += '<td>信用卡</td>';
-                }else{
-                    html += '<td>无</td>';
-                }
-
-                html += '<td>' + dOne.bankCardNum + '</td>' +
-                    '<td>' + dOne.bankEffectiveDate + '</td>' +
-                    '<td>' + dOne.renewalDate + '</td>' +
-                    '<td>' + dOne.redemptionDate + '</td>' +
-                    '<td>' + dOne.clickDate + '</td>' +
-                    '<td>' + dOne.wage + '</td>' +
-                    '<td>' + dOne.totalMoney + '</td>' +
+                    '<td onclick="saivianRemember.updateRenewalDate('+dOne.id+')"' +
+                    ' id="renewalDate'+dOne.id+'">' + dOne.renewalDate + '</td>' +
+                    '<td onclick="saivianRemember.updateRedemptionDate('+dOne.id+')"' +
+                    ' id="redemptionDate'+dOne.id+'">' + dOne.redemptionDate + '</td>' +
+                    '<td onclick="saivianRemember.updateClickDate('+dOne.id+')"' +
+                    ' id="clickDate'+dOne.id+'">' + dOne.clickDate + '</td>' +
+                    '<td>' +
+                    '<a class="btn btn-default" onclick="saivianRemember.showRecord('+dOne.id+')">查看详情</a>' +
+                    '</td>' +
                     '<td>' +
                     '<a class="btn btn-default" onclick="saivianRemember.showRecord('+dOne.id+')">查看消费记录</a>' +
                     '</td>' +
@@ -82,7 +72,18 @@ function saivianRemember() {
             $("#saivianList").html(html);
         })
     };
+    //查看会员详情
+    this.showRememberInfo =  function (id) {
+        layer.open({
+            type: 2,
+            title: '打印小票记录查看',
+            area: ['50%', '80%'],
+            shadeClose: true, //点击遮罩关闭
+            content: domainUrl + '/serve/saivian_remember/showRecord?saivianTableId='+id,
+        });
+    }
 
+    //查看消费记录
     this.showRecord = function (id) {
 
 
@@ -92,6 +93,17 @@ function saivianRemember() {
             area: ['50%', '80%'],
             shadeClose: true, //点击遮罩关闭
             content: domainUrl + '/serve/saivian_remember/showRecord?saivianTableId='+id,
+            btn: ['确认编辑', '关闭']
+            , btn1: function (index, layero) {
+
+
+            }, btn2: function (index, layero) {
+                layer.close(index);
+            },
+            cancel: function (index) {
+                //按钮【关闭】的回调
+                layer.close(index);
+            }
         });
 
     }
@@ -155,7 +167,7 @@ function saivianRemember() {
                 //按钮【关闭】的回调
                 layer.close(index);
             }
-        }); 
+        });
     }
 }
 

@@ -22,7 +22,8 @@
         <button class="btn btn-xs btn_color shopsc">商场</button>
         <button class="btn btn-xs btn_color shopfz">服装</button>
         <button class="btn btn-xs btn_color shophzp">化妆品</button>
-
+        <button class="btn btn-xs btn_color shophsg">水果</button>
+        <button class="btn btn-xs btn_color shophcfg">咖啡店</button>
         <button class="btn btn-xs btn_color shopsy">所有</button>
 
 

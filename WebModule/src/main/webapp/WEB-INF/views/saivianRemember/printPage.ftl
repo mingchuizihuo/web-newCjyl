@@ -1,9 +1,9 @@
 <input type="button" value="打印八厘米小票" id="printEight">
 <input type="button" value="打印五厘米小票" id="printFive">
-<div id="printEightModule">
+<div id="printEightModule" style="float: left">
 
 </div>
-<div id="printFiveModule">
+<div id="printFiveModule" style="float: right">
 
 </div>
 <!--jquery文件-->
@@ -15,7 +15,6 @@
     $(function () {
         printData.findAll();
         $("#printEight").click(function () {
-            alert(1)
             printdiv("printEightModule")
         });
         $("#printFive").click(function () {
@@ -52,7 +51,7 @@
                         success: function (dataa) {
                             if(data.aaData[i].shopCode == "syw" ||
                                     data.aaData[i].shopCode == "tggxs" ||
-                                data.aaData[i].shopCode== "sjhl" ||
+                                    data.aaData[i].shopCode== "sjhl" ||
                                     data.aaData[i].shopCode=="mj" ||
                                     data.aaData[i].shopCode=="xhsc"){
                                 $("#printFiveModule").append(dataa);

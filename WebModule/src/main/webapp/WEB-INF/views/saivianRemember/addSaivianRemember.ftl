@@ -12,27 +12,78 @@
     <h5>基本信息</h5>
     <table class="table table-bordered">
         <tbody>
-            <tr>
-                <td class=blue">银行名称</td>
-                <td><input type="text" id="bankName"></td>
-            </tr>
-            <tr>
-                <td class=blue">银行类型</td>
-                <td>
-                    <select  id="bankType">
-                        <option value="0">储蓄卡</option>
-                        <option value="1">信用卡</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td class=blue">银行卡号</td>
-                <td><input type="text" id="bankCardNum"></td>
-            </tr>
-            <tr>
-                <td class=blue">银行有效期</td>
-                <td><input type="text" id="bankEffectiveDate"></td>
-            </tr>
+        private Long id;
+        <tr>
+            <td class="blue">赛比安会员Id</td>
+            <td><input type="text" id = "saivianId"></td>
+        </tr>
+
+        <tr>
+            <td class="blue">用户真实姓名</td>
+            <td><input type="text" id = "userName"></td>
+        </tr>
+
+        <tr>
+            <td class="blue">登录名</td>
+            <td><input type="text" id = "loginName"></td>
+        </tr>
+
+
+        <tr>
+            <td class="blue">登录密码</td>
+            <td><input type="text" id = "loginPassword"></td>
+        </tr>
+
+        <tr>
+            <td class="blue">会员电话</td>
+            <td><input type="text" id = "tel"></td>
+        </tr>
+        <tr>
+            <td class="blue">会员邮箱</td>
+            <td><input type="text" id = "email"></td>
+        </tr>
+
+
+        <tr>
+            <td class="blue">邮箱密码</td>
+            <td><input type="text" id = "emailPwd"></td>
+        </tr>
+
+
+        <tr>
+            <td class="blue">每日工资</td>
+            <td><input type="text" id = "wage"></td>
+        </tr>
+
+        <tr>
+            <td class="blue">总金额</td>
+            <td><input type="text" id = "totalMoney"></td>
+        </tr>
+
+        <tr>
+            <td class=blue">银行名称</td>
+            <td><input type="text" id="bankName"></td>
+        </tr>
+        <tr>
+            <td class=blue">银行类型</td>
+            <td>
+                <select  id="bankType">
+                    <option value="0">储蓄卡</option>
+                    <option value="1">信用卡</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class=blue">银行卡号</td>
+            <td><input type="text" id="bankCardNum"></td>
+        </tr>
+        <tr>
+            <td class=blue">银行有效期</td>
+            <td><input type="text" id="bankEffectiveDate"></td>
+        </tr>
+
+
+
         </tbody>
     </table>
 </div>
