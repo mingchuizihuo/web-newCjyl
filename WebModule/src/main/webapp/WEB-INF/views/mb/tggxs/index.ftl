@@ -57,7 +57,7 @@
         <ul>
             <li class="title">塘沽供销社 </li>
             <li>9999  NO.01201703120008 </li>
-            <li>${note.consumeDate?string("yyyy.mm.dd HH:mm:ss")}</li>
+            <li>${note.consumeDate?string("yyyy.MM.dd HH:mm:ss")}</li>
             <li>收银员：01 <span style="margin-left: 10px;">收银员：后台交易</span></li>
             <li>——————————————————</li>
             <table style="width: 100%" class="shop-table">
@@ -75,9 +75,9 @@
                     <td colspan="4">${productOne.productName}</td>
                 </tr>
                 <tr>
+                    <td></td>
                     <td style="opacity: 0">${productOne.productPrice}.00</td>
                     <td>${productOne.productNum}</td>
-                    <td>${productOne.discount}</td>
                     <td>${productOne.produtTotal}.00</td>
                 </tr>
                 </#list>
@@ -104,6 +104,12 @@
             <br>
             <li style="text-align: center">谢谢惠顾！</li>
             <li style="text-align: center">欢迎下次光临</li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <li style="text-align: center;margin: 10px 0px;"><img src="${domainUrl}/assets/images/img/yinlian.png" style="width: 70%"></li>
             <li>商户名称（MERCHANT NAME）</li>

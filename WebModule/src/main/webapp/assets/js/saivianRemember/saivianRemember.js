@@ -44,7 +44,7 @@ function saivianRemember() {
             $.each(d, function (index, dOne) {
 
                 html += '<tr>' +
-                    '<td><input type="checkbox" id="' + dOne.id + '"/></td>' +
+                    '<td><input name = "nation" type="checkbox" id="' + dOne.id + '"/></td>' +
                     '<td>' + index + '</td>' +
                     '<td>' + dOne.saivianId + '</td>' +
                     '<td>' + dOne.userName + '</td>' +
@@ -53,25 +53,24 @@ function saivianRemember() {
                     '<td>' + dOne.email + '</td>' +
                     '<td>' + dOne.emailPwd + '</td>' +
                     '<td>' + dOne.bankCardNum + '</td>' +
-                    '<td onclick="saivianRemember.updateRenewalDate(' + dOne.id + ')"' +
-                    ' id="renewalDate' + dOne.id + '">' + dOne.renewalDate + '</td>' +
+                    '<td><input  id="renewalDate'+dOne.id+'" type="text" value="'+dOne.renewalDate +'"/></td>' +
                     '<td onclick="saivianRemember.updateRedemptionDate(' + dOne.id + ')"' +
-                    ' id="redemptionDate' + dOne.id + '">' + dOne.redemptionDate + '</td>' +
+                    ' id="redemptionDate' + dOne.id + '"><input type="text" value="'+dOne.redemptionDate+'"/></td>' +
                     '<td onclick="saivianRemember.updateClickDate(' + dOne.id + ')"' +
-                    ' id="clickDate' + dOne.id + '">' + dOne.clickDate + '</td>' +
+                    ' id="clickDate' + dOne.id + '"><input type="text" value="'+dOne.clickDate+'"></td>' +
                     '<td>' +
-                    '<a class="btn btn-default" onclick="saivianRemember.showRecord(' + dOne.id + ')">查看详情</a>' +
+                    '<a class="btn btn-default" onclick="saivianRemember.showRememberInfo(' + dOne.id + ')">查看详情</a>' +
                     '</td>' +
                     '<td>' +
-                    '<a class="btn btn-default" onclick="saivianRemember.showRecord(' + dOne.id + ')">查看消费记录</a>' +
+                    '<a class="btn btn-default" onclick="saivianRemember.showRecord(' + dOne.id + ')">查看消费详情</a>' +
                     '</td>' +
                     '<td>' +
-                    '<a class="btn btn-default" onclick="saivianRemember.edit(' + dOne.id + ')">编辑</a>' +
                     '<a class="btn btn-default" onclick="saivianRemember.addMoney(' + dOne.id + ')">添加消费明细</a></td></tr>';
 
             });
 
             $("#saivianList").html(html);
+
         })
     };
     //修改续费时间
@@ -79,7 +78,8 @@ function saivianRemember() {
         //    使用layer日期
         layui.use('laydate', function () {
             var laydate = layui.laydate;
-            document.getElementById('renewalDate' + id).onclick = function () {
+            $(document).on('click', '#renewalDate'+id, function() {
+                //function code here.
                 laydate({
                     elem: this,
                     festival: true, //显示节日
@@ -97,9 +97,13 @@ function saivianRemember() {
                     }
 
                 });
-            }
+            });
+
         });
+
     }
+
+
     //修改赎回时间
     this.updateRedemptionDate = function (id) {
         //    使用layer日期
@@ -156,13 +160,34 @@ function saivianRemember() {
     this.showRememberInfo = function (id) {
         layer.open({
             type: 2,
-            title: '打印小票记录查看',
+            title: '用户信息详情',
             area: ['50%', '80%'],
             shadeClose: true, //点击遮罩关闭
             content: domainUrl + '/serve/saivian_remember/showRememberInfo?id=' + id,
             btn: ['确认编辑', '关闭']
             , btn1: function (index, layero) {
+                postData = {
+                    id: id,
+                    bankName: layer.getChildFrame("#bankName", index).val(),
+                    bankType: layer.getChildFrame("#bankType", index).val(),
+                    bankCardNum: layer.getChildFrame("#bankCardNum", index).val(),
+                    bankEffectiveDate:layer.getChildFrame("#bankEffectiveDate",index).val(),
+                    saivianId: layer.getChildFrame("#saivianId", index).val(),
+                    userName: layer.getChildFrame("#userName", index).val(),
+                    loginName: layer.getChildFrame("#loginName", index).val(),
+                    loginPassword: layer.getChildFrame("#loginPassword", index).val(),
+                    tel: layer.getChildFrame("#tel", index).val(),
+                    email: layer.getChildFrame("#email", index).val(),
+                    emailPwd: layer.getChildFrame("#emailPwd", index).val(),
+                    wage: layer.getChildFrame("#wage", index).val(),
+                    totalMoney: layer.getChildFrame("#totalMoney", index).val(),
 
+                }
+                postAjax(domainUrl + '/serve/saivian_remember/update', postData, function (data) {
+                        layer.close(index);
+                        saivianRemember.findAll(saivianUserId);
+                    }
+                )
 
             }, btn2: function (index, layero) {
                 layer.close(index);
@@ -184,71 +209,13 @@ function saivianRemember() {
             area: ['50%', '80%'],
             shadeClose: true, //点击遮罩关闭
             content: domainUrl + '/serve/saivian_remember/showRecord?saivianTableId=' + id,
-            btn: ['确认编辑', '关闭']
-            , btn1: function (index, layero) {
-                postData = {
-                    id: id,
-                    bankName: layer.getChildFrame("#bankName", index).val(),
-                    bankType: layer.getChildFrame("#bankType", index).val(),
-                    bankCardNum: layer.getChildFrame("#bankCardNum", index).val(),
-                    saivianId: layer.getChildFrame("#saivianId", index).val(),
-                    userName: layer.getChildFrame("#userName", index).val(),
-                    loginName: layer.getChildFrame("#loginName", index).val(),
-                    loginPassword: layer.getChildFrame("#loginPassword", index).val(),
-                    tel: layer.getChildFrame("#tel", index).val(),
-                    email: layer.getChildFrame("#email", index).val(),
-                    emailPwd: layer.getChildFrame("#emailPwd", index).val(),
-                    wage: layer.getChildFrame("#wage", index).val(),
-                    totalMoney: layer.getChildFrame("#totalMoney", index).val(),
 
-                }
-                postAjax(domainUrl + '/serve/saivian_remember/update', postData, function (data) {
-                        layer.close(index);
-                        saivianRemember.findAll(saivianUserId);
-                    }
-                )
-            }, btn2: function (index, layero) {
-                layer.close(index);
-            },
-            cancel: function (index) {
-                //按钮【关闭】的回调
-                layer.close(index);
-            }
         });
 
     }
 
-    this.edit = function (id) {
-        layer.open({
-            type: 2,
-            title: '用户信息详情',
-            area: ['50%', '80%'],
-            shadeClose: true, //点击遮罩关闭
-            content: domainUrl + '/saivianRemember/addSaivianRemember.ftl',
-            btn: ['确认编辑', '关闭']
-            , btn1: function (index, layero) {
-                postData = {
-                    id: id,
-                    bankName: layer.getChildFrame("#bankName", index).val(),
-                    bankType: layer.getChildFrame("#bankType", index).val(),
-                    bankCardNum: layer.getChildFrame("#bankCardNum", index).val(),
-                    bankEffectiveDate: layer.getChildFrame("#bankEffectiveDate", index).val(),
-                }
-                postAjax(domainUrl + '/serve/saivian_remember/update', postData, function (data) {
-                        layer.close(index);
-                        saivianRemember.findAll(saivianUserId);
-                    }
-                )
 
-            }, btn2: function (index, layero) {
-                layer.close(index);
-            },
-            cancel: function (index) {
-                //按钮【关闭】的回调
-                layer.close(index);
-            }
-        });
-    }
+
     this.addMoney = function (id) {
         layer.open({
             type: 2,
@@ -280,6 +247,10 @@ function saivianRemember() {
         });
     }
 }
+
+
+
+
 
 var saivianRemember = new saivianRemember();
 saivianRemember.findAll(saivianUserId);

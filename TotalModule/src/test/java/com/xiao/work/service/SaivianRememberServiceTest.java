@@ -144,8 +144,17 @@ public class SaivianRememberServiceTest extends SupportTest {
         File file = new File("/Users/xiaolitong/赛比安公作/焦健工作/5月小票");
         Collection<File> files = listFiles(file);
         List<String> error = new ArrayList<>();
-
+        Map<String,String> map = new HashMap<>();
+        map.put("吕洪侠","吕洪侠");
+        map.put("宋莹","宋莹");
+        map.put("姜树利","姜树利");
+        map.put("王荣","王荣");
+        map.put("肖续珍","肖续珍");
+        map.put("王洪英","王洪英");
         for (File file1 : files) {
+            if(map.get(file1.getName())==null){
+                continue;
+            }
             File[] listFiles = file1.listFiles();
             if (listFiles != null) {
                 for (File listFile : listFiles) {
@@ -190,6 +199,7 @@ public class SaivianRememberServiceTest extends SupportTest {
                             }
 
                             try {
+
                                 consumptionRecord.setUserSaivianId(byName.get(0).getId());
                                 consumptionRecordService.insert(consumptionRecord);
                             }catch (Exception e){

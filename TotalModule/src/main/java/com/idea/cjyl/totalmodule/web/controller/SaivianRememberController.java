@@ -194,7 +194,7 @@ public class SaivianRememberController extends GenericController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "showRememberInfo",method = RequestMethod.POST)
+    @RequestMapping(value = "showRememberInfo",method = RequestMethod.GET)
     public ModelAndView showRememberInfo(Long id){
         SaivianRemember saivianRemember = saivianrememberService.selectById(id);
         ModelAndView modelAndView = new ModelAndView("/saivianRemember/addSaivianRemember","saivianRemember",saivianRemember);

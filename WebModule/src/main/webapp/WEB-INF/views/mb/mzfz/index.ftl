@@ -140,6 +140,13 @@
             <br>
             <br>
             <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <li style="text-align: center">中国银联签购单</li>
             <hr style="border: 1px dashed #000000;margin: 5px 0px;">
             <li>持卡人存根：<span style="margin-left: 10px;">HOROROOOADOSAD</span></li>

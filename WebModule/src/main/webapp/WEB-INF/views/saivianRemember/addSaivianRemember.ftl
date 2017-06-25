@@ -12,7 +12,6 @@
     <h5>基本信息</h5>
     <table class="table table-bordered">
         <tbody>
-        private Long id;
         <tr>
             <td class="blue">赛比安会员Id</td>
             <td><input type="text" id = "saivianId" value="${saivianRemember.saivianId}"></td>
@@ -52,17 +51,16 @@
 
         <tr>
             <td class="blue">每日工资</td>
-            <td><input type="text" id = "wage" value="${saivianRemember.wage}"></td>
+            <td><input type="text" id = "wage" value="${saivianRemember.wage!}"></td>
         </tr>
 
         <tr>
             <td class="blue">总金额</td>
-            <td><input type="text" id = "totalMoney" value="${saivianRemember.totalMoney}"></td>
+            <td><input type="text" id = "totalMoney" value="${saivianRemember.totalMoney!}"></td>
         </tr>
-
         <tr>
             <td class=blue">银行名称</td>
-            <td><input type="text" id="bankName" value="${saivianRemember.bankName}"> </td>
+            <td><input type="text" id="bankName" value="${saivianRemember.bankName!}"> </td>
         </tr>
         <tr>
             <td class=blue">银行类型</td>
@@ -75,12 +73,12 @@
         </tr>
         <tr>
             <td class=blue">银行卡号</td>
-            <td><input type="text" id="bankCardNum" value="${saivianRemember.bankCardNum}"></td>
+            <td><input type="text" id="bankCardNum" value="${saivianRemember.bankCardNum!}"></td>
         </tr>
         <tr>
             <td class=blue">银行有效期</td>
             <td><input type="text" id="bankEffectiveDate"
-                       value="${saivianRemember.bankEffectiveDate}"></td>
+                       value="${saivianRemember.bankEffectiveDate!}"></td>
         </tr>
 
         </tbody>

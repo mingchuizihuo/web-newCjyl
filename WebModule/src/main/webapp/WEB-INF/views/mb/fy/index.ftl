@@ -4,6 +4,7 @@
 <#assign bankNun = bankNumLength("${note.bankNum}",6,6,4) >
 <#--流水号，流水号位数-->
 <#assign result= randomLength("${note.consumeNum}",8)>
+<#assign result2= randomLength("${note.consumeNum}",6)>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,9 +56,9 @@
             <br>
             <li>开始时间：${note.consumeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
             <li>结束时间：${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
-            <li>房台号：007(A7) <span style="margin-left: 20px;">餐别：晚餐</span></li>
+            <li>房台号：007(A7) <span style="margin-left: 20px;">餐别：</span></li>
             <hr style="border: 1px dashed #000000;margin: 5px 0px;">
-            <li>客人数：0 <span style="margin-left: 20px;">单号：128830</span></li>
+            <li>客人数： <span style="margin-left: 20px;">单号：${result2}</span></li>
             <hr style="border: 1px dashed #000000;margin: 5px 0px;">
             <table style="width: 100%" class="shop-table">
                 <thead>
@@ -98,6 +99,13 @@
                 </tbody>
             </table>
             <li><nobr>服务员：刘子晴 打印：${note.swipeDate?string("yyyy/MM/dd HH:mm:ss")}</nobr></li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <li style="text-align: center;margin: 10px 0px;"><img src="${domainUrl}/assets/images/img/yinlian.png" style="width: 70%"></li>
             <li>商户名称:富有海鲜食府</li>
             <li>商户编号:8981120058156889</li>

@@ -74,7 +74,7 @@
         var UnCheck = document.getElementById('uncheck');
         var OtherCheck = document.getElementById('othercheck');
         var div = document.getElementById('saivianList');
-        var CheckBox = div.getElementsByTagName('input');
+        var CheckBox = document.getElementsByName('nation');
         $('#printer').click(function () {
             for (var i = 0; i < CheckBox.length; i++) {
                 if(CheckBox[i].checked == true){

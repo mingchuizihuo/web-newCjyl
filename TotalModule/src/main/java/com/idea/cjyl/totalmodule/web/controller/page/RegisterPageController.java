@@ -88,9 +88,9 @@ public class RegisterPageController {
             Integer discount = (Integer)map.get("discount");
 
             productR.setDiscount(discount.doubleValue());
-            productR.setProductNum(Double.parseDouble(map.get("productNum")+".00"));
-            productR.setProductPrice(Double.parseDouble(map.get("productPrice")+".00"));
-            productR.setProdutTotal(Double.parseDouble(map.get("produtTotal")+".00"));
+            productR.setProductNum(Double.parseDouble(map.get("productNum").toString()));
+            productR.setProductPrice(Double.parseDouble(map.get("productPrice").toString()));
+            productR.setProdutTotal(Double.parseDouble(map.get("produtTotal").toString()));
 
 
             productR.setProductName(map.get("productName").toString());

@@ -94,24 +94,20 @@
                     <td>实收：</td>
                     <td>${note.consumeMoney}.00</td>
                 </tr>
-                <tr>
-                    <td style="text-align: center">本次积分：</td>
-                    <td style="text-align: right">36;</td>
-                    <td style="text-align:center">累计积分：</td>
-                    <td style="text-align: right">55</td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">本次存零：</td>
-                    <td style="text-align: right">0.00;</td>
-                    <td style="text-align:center">累计存零：</td>
-                    <td style="text-align: right">0.00</td>
-                </tr>
+
                 </tbody>
             </table>
             <li><nobr>===============${note.swipeDate?string("HH:mm:ss")}===============</nobr></li>
             <li><nobr  style="margin-left: 5%">团购电话：60691508，服务电话：60691518 </nobr></li>
             <li><nobr>此为7日内退还凭证，以现金，支票，银行卡消 </nobr></li>
             <li><nobr style="margin-left: 10%"> 费的如需发票请于30内道服务中心开具</nobr></li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <br>
             <li style="text-align: center">中国银联特约商户签购单</li>
@@ -125,7 +121,7 @@
             <li>操作机/OPER.NO:0551 </li>
             <li>————————————————————————</li>
             <li>卡       号/CARD NO:</li>
-            <li style="text-align: center">622575******7167</li>
+            <li style="text-align: center">${bankNun}</li>
             <li>发卡银行/ISSU.  NO:${note.bankName} </li>
             <li>交易类型/TXN.TYPE:消费/SALE</li>
             <li>批  次  号/BATCH .NO:003138</li>

@@ -11,6 +11,28 @@
 <!--封装工具-->
 <script src="${domainUrl}/assets/js/common.js"></script>
 <script>
+
+    Date.prototype.format = function(fmt) {
+        var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt)) {
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        }
+        for(var k in o) {
+            if(new RegExp("("+ k +")").test(fmt)){
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+            }
+        }
+        return fmt;
+    }
+
     var value = sessionStorage.getItem("aaa");
     $(function () {
         printData.findAll();
@@ -40,9 +62,16 @@
                 for (var i = 0; i < data.aaData.length; i++) {
                     var getData2 = data.aaData[i];
                     var productList = getData2.products;
-                    console.log(JSON.stringify(productList));
                     delete getData2.products;
                     getData2["productList"] = JSON.stringify(productList);
+
+
+//                    var time = getData2.consumeDate.replace("年","/").replace("月","/").replace("日","")
+//                    var oldTime = (new Date(time)).getTime();
+//                    var curTime = new Date(oldTime).format("yyyy-MM-dd hh:mm:ss");
+//
+//                    getData2["consumeDate"] = curTime
+//                    console.log(getData2.consumeDate);
                     $.ajax({
                         type: "POST",
                         url: printUserPage(data.aaData[i].shopCode),

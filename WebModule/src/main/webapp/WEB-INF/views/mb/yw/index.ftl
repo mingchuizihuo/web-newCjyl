@@ -136,6 +136,13 @@
                 </tbody>
             </table>
             <li style="margin-left: 5%">退换货规定详见总服务台或楼层明示</li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <li style="margin-top: 20px;">天津银联银行卡签购单/存根</li>
             <li style="margin-top: 10px;"><nobr>商户名称：永旺商业有限公司天津滨海新区分公司</nobr></li>
             <li>商户编号：301120051113006</li>

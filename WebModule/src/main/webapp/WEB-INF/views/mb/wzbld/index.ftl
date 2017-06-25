@@ -54,9 +54,9 @@
 </style>
     <div id="main-body">
         <ul>
-            <li class="title">世纪华联远洋城旗舰店 </li>
+            <li class="title">天津旺仔便利店 </li>
             <br>
-            <li>收银员：1001 <span style="margin-left: 10px;">机号：002</span></li>
+            <li>收银员：1007 <span style="margin-left: 10px;">机号：001</span></li>
             <li>时间：${note.consumeDate?string("yyyy/MM/dd HH:mm:ss")}</li>
             <li>——————————————————</li>
             <table style="width: 100%" class="shop-table">
@@ -109,10 +109,10 @@
             <br>
             <br>
             <li style="text-align: center;margin: 10px 0px;"><img src="${domainUrl}/assets/images/img/yinlian.png" style="width: 70%"></li>
-            <li>商户名称:世纪华联超市远洋城旗舰</li>
+            <li>商户名称:天津旺仔便利店</li>
             <li>店</li>
-            <li>商铺编号:898120053311581</li>
-            <li>终端编号:01214817   操作员号:01</li>
+            <li>商铺编号:898120053311592</li>
+            <li>终端编号:01214828   操作员号:01</li>
             <li>发卡行:${note.bankName} 收单行:银联商务</li>
             <li>卡号：</li>
             <li><nobr  style="font-size: 18px; font-weight: 600">${bankNun}/</nobr></li>

@@ -103,6 +103,13 @@
             <li>——————————————————</li>
             <li>电话：</li>
             <li>地址：天津市天津市滨海新区和羽道</li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <li style="text-align: center;margin: 10px 0px;"><img src="${domainUrl}/assets/images/img/yinlian.png" style="width: 70%"></li>
             <li>商户名称（MERCHANT NAME）</li>
             <li>天津市和平区膜界百货店</li>

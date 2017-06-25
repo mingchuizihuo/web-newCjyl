@@ -116,11 +116,18 @@
                 </tr>
             </table>
             <br>
-            <li>(0)458123******5027</li>
+            <li>(0)${bankNun}</li>
             <br>
             <li>交易流水号：000135</li>
             <br>
             <li>消费金额：${note.consumeMoney}.00</li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <br>
             <li><b>商户名称：天津韩元素服装店</b></li>
             <br>
@@ -130,11 +137,11 @@
             <br>
             <li>交易名称：消费</li>
             <br>
-            <li>发卡行：交通银行</li>
+            <li>发卡行：${note.bankName}</li>
             <br>
             <li>卡号：${bankNun}</li>
             <br>
-            <li>有效期：0000</li>
+            <li>有效期：${note.effectDate}</li>
             <br>
             <li>金额：${note.consumeMoney}.00</li>
             <br>

@@ -53,10 +53,10 @@
 </style>
 <div id="main-body">
     <ul>
-        <li class="title">尚鱼味远洋未来城</li>
+        <li class="title">沽上民谣</li>
         <li class="title" style="font-size: 8px">消费明细单(堂食)</li>
-        <li>单号：0050 <span style="margin-left: 10px;">开始：${note.consumeDate?string("HH:mm")}</span></li>
-        <li>台牌：03 <span style="margin-left: 10px;">开单：002|002</span></li>
+        <li>单号：0060 <span style="margin-left: 10px;">开始：${note.consumeDate?string("HH:mm")}</span></li>
+        <li>台牌：09 <span style="margin-left: 10px;">开单：002|002</span></li>
         <li>—————————————————</li>
         <table style="width: 100%" class="shop-table">
             <thead>
@@ -95,23 +95,23 @@
         <li style="text-align: center; font-size: 12px;">签购单</li>
         <li><nobr>持卡人存根 CRARDHOLDER COPY</nobr></li>
         <li>商户名称 MERCHANT NAME</li>
-        <li>XY天津市西青区味鱼尚餐厅</li>
+        <li>福州道沽上民谣</li>
         <li>商户编号 MERCHANT NO.</li>
-        <li>528121053110001</li>
+        <li>528121053220001</li>
         <li>终端编号 TERMINAL ID</li>
-        <li>12100001</li>
+        <li>13200001</li>
         <li>操作员号 OPERATOR NO 01</li>
         <li>流水号 TRACE NO.</li>
         <li>${swipeNum2}</li>
         <li>发卡行 ISS ${note.bankName}</li>
-        <li>收单行 ACQ 52800001</li>
+        <li>收单行 ACQ 53700001</li>
         <li>卡号 CARD NO.</li>
         <li style="font-size: 12px;">${bankNun}</li>
         <li>有效期 EXP DATE ${note.effectDate}</li>
         <li>交易类型 TRANS TYPE</li>
         <li style="font-size: 12px;">消费（SALE）</li>
         <li>批次号 BAICH NO.000005</li>
-        <li>凭证号 VOUCHER NO.525161</li>
+        <li>凭证号 VOUCHER NO.525172</li>
         <li>参考号 REFER NO.${swipeNum}</li>
         <li>日期／时间 DATE／TIME</li>
         <li>${note.swipeDate?string("yyyy-MM-dd HH:mm:ss")}</li>

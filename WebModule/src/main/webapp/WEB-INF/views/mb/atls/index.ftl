@@ -103,6 +103,14 @@
                 </tr>
                 </tbody>
             </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
             <li>BankCard NO：${bankNun}</li>
             <li>欢迎惠顾</li>
             <li>请妥善保存此票据，以作为退换凭证</li>
