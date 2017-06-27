@@ -229,7 +229,7 @@ function saivianRemember() {
                     userSaivianId: id,
                     consumeMoney: layer.getChildFrame("#consumeMoney", index).val(),
                     shopCode: layer.getChildFrame("#shopCode", index).val(),
-                    consumeDate: layer.getChildFrame("#consumeDate", index).val(),
+                    consumeDate: layer.getChildFrame("#consumeDate", index).val()+" 00:00:00",
                 }
                 postAjax(domainUrl + '/serve/consumption_record/add', postData, function (data) {
                         layer.close(index);
