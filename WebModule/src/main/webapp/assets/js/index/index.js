@@ -46,7 +46,6 @@ var indexBase = function () {
             hei = document.body.scrollHeight;
         }
         hei = hei - 70 - 38;
-        console.log(hei)
         $("#main-show").css("min-height",hei);
     };
     //更换背景

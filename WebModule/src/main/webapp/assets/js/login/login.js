@@ -18,10 +18,11 @@ function loginBase() {
             layer.msg("密码不正确");
         } else {
             getAjax(url, getData, function (data) {
+
                 if(data.result != false){
                     location.href = domainUrl + "/page/background";
                 }else{
-                    layer.msg("密码不正确");
+                    layer.msg("用户名密码不正确");
                 }
             })
         }

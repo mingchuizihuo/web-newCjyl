@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="saivian_id" property="saivianId" jdbcType="BIGINT" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
-    <result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
+    <result column="saivian_user_name" property="saivianUserName" jdbcType="VARCHAR" />
+    <result column="saivian_login_name" property="saivianLoginName" jdbcType="VARCHAR" />
+    <result column="saivian_login_password" property="saivianLoginPassword" jdbcType="VARCHAR" />
     <result column="tel" property="tel" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="email_pwd" property="emailPwd" jdbcType="VARCHAR" />
@@ -14,13 +14,16 @@
     <result column="bank_type" property="bankType" jdbcType="TINYINT" />
     <result column="bank_card_num" property="bankCardNum" jdbcType="VARCHAR" />
     <result column="bank_effective_date" property="bankEffectiveDate" jdbcType="VARCHAR" />
-    <result column="renewal_date" property="renewalDate" jdbcType="TIMESTAMP" />
-    <result column="redemption_date" property="redemptionDate" jdbcType="TIMESTAMP" />
-    <result column="click_date" property="clickDate" jdbcType="TIMESTAMP" />
+    <result column="bind_date" property="bindDate" jdbcType="TIMESTAMP" />
+    <result column="saivian_renewal_date" property="saivianRenewalDate" jdbcType="TIMESTAMP" />
+    <result column="rebate_open_date" property="rebateOpenDate" jdbcType="TIMESTAMP" />
+    <result column="redeem_open_date" property="redeemOpenDate" jdbcType="TIMESTAMP" />
+    <result column="arrive_code_date" property="arriveCodeDate" jdbcType="TIMESTAMP" />
     <result column="parent" property="parent" jdbcType="BIGINT" />
     <result column="wage" property="wage" jdbcType="TINYINT" />
     <result column="total_money" property="totalMoney" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="service_user_id" property="serviceUserId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -81,9 +84,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, saivian_id, user_name, login_name, login_password, tel, email, email_pwd, bank_name, 
-    bank_type, bank_card_num, bank_effective_date, renewal_date, redemption_date, click_date, 
-    parent, wage, total_money, user_id
+    id, saivian_id, saivian_user_name, saivian_login_name, saivian_login_password, tel, 
+    email, email_pwd, bank_name, bank_type, bank_card_num, bank_effective_date, bind_date, 
+    saivian_renewal_date, rebate_open_date, redeem_open_date, arrive_code_date, parent, 
+    wage, total_money, remark, service_user_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRememberExample" >
     select
@@ -116,20 +120,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" useGeneratedKeys="true" keyProperty="id" >
-    insert into saivian_remember (saivian_id, user_name, login_name, 
-      login_password, tel, email, 
+    insert into saivian_remember (saivian_id, saivian_user_name, saivian_login_name, 
+      saivian_login_password, tel, email, 
       email_pwd, bank_name, bank_type, 
-      bank_card_num, bank_effective_date, renewal_date, 
-      redemption_date, click_date, parent, 
-      wage, total_money, user_id
-      )
-    values (#{saivianId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
-      #{loginPassword,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      bank_card_num, bank_effective_date, bind_date, 
+      saivian_renewal_date, rebate_open_date, 
+      redeem_open_date, arrive_code_date, parent, 
+      wage, total_money, remark, 
+      service_user_id)
+    values (#{saivianId,jdbcType=BIGINT}, #{saivianUserName,jdbcType=VARCHAR}, #{saivianLoginName,jdbcType=VARCHAR}, 
+      #{saivianLoginPassword,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{emailPwd,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankType,jdbcType=TINYINT}, 
-      #{bankCardNum,jdbcType=VARCHAR}, #{bankEffectiveDate,jdbcType=VARCHAR}, #{renewalDate,jdbcType=TIMESTAMP}, 
-      #{redemptionDate,jdbcType=TIMESTAMP}, #{clickDate,jdbcType=TIMESTAMP}, #{parent,jdbcType=BIGINT}, 
-      #{wage,jdbcType=TINYINT}, #{totalMoney,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}
-      )
+      #{bankCardNum,jdbcType=VARCHAR}, #{bankEffectiveDate,jdbcType=VARCHAR}, #{bindDate,jdbcType=TIMESTAMP}, 
+      #{saivianRenewalDate,jdbcType=TIMESTAMP}, #{rebateOpenDate,jdbcType=TIMESTAMP}, 
+      #{redeemOpenDate,jdbcType=TIMESTAMP}, #{arriveCodeDate,jdbcType=TIMESTAMP}, #{parent,jdbcType=BIGINT}, 
+      #{wage,jdbcType=TINYINT}, #{totalMoney,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{serviceUserId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" useGeneratedKeys="true" keyProperty="id" >
     insert into saivian_remember
@@ -137,14 +143,14 @@
       <if test="saivianId != null" >
         saivian_id,
       </if>
-      <if test="userName != null" >
-        user_name,
+      <if test="saivianUserName != null" >
+        saivian_user_name,
       </if>
-      <if test="loginName != null" >
-        login_name,
+      <if test="saivianLoginName != null" >
+        saivian_login_name,
       </if>
-      <if test="loginPassword != null" >
-        login_password,
+      <if test="saivianLoginPassword != null" >
+        saivian_login_password,
       </if>
       <if test="tel != null" >
         tel,
@@ -167,14 +173,20 @@
       <if test="bankEffectiveDate != null" >
         bank_effective_date,
       </if>
-      <if test="renewalDate != null" >
-        renewal_date,
+      <if test="bindDate != null" >
+        bind_date,
       </if>
-      <if test="redemptionDate != null" >
-        redemption_date,
+      <if test="saivianRenewalDate != null" >
+        saivian_renewal_date,
       </if>
-      <if test="clickDate != null" >
-        click_date,
+      <if test="rebateOpenDate != null" >
+        rebate_open_date,
+      </if>
+      <if test="redeemOpenDate != null" >
+        redeem_open_date,
+      </if>
+      <if test="arriveCodeDate != null" >
+        arrive_code_date,
       </if>
       <if test="parent != null" >
         parent,
@@ -185,22 +197,25 @@
       <if test="totalMoney != null" >
         total_money,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="serviceUserId != null" >
+        service_user_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="saivianId != null" >
         #{saivianId,jdbcType=BIGINT},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="saivianUserName != null" >
+        #{saivianUserName,jdbcType=VARCHAR},
       </if>
-      <if test="loginName != null" >
-        #{loginName,jdbcType=VARCHAR},
+      <if test="saivianLoginName != null" >
+        #{saivianLoginName,jdbcType=VARCHAR},
       </if>
-      <if test="loginPassword != null" >
-        #{loginPassword,jdbcType=VARCHAR},
+      <if test="saivianLoginPassword != null" >
+        #{saivianLoginPassword,jdbcType=VARCHAR},
       </if>
       <if test="tel != null" >
         #{tel,jdbcType=VARCHAR},
@@ -223,14 +238,20 @@
       <if test="bankEffectiveDate != null" >
         #{bankEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="renewalDate != null" >
-        #{renewalDate,jdbcType=TIMESTAMP},
+      <if test="bindDate != null" >
+        #{bindDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="redemptionDate != null" >
-        #{redemptionDate,jdbcType=TIMESTAMP},
+      <if test="saivianRenewalDate != null" >
+        #{saivianRenewalDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="clickDate != null" >
-        #{clickDate,jdbcType=TIMESTAMP},
+      <if test="rebateOpenDate != null" >
+        #{rebateOpenDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="redeemOpenDate != null" >
+        #{redeemOpenDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arriveCodeDate != null" >
+        #{arriveCodeDate,jdbcType=TIMESTAMP},
       </if>
       <if test="parent != null" >
         #{parent,jdbcType=BIGINT},
@@ -241,8 +262,11 @@
       <if test="totalMoney != null" >
         #{totalMoney,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceUserId != null" >
+        #{serviceUserId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -261,14 +285,14 @@
       <if test="record.saivianId != null" >
         saivian_id = #{record.saivianId,jdbcType=BIGINT},
       </if>
-      <if test="record.userName != null" >
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.saivianUserName != null" >
+        saivian_user_name = #{record.saivianUserName,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginName != null" >
-        login_name = #{record.loginName,jdbcType=VARCHAR},
+      <if test="record.saivianLoginName != null" >
+        saivian_login_name = #{record.saivianLoginName,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginPassword != null" >
-        login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      <if test="record.saivianLoginPassword != null" >
+        saivian_login_password = #{record.saivianLoginPassword,jdbcType=VARCHAR},
       </if>
       <if test="record.tel != null" >
         tel = #{record.tel,jdbcType=VARCHAR},
@@ -291,14 +315,20 @@
       <if test="record.bankEffectiveDate != null" >
         bank_effective_date = #{record.bankEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="record.renewalDate != null" >
-        renewal_date = #{record.renewalDate,jdbcType=TIMESTAMP},
+      <if test="record.bindDate != null" >
+        bind_date = #{record.bindDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.redemptionDate != null" >
-        redemption_date = #{record.redemptionDate,jdbcType=TIMESTAMP},
+      <if test="record.saivianRenewalDate != null" >
+        saivian_renewal_date = #{record.saivianRenewalDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.clickDate != null" >
-        click_date = #{record.clickDate,jdbcType=TIMESTAMP},
+      <if test="record.rebateOpenDate != null" >
+        rebate_open_date = #{record.rebateOpenDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.redeemOpenDate != null" >
+        redeem_open_date = #{record.redeemOpenDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.arriveCodeDate != null" >
+        arrive_code_date = #{record.arriveCodeDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.parent != null" >
         parent = #{record.parent,jdbcType=BIGINT},
@@ -309,8 +339,11 @@
       <if test="record.totalMoney != null" >
         total_money = #{record.totalMoney,jdbcType=VARCHAR},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceUserId != null" >
+        service_user_id = #{record.serviceUserId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -321,9 +354,9 @@
     update saivian_remember
     set id = #{record.id,jdbcType=BIGINT},
       saivian_id = #{record.saivianId,jdbcType=BIGINT},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      login_name = #{record.loginName,jdbcType=VARCHAR},
-      login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      saivian_user_name = #{record.saivianUserName,jdbcType=VARCHAR},
+      saivian_login_name = #{record.saivianLoginName,jdbcType=VARCHAR},
+      saivian_login_password = #{record.saivianLoginPassword,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       email_pwd = #{record.emailPwd,jdbcType=VARCHAR},
@@ -331,13 +364,16 @@
       bank_type = #{record.bankType,jdbcType=TINYINT},
       bank_card_num = #{record.bankCardNum,jdbcType=VARCHAR},
       bank_effective_date = #{record.bankEffectiveDate,jdbcType=VARCHAR},
-      renewal_date = #{record.renewalDate,jdbcType=TIMESTAMP},
-      redemption_date = #{record.redemptionDate,jdbcType=TIMESTAMP},
-      click_date = #{record.clickDate,jdbcType=TIMESTAMP},
+      bind_date = #{record.bindDate,jdbcType=TIMESTAMP},
+      saivian_renewal_date = #{record.saivianRenewalDate,jdbcType=TIMESTAMP},
+      rebate_open_date = #{record.rebateOpenDate,jdbcType=TIMESTAMP},
+      redeem_open_date = #{record.redeemOpenDate,jdbcType=TIMESTAMP},
+      arrive_code_date = #{record.arriveCodeDate,jdbcType=TIMESTAMP},
       parent = #{record.parent,jdbcType=BIGINT},
       wage = #{record.wage,jdbcType=TINYINT},
       total_money = #{record.totalMoney,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=BIGINT}
+      remark = #{record.remark,jdbcType=VARCHAR},
+      service_user_id = #{record.serviceUserId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -348,14 +384,14 @@
       <if test="saivianId != null" >
         saivian_id = #{saivianId,jdbcType=BIGINT},
       </if>
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="saivianUserName != null" >
+        saivian_user_name = #{saivianUserName,jdbcType=VARCHAR},
       </if>
-      <if test="loginName != null" >
-        login_name = #{loginName,jdbcType=VARCHAR},
+      <if test="saivianLoginName != null" >
+        saivian_login_name = #{saivianLoginName,jdbcType=VARCHAR},
       </if>
-      <if test="loginPassword != null" >
-        login_password = #{loginPassword,jdbcType=VARCHAR},
+      <if test="saivianLoginPassword != null" >
+        saivian_login_password = #{saivianLoginPassword,jdbcType=VARCHAR},
       </if>
       <if test="tel != null" >
         tel = #{tel,jdbcType=VARCHAR},
@@ -378,14 +414,20 @@
       <if test="bankEffectiveDate != null" >
         bank_effective_date = #{bankEffectiveDate,jdbcType=VARCHAR},
       </if>
-      <if test="renewalDate != null" >
-        renewal_date = #{renewalDate,jdbcType=TIMESTAMP},
+      <if test="bindDate != null" >
+        bind_date = #{bindDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="redemptionDate != null" >
-        redemption_date = #{redemptionDate,jdbcType=TIMESTAMP},
+      <if test="saivianRenewalDate != null" >
+        saivian_renewal_date = #{saivianRenewalDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="clickDate != null" >
-        click_date = #{clickDate,jdbcType=TIMESTAMP},
+      <if test="rebateOpenDate != null" >
+        rebate_open_date = #{rebateOpenDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="redeemOpenDate != null" >
+        redeem_open_date = #{redeemOpenDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arriveCodeDate != null" >
+        arrive_code_date = #{arriveCodeDate,jdbcType=TIMESTAMP},
       </if>
       <if test="parent != null" >
         parent = #{parent,jdbcType=BIGINT},
@@ -396,8 +438,11 @@
       <if test="totalMoney != null" >
         total_money = #{totalMoney,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=BIGINT},
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceUserId != null" >
+        service_user_id = #{serviceUserId,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -405,9 +450,9 @@
   <update id="updateByPrimaryKey" parameterType="com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember" >
     update saivian_remember
     set saivian_id = #{saivianId,jdbcType=BIGINT},
-      user_name = #{userName,jdbcType=VARCHAR},
-      login_name = #{loginName,jdbcType=VARCHAR},
-      login_password = #{loginPassword,jdbcType=VARCHAR},
+      saivian_user_name = #{saivianUserName,jdbcType=VARCHAR},
+      saivian_login_name = #{saivianLoginName,jdbcType=VARCHAR},
+      saivian_login_password = #{saivianLoginPassword,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       email_pwd = #{emailPwd,jdbcType=VARCHAR},
@@ -415,13 +460,16 @@
       bank_type = #{bankType,jdbcType=TINYINT},
       bank_card_num = #{bankCardNum,jdbcType=VARCHAR},
       bank_effective_date = #{bankEffectiveDate,jdbcType=VARCHAR},
-      renewal_date = #{renewalDate,jdbcType=TIMESTAMP},
-      redemption_date = #{redemptionDate,jdbcType=TIMESTAMP},
-      click_date = #{clickDate,jdbcType=TIMESTAMP},
+      bind_date = #{bindDate,jdbcType=TIMESTAMP},
+      saivian_renewal_date = #{saivianRenewalDate,jdbcType=TIMESTAMP},
+      rebate_open_date = #{rebateOpenDate,jdbcType=TIMESTAMP},
+      redeem_open_date = #{redeemOpenDate,jdbcType=TIMESTAMP},
+      arrive_code_date = #{arriveCodeDate,jdbcType=TIMESTAMP},
       parent = #{parent,jdbcType=BIGINT},
       wage = #{wage,jdbcType=TINYINT},
       total_money = #{totalMoney,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=BIGINT}
+      remark = #{remark,jdbcType=VARCHAR},
+      service_user_id = #{serviceUserId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -119,7 +119,7 @@
 -->
 
 
-        <table tableName="consumption_record" domainObjectName="ConsumptionRecord">
+        <table tableName="saivian_remember" domainObjectName="SaivianRemember">
             <generatedKey column="id" sqlStatement="JDBC" identity="true" />
         </table>
 

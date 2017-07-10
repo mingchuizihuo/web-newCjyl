@@ -66,15 +66,15 @@ public class SaivianRememberServiceTest extends SupportTest {
 
                 String saivianId = map.get(i).get(11).toString().replaceAll("\\u00A0","") ;
                 saivianRemember.setSaivianId(Long.parseLong(saivianId));
-                saivianRemember.setUserName(map.get(i).get(0).toString());
-                saivianRemember.setLoginName(map.get(i).get(1).toString());
-                saivianRemember.setLoginPassword(map.get(i).get(2).toString());
+                saivianRemember.setSaivianUserName(map.get(i).get(0).toString());
+                saivianRemember.setSaivianLoginName(map.get(i).get(1).toString());
+                saivianRemember.setSaivianLoginPassword(map.get(i).get(2).toString());
                 saivianRemember.setTel(map.get(i).get(10).toString());
                 saivianRemember.setEmail(map.get(i).get(3).toString());
                 saivianRemember.setEmailPwd(map.get(i).get(4).toString());
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-                saivianRemember.setRenewalDate(simpleDateFormat.parse(map.get(i).get(5).toString()));
-                saivianRemember.setUserId(2l);
+                saivianRemember.setSaivianRenewalDate(simpleDateFormat.parse(map.get(i).get(5).toString()));
+                saivianRemember.setServiceUserId(2l);
                 SaivianRemember insert = saivianRememberService.insert(saivianRemember);
                 System.out.println(insert.getId() + ":" + map.get(i));
             }
@@ -104,16 +104,7 @@ public class SaivianRememberServiceTest extends SupportTest {
                 SaivianRemember saivianRemember = new SaivianRemember();
 
                 String saivianId = map.get(i).get(0).toString().replaceAll("\\u00A0","") ;
-                saivianRemember.setSaivianId(Long.parseLong(saivianId));
-                saivianRemember.setUserName(map.get(i).get(1).toString());
-                saivianRemember.setLoginName(map.get(i).get(2).toString());
-                saivianRemember.setLoginPassword(map.get(i).get(3).toString());
-                saivianRemember.setTel(map.get(i).get(4).toString());
-                saivianRemember.setEmail(map.get(i).get(5).toString());
-                saivianRemember.setEmailPwd(map.get(i).get(6).toString());
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-                saivianRemember.setRenewalDate(simpleDateFormat.parse(map.get(i).get(7).toString()));
-                saivianRemember.setUserId(1l);
+
                 SaivianRemember insert = saivianRememberService.insert(saivianRemember);
                 System.out.println(insert.getId() + ":" + map.get(i));
             }

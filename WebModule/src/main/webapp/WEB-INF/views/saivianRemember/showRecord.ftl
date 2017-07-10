@@ -40,19 +40,7 @@
 <script src="${domainUrl}/assets/js/jquery/jquery-3.1.1.min.js"></script>
 
 <script>
-    function del(id) {
-        $.ajax({
-            type: "post",
-            url: '${domainUrl}rest/serve/consumption_record/del',
-            data: {id:id},
-            dataType: 'json',
-            async: false,
-            // cache:isCache,
-            success: function (data) {
-                $("#record"+id).remove();
-            }
-        });
-    }
+
 
 </script>
 

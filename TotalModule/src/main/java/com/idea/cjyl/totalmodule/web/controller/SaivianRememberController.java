@@ -6,15 +6,16 @@ import com.idea.cjyl.totalmodule.web.domain.Note;
 import com.idea.cjyl.totalmodule.web.domain.pojo.ConsumptionRecord;
 import com.idea.cjyl.totalmodule.web.domain.pojo.SaivianRemember;
 import com.idea.cjyl.totalmodule.web.domain.pojo.Shop;
+import com.idea.cjyl.totalmodule.web.domain.pojo.User;
 import com.idea.cjyl.totalmodule.web.service.SaivianRememberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,12 @@ public class SaivianRememberController extends GenericController {
      */
     @ResponseBody
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public ResultData add(SaivianRemember saivianremember) {
+    public ResultData add(SaivianRemember saivianremember,HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if(user!=null){
+            saivianremember.setServiceUserId(user.getId());
+
+        }
 
         try {
             saivianrememberService.insert(saivianremember);
@@ -122,16 +128,22 @@ public class SaivianRememberController extends GenericController {
     /**
      * 根据用户id 获取旗下会员
      *
-     * @param userId
+     * @param
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "findAllByUser", method = RequestMethod.GET)
-    public ResultData findAllByUser(Long userId) {
+    public ResultData findAllByUser(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if(user==null){
+            return ResultData.build().parseList(null);
+        }
         List<SaivianRemember> saivianRememberList = saivianrememberService.
-                findAllByUser(userId);
+                findAllByUser(user.getId());
         return ResultData.build().parseList(saivianRememberList);
     }
+
+
 
     /**
      * 获取消费记录
@@ -168,12 +180,12 @@ public class SaivianRememberController extends GenericController {
     }
 
     @RequestMapping(value = "showRecord", method = RequestMethod.GET)
-    public ModelAndView showRecord(Long saivianTableId, Model model) {
+    @ResponseBody
+    public ResultData showRecord(Long saivianTableId) {
         List<ConsumptionRecord> consumptionRecords = saivianrememberService.showRecord(saivianTableId);
-        ModelAndView modelAndView = new ModelAndView("/saivianRemember/showRecord", "recordList", consumptionRecords);
 
 
-        return modelAndView;
+        return ResultData.build().parseList(consumptionRecords);
     }
 
     /**
@@ -195,11 +207,26 @@ public class SaivianRememberController extends GenericController {
      */
     @ResponseBody
     @RequestMapping(value = "showRememberInfo",method = RequestMethod.GET)
-    public ModelAndView showRememberInfo(Long id){
+    public ModelAndView showRememberInfo(Long id,HttpSession session){
         SaivianRemember saivianRemember = saivianrememberService.selectById(id);
         ModelAndView modelAndView = new ModelAndView("/saivianRemember/addSaivianRemember","saivianRemember",saivianRemember);
-
         return modelAndView;
     }
+
+
+    /**
+     * 获取赛比安会员时间信息
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "showRememberDateInfo",method = RequestMethod.GET)
+    public ModelAndView showRememberDateInfo(Long id,HttpSession session){
+        SaivianRemember saivianRemember = saivianrememberService.selectById(id);
+        ModelAndView modelAndView = new ModelAndView("/saivianRemember/showDateInfo","saivianRemember",saivianRemember);
+        return modelAndView;
+    }
+
+
 
 }

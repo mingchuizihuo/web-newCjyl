@@ -225,213 +225,213 @@ public class SaivianRememberExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserNameIsNull() {
-            addCriterion("user_name is null");
+        public Criteria andSaivianUserNameIsNull() {
+            addCriterion("saivian_user_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameIsNotNull() {
-            addCriterion("user_name is not null");
+        public Criteria andSaivianUserNameIsNotNull() {
+            addCriterion("saivian_user_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameEqualTo(String value) {
-            addCriterion("user_name =", value, "userName");
+        public Criteria andSaivianUserNameEqualTo(String value) {
+            addCriterion("saivian_user_name =", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameNotEqualTo(String value) {
-            addCriterion("user_name <>", value, "userName");
+        public Criteria andSaivianUserNameNotEqualTo(String value) {
+            addCriterion("saivian_user_name <>", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameGreaterThan(String value) {
-            addCriterion("user_name >", value, "userName");
+        public Criteria andSaivianUserNameGreaterThan(String value) {
+            addCriterion("saivian_user_name >", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameGreaterThanOrEqualTo(String value) {
-            addCriterion("user_name >=", value, "userName");
+        public Criteria andSaivianUserNameGreaterThanOrEqualTo(String value) {
+            addCriterion("saivian_user_name >=", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameLessThan(String value) {
-            addCriterion("user_name <", value, "userName");
+        public Criteria andSaivianUserNameLessThan(String value) {
+            addCriterion("saivian_user_name <", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameLessThanOrEqualTo(String value) {
-            addCriterion("user_name <=", value, "userName");
+        public Criteria andSaivianUserNameLessThanOrEqualTo(String value) {
+            addCriterion("saivian_user_name <=", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameLike(String value) {
-            addCriterion("user_name like", value, "userName");
+        public Criteria andSaivianUserNameLike(String value) {
+            addCriterion("saivian_user_name like", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameNotLike(String value) {
-            addCriterion("user_name not like", value, "userName");
+        public Criteria andSaivianUserNameNotLike(String value) {
+            addCriterion("saivian_user_name not like", value, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameIn(List<String> values) {
-            addCriterion("user_name in", values, "userName");
+        public Criteria andSaivianUserNameIn(List<String> values) {
+            addCriterion("saivian_user_name in", values, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameNotIn(List<String> values) {
-            addCriterion("user_name not in", values, "userName");
+        public Criteria andSaivianUserNameNotIn(List<String> values) {
+            addCriterion("saivian_user_name not in", values, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameBetween(String value1, String value2) {
-            addCriterion("user_name between", value1, value2, "userName");
+        public Criteria andSaivianUserNameBetween(String value1, String value2) {
+            addCriterion("saivian_user_name between", value1, value2, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andUserNameNotBetween(String value1, String value2) {
-            addCriterion("user_name not between", value1, value2, "userName");
+        public Criteria andSaivianUserNameNotBetween(String value1, String value2) {
+            addCriterion("saivian_user_name not between", value1, value2, "saivianUserName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameIsNull() {
-            addCriterion("login_name is null");
+        public Criteria andSaivianLoginNameIsNull() {
+            addCriterion("saivian_login_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameIsNotNull() {
-            addCriterion("login_name is not null");
+        public Criteria andSaivianLoginNameIsNotNull() {
+            addCriterion("saivian_login_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameEqualTo(String value) {
-            addCriterion("login_name =", value, "loginName");
+        public Criteria andSaivianLoginNameEqualTo(String value) {
+            addCriterion("saivian_login_name =", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameNotEqualTo(String value) {
-            addCriterion("login_name <>", value, "loginName");
+        public Criteria andSaivianLoginNameNotEqualTo(String value) {
+            addCriterion("saivian_login_name <>", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameGreaterThan(String value) {
-            addCriterion("login_name >", value, "loginName");
+        public Criteria andSaivianLoginNameGreaterThan(String value) {
+            addCriterion("saivian_login_name >", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameGreaterThanOrEqualTo(String value) {
-            addCriterion("login_name >=", value, "loginName");
+        public Criteria andSaivianLoginNameGreaterThanOrEqualTo(String value) {
+            addCriterion("saivian_login_name >=", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameLessThan(String value) {
-            addCriterion("login_name <", value, "loginName");
+        public Criteria andSaivianLoginNameLessThan(String value) {
+            addCriterion("saivian_login_name <", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameLessThanOrEqualTo(String value) {
-            addCriterion("login_name <=", value, "loginName");
+        public Criteria andSaivianLoginNameLessThanOrEqualTo(String value) {
+            addCriterion("saivian_login_name <=", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameLike(String value) {
-            addCriterion("login_name like", value, "loginName");
+        public Criteria andSaivianLoginNameLike(String value) {
+            addCriterion("saivian_login_name like", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameNotLike(String value) {
-            addCriterion("login_name not like", value, "loginName");
+        public Criteria andSaivianLoginNameNotLike(String value) {
+            addCriterion("saivian_login_name not like", value, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameIn(List<String> values) {
-            addCriterion("login_name in", values, "loginName");
+        public Criteria andSaivianLoginNameIn(List<String> values) {
+            addCriterion("saivian_login_name in", values, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameNotIn(List<String> values) {
-            addCriterion("login_name not in", values, "loginName");
+        public Criteria andSaivianLoginNameNotIn(List<String> values) {
+            addCriterion("saivian_login_name not in", values, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameBetween(String value1, String value2) {
-            addCriterion("login_name between", value1, value2, "loginName");
+        public Criteria andSaivianLoginNameBetween(String value1, String value2) {
+            addCriterion("saivian_login_name between", value1, value2, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginNameNotBetween(String value1, String value2) {
-            addCriterion("login_name not between", value1, value2, "loginName");
+        public Criteria andSaivianLoginNameNotBetween(String value1, String value2) {
+            addCriterion("saivian_login_name not between", value1, value2, "saivianLoginName");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordIsNull() {
-            addCriterion("login_password is null");
+        public Criteria andSaivianLoginPasswordIsNull() {
+            addCriterion("saivian_login_password is null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordIsNotNull() {
-            addCriterion("login_password is not null");
+        public Criteria andSaivianLoginPasswordIsNotNull() {
+            addCriterion("saivian_login_password is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordEqualTo(String value) {
-            addCriterion("login_password =", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordEqualTo(String value) {
+            addCriterion("saivian_login_password =", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordNotEqualTo(String value) {
-            addCriterion("login_password <>", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordNotEqualTo(String value) {
+            addCriterion("saivian_login_password <>", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordGreaterThan(String value) {
-            addCriterion("login_password >", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordGreaterThan(String value) {
+            addCriterion("saivian_login_password >", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordGreaterThanOrEqualTo(String value) {
-            addCriterion("login_password >=", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("saivian_login_password >=", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordLessThan(String value) {
-            addCriterion("login_password <", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordLessThan(String value) {
+            addCriterion("saivian_login_password <", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordLessThanOrEqualTo(String value) {
-            addCriterion("login_password <=", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordLessThanOrEqualTo(String value) {
+            addCriterion("saivian_login_password <=", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordLike(String value) {
-            addCriterion("login_password like", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordLike(String value) {
+            addCriterion("saivian_login_password like", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordNotLike(String value) {
-            addCriterion("login_password not like", value, "loginPassword");
+        public Criteria andSaivianLoginPasswordNotLike(String value) {
+            addCriterion("saivian_login_password not like", value, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordIn(List<String> values) {
-            addCriterion("login_password in", values, "loginPassword");
+        public Criteria andSaivianLoginPasswordIn(List<String> values) {
+            addCriterion("saivian_login_password in", values, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordNotIn(List<String> values) {
-            addCriterion("login_password not in", values, "loginPassword");
+        public Criteria andSaivianLoginPasswordNotIn(List<String> values) {
+            addCriterion("saivian_login_password not in", values, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordBetween(String value1, String value2) {
-            addCriterion("login_password between", value1, value2, "loginPassword");
+        public Criteria andSaivianLoginPasswordBetween(String value1, String value2) {
+            addCriterion("saivian_login_password between", value1, value2, "saivianLoginPassword");
             return (Criteria) this;
         }
 
-        public Criteria andLoginPasswordNotBetween(String value1, String value2) {
-            addCriterion("login_password not between", value1, value2, "loginPassword");
+        public Criteria andSaivianLoginPasswordNotBetween(String value1, String value2) {
+            addCriterion("saivian_login_password not between", value1, value2, "saivianLoginPassword");
             return (Criteria) this;
         }
 
@@ -915,183 +915,303 @@ public class SaivianRememberExample {
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateIsNull() {
-            addCriterion("renewal_date is null");
+        public Criteria andBindDateIsNull() {
+            addCriterion("bind_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateIsNotNull() {
-            addCriterion("renewal_date is not null");
+        public Criteria andBindDateIsNotNull() {
+            addCriterion("bind_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateEqualTo(Date value) {
-            addCriterion("renewal_date =", value, "renewalDate");
+        public Criteria andBindDateEqualTo(Date value) {
+            addCriterion("bind_date =", value, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateNotEqualTo(Date value) {
-            addCriterion("renewal_date <>", value, "renewalDate");
+        public Criteria andBindDateNotEqualTo(Date value) {
+            addCriterion("bind_date <>", value, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateGreaterThan(Date value) {
-            addCriterion("renewal_date >", value, "renewalDate");
+        public Criteria andBindDateGreaterThan(Date value) {
+            addCriterion("bind_date >", value, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("renewal_date >=", value, "renewalDate");
+        public Criteria andBindDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("bind_date >=", value, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateLessThan(Date value) {
-            addCriterion("renewal_date <", value, "renewalDate");
+        public Criteria andBindDateLessThan(Date value) {
+            addCriterion("bind_date <", value, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateLessThanOrEqualTo(Date value) {
-            addCriterion("renewal_date <=", value, "renewalDate");
+        public Criteria andBindDateLessThanOrEqualTo(Date value) {
+            addCriterion("bind_date <=", value, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateIn(List<Date> values) {
-            addCriterion("renewal_date in", values, "renewalDate");
+        public Criteria andBindDateIn(List<Date> values) {
+            addCriterion("bind_date in", values, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateNotIn(List<Date> values) {
-            addCriterion("renewal_date not in", values, "renewalDate");
+        public Criteria andBindDateNotIn(List<Date> values) {
+            addCriterion("bind_date not in", values, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateBetween(Date value1, Date value2) {
-            addCriterion("renewal_date between", value1, value2, "renewalDate");
+        public Criteria andBindDateBetween(Date value1, Date value2) {
+            addCriterion("bind_date between", value1, value2, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRenewalDateNotBetween(Date value1, Date value2) {
-            addCriterion("renewal_date not between", value1, value2, "renewalDate");
+        public Criteria andBindDateNotBetween(Date value1, Date value2) {
+            addCriterion("bind_date not between", value1, value2, "bindDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateIsNull() {
-            addCriterion("redemption_date is null");
+        public Criteria andSaivianRenewalDateIsNull() {
+            addCriterion("saivian_renewal_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateIsNotNull() {
-            addCriterion("redemption_date is not null");
+        public Criteria andSaivianRenewalDateIsNotNull() {
+            addCriterion("saivian_renewal_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateEqualTo(Date value) {
-            addCriterion("redemption_date =", value, "redemptionDate");
+        public Criteria andSaivianRenewalDateEqualTo(Date value) {
+            addCriterion("saivian_renewal_date =", value, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateNotEqualTo(Date value) {
-            addCriterion("redemption_date <>", value, "redemptionDate");
+        public Criteria andSaivianRenewalDateNotEqualTo(Date value) {
+            addCriterion("saivian_renewal_date <>", value, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateGreaterThan(Date value) {
-            addCriterion("redemption_date >", value, "redemptionDate");
+        public Criteria andSaivianRenewalDateGreaterThan(Date value) {
+            addCriterion("saivian_renewal_date >", value, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("redemption_date >=", value, "redemptionDate");
+        public Criteria andSaivianRenewalDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("saivian_renewal_date >=", value, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateLessThan(Date value) {
-            addCriterion("redemption_date <", value, "redemptionDate");
+        public Criteria andSaivianRenewalDateLessThan(Date value) {
+            addCriterion("saivian_renewal_date <", value, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateLessThanOrEqualTo(Date value) {
-            addCriterion("redemption_date <=", value, "redemptionDate");
+        public Criteria andSaivianRenewalDateLessThanOrEqualTo(Date value) {
+            addCriterion("saivian_renewal_date <=", value, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateIn(List<Date> values) {
-            addCriterion("redemption_date in", values, "redemptionDate");
+        public Criteria andSaivianRenewalDateIn(List<Date> values) {
+            addCriterion("saivian_renewal_date in", values, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateNotIn(List<Date> values) {
-            addCriterion("redemption_date not in", values, "redemptionDate");
+        public Criteria andSaivianRenewalDateNotIn(List<Date> values) {
+            addCriterion("saivian_renewal_date not in", values, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateBetween(Date value1, Date value2) {
-            addCriterion("redemption_date between", value1, value2, "redemptionDate");
+        public Criteria andSaivianRenewalDateBetween(Date value1, Date value2) {
+            addCriterion("saivian_renewal_date between", value1, value2, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andRedemptionDateNotBetween(Date value1, Date value2) {
-            addCriterion("redemption_date not between", value1, value2, "redemptionDate");
+        public Criteria andSaivianRenewalDateNotBetween(Date value1, Date value2) {
+            addCriterion("saivian_renewal_date not between", value1, value2, "saivianRenewalDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateIsNull() {
-            addCriterion("click_date is null");
+        public Criteria andRebateOpenDateIsNull() {
+            addCriterion("rebate_open_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateIsNotNull() {
-            addCriterion("click_date is not null");
+        public Criteria andRebateOpenDateIsNotNull() {
+            addCriterion("rebate_open_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateEqualTo(Date value) {
-            addCriterion("click_date =", value, "clickDate");
+        public Criteria andRebateOpenDateEqualTo(Date value) {
+            addCriterion("rebate_open_date =", value, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateNotEqualTo(Date value) {
-            addCriterion("click_date <>", value, "clickDate");
+        public Criteria andRebateOpenDateNotEqualTo(Date value) {
+            addCriterion("rebate_open_date <>", value, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateGreaterThan(Date value) {
-            addCriterion("click_date >", value, "clickDate");
+        public Criteria andRebateOpenDateGreaterThan(Date value) {
+            addCriterion("rebate_open_date >", value, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateGreaterThanOrEqualTo(Date value) {
-            addCriterion("click_date >=", value, "clickDate");
+        public Criteria andRebateOpenDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("rebate_open_date >=", value, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateLessThan(Date value) {
-            addCriterion("click_date <", value, "clickDate");
+        public Criteria andRebateOpenDateLessThan(Date value) {
+            addCriterion("rebate_open_date <", value, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateLessThanOrEqualTo(Date value) {
-            addCriterion("click_date <=", value, "clickDate");
+        public Criteria andRebateOpenDateLessThanOrEqualTo(Date value) {
+            addCriterion("rebate_open_date <=", value, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateIn(List<Date> values) {
-            addCriterion("click_date in", values, "clickDate");
+        public Criteria andRebateOpenDateIn(List<Date> values) {
+            addCriterion("rebate_open_date in", values, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateNotIn(List<Date> values) {
-            addCriterion("click_date not in", values, "clickDate");
+        public Criteria andRebateOpenDateNotIn(List<Date> values) {
+            addCriterion("rebate_open_date not in", values, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateBetween(Date value1, Date value2) {
-            addCriterion("click_date between", value1, value2, "clickDate");
+        public Criteria andRebateOpenDateBetween(Date value1, Date value2) {
+            addCriterion("rebate_open_date between", value1, value2, "rebateOpenDate");
             return (Criteria) this;
         }
 
-        public Criteria andClickDateNotBetween(Date value1, Date value2) {
-            addCriterion("click_date not between", value1, value2, "clickDate");
+        public Criteria andRebateOpenDateNotBetween(Date value1, Date value2) {
+            addCriterion("rebate_open_date not between", value1, value2, "rebateOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateIsNull() {
+            addCriterion("redeem_open_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateIsNotNull() {
+            addCriterion("redeem_open_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateEqualTo(Date value) {
+            addCriterion("redeem_open_date =", value, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateNotEqualTo(Date value) {
+            addCriterion("redeem_open_date <>", value, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateGreaterThan(Date value) {
+            addCriterion("redeem_open_date >", value, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("redeem_open_date >=", value, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateLessThan(Date value) {
+            addCriterion("redeem_open_date <", value, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateLessThanOrEqualTo(Date value) {
+            addCriterion("redeem_open_date <=", value, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateIn(List<Date> values) {
+            addCriterion("redeem_open_date in", values, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateNotIn(List<Date> values) {
+            addCriterion("redeem_open_date not in", values, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateBetween(Date value1, Date value2) {
+            addCriterion("redeem_open_date between", value1, value2, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedeemOpenDateNotBetween(Date value1, Date value2) {
+            addCriterion("redeem_open_date not between", value1, value2, "redeemOpenDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateIsNull() {
+            addCriterion("arrive_code_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateIsNotNull() {
+            addCriterion("arrive_code_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateEqualTo(Date value) {
+            addCriterion("arrive_code_date =", value, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateNotEqualTo(Date value) {
+            addCriterion("arrive_code_date <>", value, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateGreaterThan(Date value) {
+            addCriterion("arrive_code_date >", value, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("arrive_code_date >=", value, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateLessThan(Date value) {
+            addCriterion("arrive_code_date <", value, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateLessThanOrEqualTo(Date value) {
+            addCriterion("arrive_code_date <=", value, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateIn(List<Date> values) {
+            addCriterion("arrive_code_date in", values, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateNotIn(List<Date> values) {
+            addCriterion("arrive_code_date not in", values, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateBetween(Date value1, Date value2) {
+            addCriterion("arrive_code_date between", value1, value2, "arriveCodeDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andArriveCodeDateNotBetween(Date value1, Date value2) {
+            addCriterion("arrive_code_date not between", value1, value2, "arriveCodeDate");
             return (Criteria) this;
         }
 
@@ -1285,63 +1405,133 @@ public class SaivianRememberExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
+        public Criteria andRemarkIsNull() {
+            addCriterion("remark is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
+        public Criteria andRemarkIsNotNull() {
+            addCriterion("remark is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Long value) {
-            addCriterion("user_id =", value, "userId");
+        public Criteria andRemarkEqualTo(String value) {
+            addCriterion("remark =", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Long value) {
-            addCriterion("user_id <>", value, "userId");
+        public Criteria andRemarkNotEqualTo(String value) {
+            addCriterion("remark <>", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Long value) {
-            addCriterion("user_id >", value, "userId");
+        public Criteria andRemarkGreaterThan(String value) {
+            addCriterion("remark >", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("user_id >=", value, "userId");
+        public Criteria andRemarkGreaterThanOrEqualTo(String value) {
+            addCriterion("remark >=", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Long value) {
-            addCriterion("user_id <", value, "userId");
+        public Criteria andRemarkLessThan(String value) {
+            addCriterion("remark <", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("user_id <=", value, "userId");
+        public Criteria andRemarkLessThanOrEqualTo(String value) {
+            addCriterion("remark <=", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Long> values) {
-            addCriterion("user_id in", values, "userId");
+        public Criteria andRemarkLike(String value) {
+            addCriterion("remark like", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Long> values) {
-            addCriterion("user_id not in", values, "userId");
+        public Criteria andRemarkNotLike(String value) {
+            addCriterion("remark not like", value, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Long value1, Long value2) {
-            addCriterion("user_id between", value1, value2, "userId");
+        public Criteria andRemarkIn(List<String> values) {
+            addCriterion("remark in", values, "remark");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
+        public Criteria andRemarkNotIn(List<String> values) {
+            addCriterion("remark not in", values, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkBetween(String value1, String value2) {
+            addCriterion("remark between", value1, value2, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andRemarkNotBetween(String value1, String value2) {
+            addCriterion("remark not between", value1, value2, "remark");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdIsNull() {
+            addCriterion("service_user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdIsNotNull() {
+            addCriterion("service_user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdEqualTo(Long value) {
+            addCriterion("service_user_id =", value, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdNotEqualTo(Long value) {
+            addCriterion("service_user_id <>", value, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdGreaterThan(Long value) {
+            addCriterion("service_user_id >", value, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("service_user_id >=", value, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdLessThan(Long value) {
+            addCriterion("service_user_id <", value, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdLessThanOrEqualTo(Long value) {
+            addCriterion("service_user_id <=", value, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdIn(List<Long> values) {
+            addCriterion("service_user_id in", values, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdNotIn(List<Long> values) {
+            addCriterion("service_user_id not in", values, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdBetween(Long value1, Long value2) {
+            addCriterion("service_user_id between", value1, value2, "serviceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andServiceUserIdNotBetween(Long value1, Long value2) {
+            addCriterion("service_user_id not between", value1, value2, "serviceUserId");
             return (Criteria) this;
         }
     }

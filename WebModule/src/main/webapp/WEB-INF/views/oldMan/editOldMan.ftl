@@ -218,7 +218,6 @@
             elem: this,
             festival: true, //显示节日
             choose: function(datas){ //选择日期完毕的回调
-                console.log(datas)
             }
 
         });
@@ -230,7 +229,6 @@
         layui.upload({
             url: '' //上传接口
             ,success: function(res){ //上传成功后的回调
-                console.log(res)
             }
         });
     });

@@ -7,11 +7,11 @@ public class SaivianRemember {
 
     private Long saivianId;
 
-    private String userName;
+    private String saivianUserName;
 
-    private String loginName;
+    private String saivianLoginName;
 
-    private String loginPassword;
+    private String saivianLoginPassword;
 
     private String tel;
 
@@ -27,11 +27,15 @@ public class SaivianRemember {
 
     private String bankEffectiveDate;
 
-    private Date renewalDate;
+    private Date bindDate;
 
-    private Date redemptionDate;
+    private Date saivianRenewalDate;
 
-    private Date clickDate;
+    private Date rebateOpenDate;
+
+    private Date redeemOpenDate;
+
+    private Date arriveCodeDate;
 
     private Long parent;
 
@@ -39,7 +43,9 @@ public class SaivianRemember {
 
     private String totalMoney;
 
-    private Long userId;
+    private String remark;
+
+    private Long serviceUserId;
 
     public Long getId() {
         return id;
@@ -57,28 +63,28 @@ public class SaivianRemember {
         this.saivianId = saivianId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getSaivianUserName() {
+        return saivianUserName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setSaivianUserName(String saivianUserName) {
+        this.saivianUserName = saivianUserName == null ? null : saivianUserName.trim();
     }
 
-    public String getLoginName() {
-        return loginName;
+    public String getSaivianLoginName() {
+        return saivianLoginName;
     }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName == null ? null : loginName.trim();
+    public void setSaivianLoginName(String saivianLoginName) {
+        this.saivianLoginName = saivianLoginName == null ? null : saivianLoginName.trim();
     }
 
-    public String getLoginPassword() {
-        return loginPassword;
+    public String getSaivianLoginPassword() {
+        return saivianLoginPassword;
     }
 
-    public void setLoginPassword(String loginPassword) {
-        this.loginPassword = loginPassword == null ? null : loginPassword.trim();
+    public void setSaivianLoginPassword(String saivianLoginPassword) {
+        this.saivianLoginPassword = saivianLoginPassword == null ? null : saivianLoginPassword.trim();
     }
 
     public String getTel() {
@@ -137,28 +143,44 @@ public class SaivianRemember {
         this.bankEffectiveDate = bankEffectiveDate == null ? null : bankEffectiveDate.trim();
     }
 
-    public Date getRenewalDate() {
-        return renewalDate;
+    public Date getBindDate() {
+        return bindDate;
     }
 
-    public void setRenewalDate(Date renewalDate) {
-        this.renewalDate = renewalDate;
+    public void setBindDate(Date bindDate) {
+        this.bindDate = bindDate;
     }
 
-    public Date getRedemptionDate() {
-        return redemptionDate;
+    public Date getSaivianRenewalDate() {
+        return saivianRenewalDate;
     }
 
-    public void setRedemptionDate(Date redemptionDate) {
-        this.redemptionDate = redemptionDate;
+    public void setSaivianRenewalDate(Date saivianRenewalDate) {
+        this.saivianRenewalDate = saivianRenewalDate;
     }
 
-    public Date getClickDate() {
-        return clickDate;
+    public Date getRebateOpenDate() {
+        return rebateOpenDate;
     }
 
-    public void setClickDate(Date clickDate) {
-        this.clickDate = clickDate;
+    public void setRebateOpenDate(Date rebateOpenDate) {
+        this.rebateOpenDate = rebateOpenDate;
+    }
+
+    public Date getRedeemOpenDate() {
+        return redeemOpenDate;
+    }
+
+    public void setRedeemOpenDate(Date redeemOpenDate) {
+        this.redeemOpenDate = redeemOpenDate;
+    }
+
+    public Date getArriveCodeDate() {
+        return arriveCodeDate;
+    }
+
+    public void setArriveCodeDate(Date arriveCodeDate) {
+        this.arriveCodeDate = arriveCodeDate;
     }
 
     public Long getParent() {
@@ -185,11 +207,19 @@ public class SaivianRemember {
         this.totalMoney = totalMoney == null ? null : totalMoney.trim();
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public Long getServiceUserId() {
+        return serviceUserId;
+    }
+
+    public void setServiceUserId(Long serviceUserId) {
+        this.serviceUserId = serviceUserId;
     }
 }

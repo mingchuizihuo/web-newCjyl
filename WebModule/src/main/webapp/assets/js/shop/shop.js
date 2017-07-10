@@ -83,7 +83,6 @@ function shop() {
         });
     };
     this.del = function (id) {
-        console.log(123)
         postAjax(shop.url+"del",{id:id},function (data) {
             shop.findAll(0);
         })

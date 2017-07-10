@@ -15,14 +15,12 @@
 <div class="content">
 <#--查询-->
     <div class="inquiry">
-        <button class="btn btn-xs btn_color userjj">焦健</button>
-        <button class="btn btn-xs btn_color userpy">庞姨</button>
+
         <button class="btn btn-xs btn_color " id="All">全选</button>
         <button class="btn btn-xs btn_color "id="uncheck">不选</button>
         <button class="btn btn-xs btn_color "id="othercheck">反选</button>
-        <button class="btn btn-xs btn_color editOldMan">添加</button>
+        <button class="btn btn-xs btn_color " id="addSaivian">添加</button>
         <button class="btn btn-xs btn_color" id="printer">打印</button>
-        <button class="btn btn-xs btn_color" id ="qx">全选</button>
         <script>
             $("#qx").on("click",function () {
                 $(".table ")
@@ -47,11 +45,12 @@
                 <th>邮箱密码</th>
                 <th>银行卡号</th>
                 <th>续费日期</th>
-                <th>赎回日期</th>
-                <th>点击申请赎回日期</th>
+                <th>返利打开</th>
+                <th>赎回打开</th>
+                <th>到码日期</th>
                 <th>查看详情</th>
-                <th>消费记录查看</th>
-                <th>操作</th>
+                <th>更新时间</th>
+                <th>添加消费明细</th>
             </tr>
             </thead>
             <tbody id="saivianList">
@@ -95,7 +94,6 @@
                 CheckBox[i].checked = true;
                 printId += CheckBox[i].id +','
             };
-            console.log(printId)
             localStorage.printIddd = printId;
         };
         UnCheck.onclick = function () {
@@ -103,7 +101,6 @@
                 CheckBox[i].checked = false;
             };
             printId ='';
-            console.log(printId)
             localStorage.printIddd = printId;
         };
         othercheck.onclick = function () {
@@ -118,7 +115,6 @@
                 }
 
             };
-            console.log(printId)
             localStorage.printIddd = printId;
         };
     })

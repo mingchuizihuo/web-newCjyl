@@ -56,9 +56,7 @@
             var getData = {
                 saivianIds: localStorage.printIddd,
             };
-            console.log(getData);
             getAjax(printData.url, getData, function (data) {
-                console.log(JSON.stringify(data.aaData))
                 for (var i = 0; i < data.aaData.length; i++) {
                     var getData2 = data.aaData[i];
                     var productList = getData2.products;

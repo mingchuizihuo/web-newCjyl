@@ -39,7 +39,7 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
     @Override
     public List<SaivianRemember> findAllByUser(Long userId) {
         SaivianRememberExample saivianRememberExample = new SaivianRememberExample();
-        saivianRememberExample.createCriteria().andUserIdEqualTo(userId);
+        saivianRememberExample.createCriteria().andServiceUserIdEqualTo(userId);
         List<SaivianRemember> saivianRemembers = saivianrememberDao.selectByExample(saivianRememberExample);
         return saivianRemembers;
     }
@@ -92,7 +92,7 @@ public class SaivianRememberServiceImpl extends GenericServiceImpl<SaivianRememb
     @Override
     public List<SaivianRemember> findByName(String saivianName) {
         SaivianRememberExample example = new SaivianRememberExample();
-        example.createCriteria().andUserNameLike(saivianName);
+        example.createCriteria().andSaivianUserNameEqualTo(saivianName);
         List<SaivianRemember> saivianRemembers = saivianrememberDao.selectByExample(example);
         return saivianRemembers;
     }
