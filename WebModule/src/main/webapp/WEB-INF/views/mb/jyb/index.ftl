@@ -19,7 +19,7 @@
         font-size: 11px;
         margin: 0;
         padding: 0;
-        font-family: "Arial";
+        font-family: "Calibri";
     }
     #print-main-body{
         width: 224px;

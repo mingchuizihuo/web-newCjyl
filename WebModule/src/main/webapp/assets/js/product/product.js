@@ -110,6 +110,14 @@ $(".productfz").on("click",function () {
 $(".producthzp").on("click",function () {
     product.findAll(5);
 })
+//点击水果
+$(".producthzp").on("click",function () {
+    product.findAll(6);
+})
+//点击咖啡店
+$(".producthzp").on("click",function () {
+    product.findAll(7);
+})
 //点击所有
 $(".productsy").on("click",function () {
     product.findAll(0);

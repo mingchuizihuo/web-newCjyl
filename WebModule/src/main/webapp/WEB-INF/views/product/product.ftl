@@ -24,6 +24,10 @@
 
                     <button class="btn btn-xs btn_color producthzp">化妆品</button>
 
+                    <button class="btn btn-xs btn_color productsg">水果</button>
+
+                    <button class="btn btn-xs btn_color productkfd">咖啡店</button>
+
                     <button class="btn btn-xs btn_color productsy">所有</button>
 
 

@@ -1,0 +1,36 @@
+
+*{
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    font-family: "Calibri";
+}
+#main-body{
+    width: 162px;
+}
+#main-body ul{
+    padding: 20px 15px;
+}
+#main-body li{
+    list-style: none;
+}
+#main-body .title{
+    text-align: center;
+    font-size: 12px;
+    font-family: "Calibri";
+    font-weight: 600;
+}
+
+#main-body .shop-table{
+    width: 100%;
+    text-align: center;
+}
+#main-body .shop-table th:nth-child(1){
+    text-align: left;
+    width: 50%;
+}
+#main-body .shop-table td:nth-child(1){
+    text-align: left;
+    width: 40%;
+}
+

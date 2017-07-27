@@ -51,8 +51,9 @@ public class SaivianRememberServiceTest extends SupportTest {
     @Test
     public void savepySaivianRemember(){
         try {
-            String filepath = "/Users/xiaolitong/dev/workspace/web-newCjyl/TotalModule/src/test/resources/text2.xlsx";
+            String filepath = "/Users/xiaolitong/dev/workspace/web-newCjy2/TotalModule/src/test/resources/jt.xlsx";
             ExcelTest excelReader = new ExcelTest(filepath);
+
 
 
             // 对读取Excel表格内容测试

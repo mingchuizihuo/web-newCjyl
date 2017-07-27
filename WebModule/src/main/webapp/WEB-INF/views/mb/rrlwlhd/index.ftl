@@ -10,42 +10,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="${domainUrl}/assets/css/mb/mb8.css">
+
 </head>
 <body>
-<style>
-    *{
-        font-size: 11px;
-        margin: 0;
-        padding: 0;
-        font-family: "Calibri";
-    }
-    #main-body{
-        width: 224px;
-    }
-    #main-body ul{
-        padding: 20px 11px;
-    }
-    #main-body li{
-        list-style: none;
-    }
-    #main-body .title{
-        text-align: center;
-        font-size: 14px;
-    }
 
-    #main-body .shop-table{
-        width: 100%;
-        text-align: center;
-    }
-    #main-body .shop-table th:nth-child(1){
-        text-align: left;
-        width: 50%;
-    }
-    #main-body .shop-table td:nth-child(1){
-        text-align: left;
-        width: 40%;
-    }
-</style>
     <div id="main-body">
         <ul>
             <li style="text-align: center">人人乐塘沽店(RenRenLe)</li>

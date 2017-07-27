@@ -12,45 +12,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="${domainUrl}/assets/css/mb/mb8.css">
+
 </head>
 <body>
-<style>
-    #print-main-body *{
-        font-size: 11px;
-        margin: 0;
-        padding: 0;
-        font-family: "Arial";
-    }
-    #print-main-body{
-        width: 224px;
-    }
-    #print-main-body ul{
-        padding: 20px 11px;
-    }
-    #print-main-body li{
-        list-style: none;
-    }
-    #print-main-body .title{
-        text-align: center;
-        font-size: 14px;
-    }
 
-    #print-main-body .shop-table{
-        width: 100%;
-        text-align: center;
-    }
-    #print-main-body .shop-table th:nth-child(1){
-        text-align: left;
-        width: 50%;
-    }
-    #print-main-body .shop-table td:nth-child(1){
-        text-align: left;
-
-    }
-    hr{
-        border: 0.5px solid #000000;
-    }
-</style>
     <div id="print-main-body">
         <ul>
             <li class="title">天津manBear咖啡</li>

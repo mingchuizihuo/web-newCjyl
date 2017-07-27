@@ -59,6 +59,10 @@ function shop() {
                             html+='<td>服装</td>'
                         }else if(dOne.shopType==5){
                             html+='<td>化妆品</td>'
+                        }else if(dOne.shopType==6){
+                            html+='<td>水果</td>'
+                        }else if(dOne.shopType==7){
+                            html+='<td>咖啡店</td>'
                         }
 
                 html+='<td>'+dOne.shopSize+'</td>'+
@@ -111,6 +115,14 @@ $(".shopfz").on("click",function () {
 //点击化妆品
 $(".shophzp").on("click",function () {
     shop.findAll(5);
+})
+//点击水果
+$(".shopsg").on("click",function () {
+    shop.findAll(6);
+})
+//点击咖啡店
+$(".shopkfd").on("click",function () {
+    shop.findAll(7);
 })
 //点击所有
 $(".shopsy").on("click",function () {

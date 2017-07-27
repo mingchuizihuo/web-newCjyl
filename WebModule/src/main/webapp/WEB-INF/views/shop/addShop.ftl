@@ -28,6 +28,9 @@
                         <option value="3">商场</option>
                         <option value="4">服装</option>
                         <option value="5">化妆品</option>
+                        <option value="6">水果</option>
+                        <option value="7">咖啡</option>
+
                     </select>
                 </td>
             </tr>
